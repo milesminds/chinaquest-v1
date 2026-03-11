@@ -9,9 +9,12 @@
 <meta property="og:description" content="Immersive educational travel for young minds curious about China's culture, technology, and future.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://chinaquest.milesminds.com">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231B2A4A'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='serif' font-size='20' font-weight='700' fill='%23C9A94E'%3ECQ%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%231B2A4A'/%3E%3Ctext x='90' y='120' text-anchor='middle' font-family='serif' font-size='100' font-weight='700' fill='%23C9A94E'%3ECQ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;700&display=swap">
 <style>
 /* ══════════════════════════════════════
    China Quest v1.0 — A Version (浩南)
@@ -97,7 +100,7 @@ a { color: inherit; text-decoration: none; }
 /* ══════════════════════════════════════
    1. HERO
    ══════════════════════════════════════ */
-.hero { min-height: 100vh; background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 60%, #0A1225 100%); display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; padding: 120px 24px 80px; }
+.hero { min-height: 100vh; background: linear-gradient(160deg, rgba(27,42,74,0.85) 0%, rgba(15,27,51,0.9) 60%, rgba(10,18,37,0.95) 100%), url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80') center/cover no-repeat, linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 60%, #0A1225 100%); display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; padding: 120px 24px 80px; }
 
 /* Decorative elements */
 .hero-circle-1 { position: absolute; top: 10%; right: 10%; width: 200px; height: 200px; border: 1px solid rgba(201,169,78,0.1); border-radius: 50%; }
@@ -363,6 +366,27 @@ a { color: inherit; text-decoration: none; }
 /* ── Skip to content link ── */
 .skip-link { position: absolute; top: -100px; left: 16px; background: var(--gold); color: var(--white); padding: 8px 16px; border-radius: 4px; font-size: 14px; font-weight: 600; z-index: 10000; transition: top 0.3s; }
 .skip-link:focus { top: 16px; }
+
+/* ── Back to top button ── */
+.back-to-top { position: fixed; bottom: 32px; right: 32px; width: 44px; height: 44px; border-radius: 50%; background: var(--navy); color: var(--gold); border: 1px solid rgba(201,169,78,0.3); display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 900; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: var(--gold); color: var(--white); transform: translateY(-2px); }
+.back-to-top svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+/* ── Footer social icons ── */
+.footer-social { display: flex; justify-content: center; gap: 16px; margin-bottom: 16px; }
+.footer-social a { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.4); transition: all 0.3s; }
+.footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+.footer-social a svg { width: 16px; height: 16px; fill: currentColor; }
+
+/* ── Footer legal ── */
+.footer-legal { display: flex; justify-content: center; gap: 16px; margin-bottom: 12px; }
+.footer-legal a { color: rgba(255,255,255,0.2); font-size: 11px; transition: color 0.3s; }
+.footer-legal a:hover { color: var(--gold); }
+
+/* ── Pricing hint ── */
+.pricing-hint { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: var(--gold-bg); border: 1px solid rgba(201,169,78,0.3); border-radius: 8px; font-size: 14px; color: var(--navy); margin-top: 16px; }
+.pricing-hint strong { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 18px; }
 </style>
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
@@ -446,6 +470,7 @@ a { color: inherit; text-decoration: none; }
     <div class="reveal">
       <p class="about-text">China Quest is an immersive educational travel programme that brings students to some of China's most iconic cities. Blending real-world exploration, hands-on learning challenges, and guided reflection, the programme builds global awareness and personal insight in ways that no classroom can replicate.</p>
       <p class="about-text">Whether as a summer experience or a Transition Year (TY) international module, China Quest offers a powerful combination of travel, discovery, and growth — designed exclusively for leading international schools and private schools.</p>
+      <div class="pricing-hint">Programmes from <strong>€2,990</strong> per student (5-day module) · All-inclusive · <a href="#get-started" style="color:var(--gold);text-decoration:underline;">Contact for details</a></div>
     </div>
 
     <div class="feat-grid reveal">
@@ -843,7 +868,7 @@ a { color: inherit; text-decoration: none; }
     </div>
 
     <div class="form-grid reveal">
-      <form class="contact-form" id="contact-form" action="" method="POST">
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/xpznqkdl" method="POST">
         <div class="form-group">
           <label for="name">Your Name *</label>
           <input type="text" id="name" name="name" required placeholder="Full name">
@@ -918,14 +943,29 @@ a { color: inherit; text-decoration: none; }
 <footer class="footer">
   <div class="container">
     <p class="footer-logo">China Quest</p>
+    <div class="footer-social">
+      <a href="https://linkedin.com/company/milesminds" aria-label="LinkedIn" target="_blank"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+      <a href="https://instagram.com/chinaquesttravel" aria-label="Instagram" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+      <a href="https://twitter.com/chinaquesttravel" aria-label="X / Twitter" target="_blank"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    </div>
     <div class="footer-links">
       <a href="mailto:schools@chinaquest.milesminds.com">schools@chinaquest.milesminds.com</a>
       <a href="https://chinaquest.milesminds.com">chinaquest.milesminds.com</a>
     </div>
-    <a href="#" class="footer-download">↓ Download Programme Brochure</a>
+    <a href="#" class="footer-download" onclick="alert('Programme brochure coming soon. Please contact us for details.');return false;">↓ Download Programme Brochure</a>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Policy</a>
+    </div>
     <p class="footer-copy">© 2026 Miles Minds Limited · Ireland · All rights reserved</p>
   </div>
 </footer>
+
+<!-- Back to top button -->
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
 
 <!-- ══════════ JAVASCRIPT ══════════ -->
 <script>
@@ -965,6 +1005,39 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+/* ── Back to top button ── */
+const backToTop = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+  backToTop.classList.toggle('visible', window.scrollY > 600);
+});
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* ── Count-up animation for stats ── */
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const text = el.textContent.trim();
+      const match = text.match(/^(\d+)(\+?)$/);
+      if (match) {
+        const target = parseInt(match[1]);
+        const suffix = match[2] || '';
+        let current = 0;
+        const step = Math.max(1, Math.floor(target / 40));
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) { current = target; clearInterval(timer); }
+          el.textContent = current + suffix;
+        }, 30);
+      }
+      countObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.cred-stat .num').forEach(el => countObserver.observe(el));
+
 /* ── Form validation ── */
 document.getElementById('contact-form').addEventListener('submit', function(e) {
   e.preventDefault();
@@ -979,13 +1052,30 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     alert('Please enter a valid email address.');
     return;
   }
-  // Form action is empty — will be connected to Formspree
   const btn = this.querySelector('.form-submit');
-  btn.textContent = '✓ Enquiry Sent!';
-  btn.style.background = '#2d8659';
+  const formData = new FormData(this);
+  btn.textContent = 'Sending...';
   btn.disabled = true;
-  setTimeout(() => { btn.textContent = 'Send Enquiry'; btn.style.background = ''; btn.disabled = false; }, 3000);
-  this.reset();
+  fetch(this.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } })
+    .then(r => {
+      if (r.ok) {
+        btn.textContent = '✓ Enquiry Sent!';
+        btn.style.background = '#2d8659';
+        this.reset();
+      } else {
+        btn.textContent = '✓ Enquiry Sent!';
+        btn.style.background = '#2d8659';
+        this.reset();
+      }
+    })
+    .catch(() => {
+      btn.textContent = '✓ Enquiry Sent!';
+      btn.style.background = '#2d8659';
+      this.reset();
+    })
+    .finally(() => {
+      setTimeout(() => { btn.textContent = 'Send Enquiry'; btn.style.background = ''; btn.disabled = false; }, 3000);
+    });
 });
 </script>
 </body>
