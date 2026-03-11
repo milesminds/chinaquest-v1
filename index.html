@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -82,7 +82,7 @@ a { color: inherit; text-decoration: none; }
 .nav-cta:hover { background: var(--gold); color: var(--white); }
 
 /* Hamburger */
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
 .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: all 0.3s; border-radius: 1px; }
 .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
 .hamburger.active span:nth-child(2) { opacity: 0; }
@@ -299,8 +299,11 @@ a { color: inherit; text-decoration: none; }
 /* ══════════════════════════════════════
    SCROLL ANIMATIONS
    ══════════════════════════════════════ */
+/* no-js fallback: show everything if JS fails */
+.no-js .reveal { opacity: 1 !important; transform: none !important; }
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
+/* noscript handled via <noscript> tag as well */
 
 /* ══════════════════════════════════════
    RESPONSIVE
@@ -343,12 +346,31 @@ a { color: inherit; text-decoration: none; }
   .testimonials { gap: 16px; }
   .deco-char { font-size: 120px; }
 }
+/* ── Smooth focus styles for accessibility ── */
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* ── Form select dropdown arrow ── */
+.form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+/* ── Hero particle animation ── */
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+.hero-circle-1 { animation: float 8s ease-in-out infinite; }
+.hero-circle-3 { animation: float 10s ease-in-out infinite 2s; }
+
+/* ── Button active state ── */
+.hero-cta:active, .nav-cta:active, .form-submit:active, .footer-download:active { transform: scale(0.97); }
+
+/* ── Skip to content link ── */
+.skip-link { position: absolute; top: -100px; left: 16px; background: var(--gold); color: var(--white); padding: 8px 16px; border-radius: 4px; font-size: 14px; font-weight: 600; z-index: 10000; transition: top 0.3s; }
+.skip-link:focus { top: 16px; }
 </style>
+<noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
 <body>
 
 <!-- ══════════ NAVIGATION ══════════ -->
-<nav class="nav" id="nav">
+<a href="#about" class="skip-link">Skip to content</a>
+<nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="#hero" class="nav-logo">China Quest</a>
     <ul class="nav-links">
@@ -360,9 +382,9 @@ a { color: inherit; text-decoration: none; }
       <li><a href="#safety">Safety</a></li>
     </ul>
     <a href="#get-started" class="nav-cta">Get Started</a>
-    <div class="hamburger" id="hamburger" aria-label="Menu">
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </div>
 </nav>
 
@@ -901,12 +923,15 @@ a { color: inherit; text-decoration: none; }
       <a href="https://chinaquest.milesminds.com">chinaquest.milesminds.com</a>
     </div>
     <a href="#" class="footer-download">↓ Download Programme Brochure</a>
-    <p class="footer-copy">© 2026 Miles Minds Limited · Ireland</p>
+    <p class="footer-copy">© 2026 Miles Minds Limited · Ireland · All rights reserved</p>
   </div>
 </footer>
 
 <!-- ══════════ JAVASCRIPT ══════════ -->
 <script>
+/* ── Remove no-js class ── */
+document.documentElement.classList.remove('no-js');
+
 /* ── Navigation scroll effect ── */
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
@@ -917,13 +942,15 @@ window.addEventListener('scroll', () => {
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
 hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('active');
   hamburger.classList.toggle('active');
-  mobileMenu.classList.toggle('active');
-  document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+  hamburger.setAttribute('aria-expanded', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
 });
 function closeMenu() {
   hamburger.classList.remove('active');
   mobileMenu.classList.remove('active');
+  hamburger.setAttribute('aria-expanded', 'false');
   document.body.style.overflow = '';
 }
 
@@ -953,7 +980,11 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     return;
   }
   // Form action is empty — will be connected to Formspree
-  alert('Thank you for your enquiry! We will be in touch shortly.');
+  const btn = this.querySelector('.form-submit');
+  btn.textContent = '✓ Enquiry Sent!';
+  btn.style.background = '#2d8659';
+  btn.disabled = true;
+  setTimeout(() => { btn.textContent = 'Send Enquiry'; btn.style.background = ''; btn.disabled = false; }, 3000);
   this.reset();
 });
 </script>
