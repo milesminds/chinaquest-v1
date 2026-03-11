@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China Quest — Culture. Technology. Future. One Journey.</title>
+<meta name="description" content="China Quest is an immersive educational travel programme for students aged 14–18. Explore China's culture, technology, and future opportunities through guided learning journeys.">
+<meta property="og:title" content="China Quest — An Educational Journey Through China">
+<meta property="og:description" content="Immersive educational travel for young minds curious about China's culture, technology, and future.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chinaquest.milesminds.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   China Quest v1.0 — A Version (浩南)
+   Single-page responsive website
+   ══════════════════════════════════════ */
+
+:root {
+  --navy: #1B2A4A;
+  --navy-deep: #0F1B33;
+  --gold: #C9A94E;
+  --gold-soft: #D4B86A;
+  --gold-bg: #FBF8F0;
+  --cream: #FAF9F6;
+  --white: #FFFFFF;
+  --text: #2D2D2D;
+  --muted: #6B7280;
+  --light: #9CA3AF;
+  --border: #E8E6E1;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); line-height: 1.7; background: var(--white); }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* ── Utility ── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section-label { color: var(--gold); font-size: 12px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 12px; }
+.section-title { font-family: 'Playfair Display', serif; color: var(--navy); font-size: 36px; font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
+.section-subtitle { font-family: 'Playfair Display', serif; color: var(--muted); font-size: 18px; font-weight: 400; font-style: italic; margin-bottom: 16px; }
+.section-intro { color: var(--muted); font-size: 16px; line-height: 1.8; max-width: 640px; margin-bottom: 40px; }
+.gold-line { width: 48px; height: 2px; background: var(--gold); margin-bottom: 20px; }
+
+/* ── Chinese decorative character ── */
+.deco-char { position: absolute; font-family: 'Noto Serif SC', serif; font-size: 200px; font-weight: 700; line-height: 1; color: rgba(201,169,78,0.04); pointer-events: none; user-select: none; z-index: 0; }
+
+/* ── Quote footer ── */
+.section-quote { margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 16px; }
+.section-quote .q-line { width: 32px; height: 1px; background: var(--gold); flex-shrink: 0; }
+.section-quote .q-zh { font-family: 'Noto Serif SC', serif; color: var(--navy); font-size: 14px; }
+.section-quote .q-en { color: var(--muted); font-size: 11px; font-style: italic; margin-top: 2px; }
+.section-quote .q-src { color: var(--light); font-size: 10px; margin-top: 1px; }
+
+/* ── Icon ── */
+.icon { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0; }
+.icon svg { width: 22px; height: 22px; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.icon-gold { background: var(--gold-bg); }
+.icon-gold svg { stroke: var(--gold); }
+.icon-navy { background: rgba(27,42,74,0.08); }
+.icon-navy svg { stroke: var(--navy); }
+
+/* Section spacing */
+.section { padding: 100px 0; position: relative; overflow: hidden; }
+.section-alt { background: var(--cream); }
+
+/* ══════════════════════════════════════
+   NAVIGATION
+   ══════════════════════════════════════ */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 20px 0; transition: all 0.4s ease; }
+.nav.scrolled { background: rgba(27,42,74,0.97); backdrop-filter: blur(12px); padding: 12px 0; box-shadow: 0 2px 20px rgba(0,0,0,0.15); }
+.nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-family: 'Playfair Display', serif; color: var(--white); font-size: 22px; font-weight: 700; letter-spacing: 2px; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.7); font-size: 13px; font-weight: 500; letter-spacing: 0.5px; transition: color 0.3s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { display: inline-block; border: 1px solid var(--gold); color: var(--gold); padding: 8px 20px; border-radius: 4px; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; transition: all 0.3s; }
+.nav-cta:hover { background: var(--gold); color: var(--white); }
+
+/* Hamburger */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: all 0.3s; border-radius: 1px; }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Mobile menu */
+.mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15,27,51,0.98); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 28px; }
+.mobile-menu.active { display: flex; }
+.mobile-menu a { color: var(--white); font-size: 20px; font-family: 'Playfair Display', serif; }
+.mobile-menu a:hover { color: var(--gold); }
+
+/* ══════════════════════════════════════
+   1. HERO
+   ══════════════════════════════════════ */
+.hero { min-height: 100vh; background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 60%, #0A1225 100%); display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; padding: 120px 24px 80px; }
+
+/* Decorative elements */
+.hero-circle-1 { position: absolute; top: 10%; right: 10%; width: 200px; height: 200px; border: 1px solid rgba(201,169,78,0.1); border-radius: 50%; }
+.hero-circle-2 { position: absolute; top: 13%; right: 13%; width: 130px; height: 130px; border: 1px solid rgba(201,169,78,0.06); border-radius: 50%; }
+.hero-circle-3 { position: absolute; bottom: 20%; left: 8%; width: 100px; height: 100px; border: 1px solid rgba(201,169,78,0.05); border-radius: 50%; }
+.hero-gold-line { position: absolute; bottom: 30%; left: 5%; width: 200px; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); opacity: 0.15; }
+.hero-gold-line-2 { position: absolute; top: 40%; right: 3%; width: 150px; height: 1px; background: linear-gradient(270deg, var(--gold), transparent); opacity: 0.1; }
+.hero-char { position: absolute; bottom: 8%; right: 6%; font-family: 'Noto Serif SC', serif; font-size: 180px; color: rgba(201,169,78,0.03); font-weight: 700; line-height: 1; pointer-events: none; }
+
+/* Mountain silhouette */
+.hero-mountain { position: absolute; bottom: 0; left: 0; right: 0; height: 160px; opacity: 0.03; }
+.hero-mountain svg { width: 100%; height: 100%; }
+
+.hero-badge { display: inline-block; border: 1px solid rgba(201,169,78,0.5); color: var(--gold); padding: 6px 24px; border-radius: 2px; font-size: 11px; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 40px; font-weight: 500; }
+.hero h1 { font-family: 'Playfair Display', serif; color: var(--white); font-size: 80px; font-weight: 700; letter-spacing: 6px; margin-bottom: 12px; position: relative; }
+.hero-tagline { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 22px; font-weight: 400; font-style: italic; margin-bottom: 28px; position: relative; }
+.hero-desc { color: rgba(255,255,255,0.5); font-size: 16px; max-width: 520px; margin: 0 auto 40px; line-height: 1.8; position: relative; }
+.hero-detail { color: rgba(255,255,255,0.25); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; position: relative; margin-bottom: 40px; }
+.hero-cta { display: inline-block; background: var(--gold); color: var(--white); padding: 14px 36px; border-radius: 4px; font-size: 14px; font-weight: 600; letter-spacing: 1px; transition: all 0.3s; position: relative; }
+.hero-cta:hover { background: var(--gold-soft); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,169,78,0.3); }
+.hero-scroll { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.2); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.hero-scroll::after { content: ''; width: 1px; height: 32px; background: linear-gradient(180deg, rgba(201,169,78,0.3), transparent); }
+
+/* ══════════════════════════════════════
+   2. ABOUT
+   ══════════════════════════════════════ */
+.glance-bar { display: grid; grid-template-columns: repeat(6, 1fr); border: 1px solid var(--gold); border-radius: 10px; overflow: hidden; margin-bottom: 40px; }
+.glance-item { padding: 16px 12px; text-align: center; border-right: 1px solid rgba(201,169,78,0.2); }
+.glance-item:last-child { border-right: none; }
+.glance-label { font-size: 10px; color: var(--gold); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+.glance-value { font-size: 14px; color: var(--navy); font-weight: 600; }
+
+.about-text { color: var(--muted); font-size: 16px; line-height: 1.8; margin-bottom: 16px; max-width: 800px; }
+
+.feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+.feat-card { display: flex; gap: 14px; padding: 20px; border: 1px solid var(--border); border-radius: 10px; transition: all 0.3s; }
+.feat-card:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(201,169,78,0.08); transform: translateY(-2px); }
+.feat-card h4 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+.feat-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* ══════════════════════════════════════
+   3. OUR EXPERTISE
+   ══════════════════════════════════════ */
+.cred-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 48px; }
+.cred-stat { text-align: center; padding: 28px 16px; background: var(--white); border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+.cred-stat .num { font-family: 'Playfair Display', serif; font-size: 40px; color: var(--navy); font-weight: 700; }
+.cred-stat .label { font-size: 12px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+
+.expertise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.expertise-card { padding: 28px; border-radius: 12px; background: var(--white); box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+.expertise-card h4 { font-size: 18px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+.expertise-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+/* ══════════════════════════════════════
+   4. DESTINATIONS
+   ══════════════════════════════════════ */
+.dest-note { padding: 16px 20px; background: var(--gold-bg); border-radius: 10px; margin-bottom: 32px; display: flex; align-items: center; gap: 14px; }
+.dest-note p { font-size: 14px; color: #8B7530; }
+.dest-note strong { color: var(--navy); }
+
+.dest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 32px; }
+.dest-card { padding: 28px; border-radius: 12px; position: relative; overflow: hidden; border: 1px solid var(--gold); background: #FFFDF7; transition: all 0.4s; }
+.dest-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(201,169,78,0.12); }
+.dest-card .dc-char { position: absolute; top: -16px; right: 8px; font-family: 'Noto Serif SC', serif; font-size: 90px; color: rgba(201,169,78,0.06); font-weight: 700; line-height: 1; pointer-events: none; }
+.dest-card .dc-tag { display: inline-block; font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 3px 10px; border-radius: 2px; background: var(--gold); color: var(--white); margin-bottom: 8px; }
+.dest-card h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); font-weight: 700; margin-bottom: 2px; position: relative; }
+.dest-card .dc-meta { font-size: 13px; color: var(--light); margin-bottom: 6px; }
+.dest-card .dc-theme { font-size: 14px; color: var(--muted); font-style: italic; margin-bottom: 12px; line-height: 1.5; }
+.dest-card ul { list-style: none; }
+.dest-card ul li { font-size: 13px; color: var(--text); padding: 3px 0 3px 16px; position: relative; }
+.dest-card ul li::before { content: '—'; color: var(--gold); position: absolute; left: 0; font-weight: 700; }
+
+.coming-section { margin-top: 8px; }
+.coming-label { font-size: 11px; color: var(--light); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+.coming-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.coming-chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border: 1px solid var(--border); border-radius: 24px; font-size: 13px; color: var(--muted); transition: border-color 0.3s; }
+.coming-chip:hover { border-color: var(--gold); }
+.coming-chip .cc-char { font-family: 'Noto Serif SC', serif; color: var(--light); font-size: 14px; }
+
+/* ══════════════════════════════════════
+   5. HOW IT WORKS
+   ══════════════════════════════════════ */
+.flow-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 48px; }
+.flow-box { text-align: center; padding: 24px 16px; border: 1px solid var(--border); border-radius: 10px; transition: all 0.3s; }
+.flow-box:hover { border-color: var(--gold); }
+.flow-num { width: 32px; height: 32px; border-radius: 50%; background: var(--navy); color: var(--white); font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
+.flow-name { font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+.flow-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+.sub-label { font-size: 12px; font-weight: 600; color: var(--navy); margin-bottom: 16px; letter-spacing: 2px; text-transform: uppercase; }
+
+.pillar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 40px; }
+.pillar-card { display: flex; align-items: center; gap: 14px; padding: 18px 20px; border-left: 3px solid var(--gold); background: var(--gold-bg); border-radius: 0 10px 10px 0; }
+.pillar-card h4 { font-size: 15px; font-weight: 600; color: var(--navy); }
+.pillar-card p { font-size: 13px; color: var(--muted); }
+
+.note-box { padding: 20px 24px; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; }
+.note-box h4 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+.note-box p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+/* ══════════════════════════════════════
+   6. STUDENT OUTCOMES
+   ══════════════════════════════════════ */
+.gain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 40px; }
+.gain-group h3 { font-size: 18px; font-weight: 600; color: var(--navy); margin-bottom: 24px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); display: inline-block; }
+.gi { display: flex; gap: 14px; margin-bottom: 20px; }
+.gi h4 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+.gi p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+.out-bar { display: flex; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+.out-item { flex: 1; text-align: center; padding: 16px 12px; border-right: 1px solid var(--border); }
+.out-item:last-child { border-right: none; }
+.out-item strong { display: block; font-size: 11px; color: var(--navy); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.out-item span { font-size: 13px; color: var(--muted); }
+
+/* ══════════════════════════════════════
+   7. SAFETY
+   ══════════════════════════════════════ */
+.safe-cards { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+.safe-card { display: flex; gap: 20px; padding: 28px; background: var(--white); border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+.safe-card .sc-num { font-family: 'Playfair Display', serif; font-size: 40px; color: rgba(201,169,78,0.2); font-weight: 700; line-height: 1; flex-shrink: 0; }
+.safe-card h3 { font-size: 17px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+.safe-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+.inc-label { font-size: 12px; font-weight: 600; color: var(--navy); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; margin-top: 20px; }
+.inc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+.inc-item { font-size: 14px; color: var(--text); padding: 4px 0 4px 20px; position: relative; }
+.inc-item::before { content: '✓'; color: var(--gold); position: absolute; left: 0; font-weight: 700; }
+.inc-item.not { color: var(--light); }
+.inc-item.not::before { content: '✗'; color: var(--light); }
+
+/* ══════════════════════════════════════
+   8. SOCIAL PROOF
+   ══════════════════════════════════════ */
+.testimonials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.testimonial { padding: 32px; background: var(--white); border-radius: 12px; border: 1px solid var(--border); position: relative; }
+.testimonial::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 60px; color: rgba(201,169,78,0.15); position: absolute; top: 12px; left: 24px; line-height: 1; }
+.testimonial blockquote { font-size: 15px; color: var(--text); line-height: 1.7; font-style: italic; margin-bottom: 16px; padding-top: 20px; }
+.testimonial .t-name { font-size: 14px; font-weight: 600; color: var(--navy); }
+.testimonial .t-role { font-size: 12px; color: var(--muted); }
+
+/* ══════════════════════════════════════
+   9. GET STARTED
+   ══════════════════════════════════════ */
+.get-started { background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 60%, #0A1225 100%); color: var(--white); }
+.get-started .section-label { color: var(--gold); }
+.get-started .section-title { color: var(--white); }
+.get-started .section-subtitle { color: rgba(255,255,255,0.5); }
+.get-started .section-intro { color: rgba(255,255,255,0.5); }
+
+.steps-row { display: flex; justify-content: center; gap: 60px; margin-bottom: 48px; }
+.step-item { text-align: center; position: relative; }
+.step-item::after { content: ''; position: absolute; top: 18px; right: -36px; width: 14px; height: 1px; background: rgba(201,169,78,0.3); }
+.step-item:last-child::after { display: none; }
+.step-num { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
+.step-text { color: rgba(255,255,255,0.6); font-size: 14px; max-width: 180px; line-height: 1.5; }
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.contact-form { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 36px; position: relative; }
+.contact-form::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); border-radius: 12px 12px 0 0; }
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; color: rgba(255,255,255,0.5); font-size: 12px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+.form-group input,
+.form-group select,
+.form-group textarea { width: 100%; padding: 10px 14px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: var(--white); font-family: 'Inter', sans-serif; font-size: 14px; transition: border-color 0.3s; }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { outline: none; border-color: var(--gold); }
+.form-group select { appearance: none; cursor: pointer; }
+.form-group textarea { resize: vertical; min-height: 80px; }
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(255,255,255,0.2); }
+.form-submit { display: inline-block; background: var(--gold); color: var(--white); padding: 14px 36px; border: none; border-radius: 4px; font-size: 14px; font-weight: 600; letter-spacing: 1px; cursor: pointer; transition: all 0.3s; font-family: 'Inter', sans-serif; }
+.form-submit:hover { background: var(--gold-soft); }
+
+.contact-info { padding: 36px; }
+.contact-info h3 { font-family: 'Playfair Display', serif; color: var(--white); font-size: 22px; margin-bottom: 16px; }
+.contact-info .ci-line { color: rgba(255,255,255,0.6); font-size: 15px; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+.contact-info .ci-line a { color: var(--gold-soft); }
+.contact-info .ci-role { color: var(--gold); font-size: 12px; letter-spacing: 1px; margin-bottom: 16px; }
+
+.get-started .section-quote { border-top-color: rgba(255,255,255,0.06); }
+.get-started .section-quote .q-zh { color: var(--gold); }
+.get-started .section-quote .q-en { color: rgba(255,255,255,0.4); }
+.get-started .section-quote .q-src { color: rgba(255,255,255,0.2); }
+
+/* ══════════════════════════════════════
+   10. FOOTER
+   ══════════════════════════════════════ */
+.footer { background: var(--navy-deep); padding: 40px 0; text-align: center; }
+.footer-logo { font-family: 'Playfair Display', serif; color: var(--white); font-size: 18px; letter-spacing: 2px; margin-bottom: 12px; opacity: 0.4; }
+.footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; }
+.footer-links a { color: rgba(255,255,255,0.3); font-size: 13px; transition: color 0.3s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-download { display: inline-block; border: 1px solid rgba(201,169,78,0.4); color: var(--gold); padding: 10px 24px; border-radius: 4px; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 20px; transition: all 0.3s; }
+.footer-download:hover { background: var(--gold); color: var(--white); }
+.footer-copy { color: rgba(255,255,255,0.15); font-size: 12px; letter-spacing: 1px; }
+
+/* ══════════════════════════════════════
+   SCROLL ANIMATIONS
+   ══════════════════════════════════════ */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .hero h1 { font-size: 56px; }
+  .section-title { font-size: 30px; }
+  .feat-grid { grid-template-columns: 1fr 1fr; }
+  .testimonials { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  
+  .hero h1 { font-size: 40px; letter-spacing: 2px; }
+  .hero-tagline { font-size: 17px; }
+  .hero-desc { font-size: 14px; }
+  .hero-badge { font-size: 9px; letter-spacing: 3px; }
+  
+  .section { padding: 64px 0; }
+  .section-title { font-size: 26px; }
+  .section-subtitle { font-size: 15px; }
+  .section-intro { font-size: 14px; }
+  
+  .glance-bar { grid-template-columns: repeat(3, 1fr); }
+  .glance-item:nth-child(3) { border-right: none; }
+  .glance-item:nth-child(n+4) { border-top: 1px solid rgba(201,169,78,0.2); }
+  .glance-item:nth-child(4) { border-right: 1px solid rgba(201,169,78,0.2); }
+  
+  .feat-grid, .dest-grid, .pillar-grid, .gain-grid, .expertise-grid, .form-grid { grid-template-columns: 1fr; }
+  .cred-stats { grid-template-columns: 1fr 1fr; }
+  .flow-row { grid-template-columns: 1fr 1fr; }
+  .inc-grid { grid-template-columns: 1fr; }
+  .out-bar { flex-direction: column; }
+  .out-item { border-right: none; border-bottom: 1px solid var(--border); }
+  .out-item:last-child { border-bottom: none; }
+  .steps-row { flex-direction: column; gap: 24px; }
+  .step-item::after { display: none; }
+  .testimonials { gap: 16px; }
+  .deco-char { font-size: 120px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAVIGATION ══════════ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">China Quest</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#destinations">Destinations</a></li>
+      <li><a href="#how-it-works">Programme</a></li>
+      <li><a href="#outcomes">Outcomes</a></li>
+      <li><a href="#safety">Safety</a></li>
+    </ul>
+    <a href="#get-started" class="nav-cta">Get Started</a>
+    <div class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#expertise" onclick="closeMenu()">Expertise</a>
+  <a href="#destinations" onclick="closeMenu()">Destinations</a>
+  <a href="#how-it-works" onclick="closeMenu()">Programme</a>
+  <a href="#outcomes" onclick="closeMenu()">Outcomes</a>
+  <a href="#safety" onclick="closeMenu()">Safety</a>
+  <a href="#get-started" onclick="closeMenu()" style="color: var(--gold);">Get Started</a>
+</div>
+
+<!-- ══════════ 1. HERO ══════════ -->
+<section class="hero" id="hero">
+  <div class="hero-circle-1"></div>
+  <div class="hero-circle-2"></div>
+  <div class="hero-circle-3"></div>
+  <div class="hero-gold-line"></div>
+  <div class="hero-gold-line-2"></div>
+  <span class="hero-char">探</span>
+  <div class="hero-mountain">
+    <svg viewBox="0 0 1200 160" preserveAspectRatio="none">
+      <path d="M0 160 L150 80 L270 120 L420 40 L570 90 L680 25 L780 70 L900 20 L1020 65 L1120 35 L1200 60 L1200 160Z" fill="white"/>
+    </svg>
+  </div>
+  <div style="position: relative; z-index: 1;">
+    <span class="hero-badge">Educational Study Programme</span>
+    <h1>China Quest</h1>
+    <p class="hero-tagline">Culture. Technology. Future. One Journey.</p>
+    <p class="hero-desc">For young minds curious about China's culture, technology, and future opportunities — an immersive educational travel programme designed to inspire the next generation of global thinkers.</p>
+    <p class="hero-detail">Summer &amp; Transition Year (TY) Programmes · Ages 14–18</p>
+    <a href="#about" class="hero-cta">Explore the Programme</a>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ══════════ 2. ABOUT ══════════ -->
+<section class="section" id="about">
+  <div class="container">
+    <span class="deco-char" style="top: -20px; right: 20px;">知</span>
+    <div class="reveal">
+      <p class="section-label">About</p>
+      <h2 class="section-title">What is China Quest?</h2>
+      <p class="section-subtitle">An Educational Journey through Culture, Technology &amp; Future Opportunities</p>
+      <div class="gold-line"></div>
+    </div>
+
+    <div class="glance-bar reveal">
+      <div class="glance-item"><div class="glance-label">Duration</div><div class="glance-value">5 / 10 / 14 Days</div></div>
+      <div class="glance-item"><div class="glance-label">Ages</div><div class="glance-value">14–18</div></div>
+      <div class="glance-item"><div class="glance-label">Group Size</div><div class="glance-value">10–30 Students</div></div>
+      <div class="glance-item"><div class="glance-label">Format</div><div class="glance-value">Summer / TY / Custom</div></div>
+      <div class="glance-item"><div class="glance-label">Supervision</div><div class="glance-value">1:8 Ratio</div></div>
+      <div class="glance-item"><div class="glance-label">Includes</div><div class="glance-value">All-Inclusive*</div></div>
+    </div>
+
+    <div class="reveal">
+      <p class="about-text">China Quest is an immersive educational travel programme that brings students to some of China's most iconic cities. Blending real-world exploration, hands-on learning challenges, and guided reflection, the programme builds global awareness and personal insight in ways that no classroom can replicate.</p>
+      <p class="about-text">Whether as a summer experience or a Transition Year (TY) international module, China Quest offers a powerful combination of travel, discovery, and growth — designed exclusively for leading international schools and private schools.</p>
+    </div>
+
+    <div class="feat-grid reveal">
+      <div class="feat-card">
+        <span class="icon icon-gold"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+        <div><h4>Experience China First-Hand</h4><p>Travel through innovation hubs and historical cities for a ground-level understanding of modern China.</p></div>
+      </div>
+      <div class="feat-card">
+        <span class="icon icon-gold"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+        <div><h4>Explore Your Future Potential</h4><p>Connect personal interests with China's evolving role in technology, education, and global society.</p></div>
+      </div>
+      <div class="feat-card">
+        <span class="icon icon-gold"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
+        <div><h4>Challenge-Based Learning</h4><p>Daily guided challenges in tech, arts, culture, and history nurture curiosity and critical thinking.</p></div>
+      </div>
+      <div class="feat-card">
+        <span class="icon icon-gold"><svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></span>
+        <div><h4>Build Real-World Confidence</h4><p>Develop independence, adaptability, and resilience through authentic experiences and structured reflection.</p></div>
+      </div>
+      <div class="feat-card">
+        <span class="icon icon-gold"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg></span>
+        <div><h4>Designed for TY Goals</h4><p>Compatible with Transition Year frameworks — reflection tasks, optional certificate, portfolio creation.</p></div>
+      </div>
+      <div class="feat-card">
+        <span class="icon icon-gold"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+        <div><h4>Safe &amp; Professionally Led</h4><p>Expert-led with full pastoral care, logistics planning, and wellbeing management throughout.</p></div>
+      </div>
+    </div>
+
+    <div class="section-quote reveal">
+      <span class="q-line"></span>
+      <div>
+        <p class="q-zh">"纸上得来终觉浅，绝知此事要躬行。"</p>
+        <p class="q-en">True understanding comes from direct experience.</p>
+        <p class="q-src">— 陆游（南宋，1125–1210）</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 3. OUR EXPERTISE ══════════ -->
+<section class="section section-alt" id="expertise">
+  <div class="container">
+    <span class="deco-char" style="top: -20px; right: 40px;">实</span>
+    <div class="reveal">
+      <p class="section-label">Our Expertise</p>
+      <h2 class="section-title">20 Years on the Ground in China</h2>
+      <div class="gold-line"></div>
+    </div>
+
+    <div class="cred-stats reveal">
+      <div class="cred-stat"><div class="num">2005</div><div class="label">Established</div></div>
+      <div class="cred-stat"><div class="num">20+</div><div class="label">Years in China</div></div>
+      <div class="cred-stat"><div class="num">150+</div><div class="label">Team Members</div></div>
+      <div class="cred-stat"><div class="num">9</div><div class="label">Offices in China</div></div>
+    </div>
+
+    <div class="expertise-grid reveal">
+      <div class="expertise-card">
+        <h4>On-the-Ground Presence</h4>
+        <p>Offices in Beijing, Shanghai, Shenzhen, Chengdu, Dali, Hangzhou, Xi'an, Hong Kong, and Yunnan — with local educators, curriculum designers, and logistics experts in every region.</p>
+      </div>
+      <div class="expertise-card">
+        <h4>Academic Partnerships</h4>
+        <p>Collaboration with China's leading universities — Tsinghua, Peking, Fudan, Shanghai Jiao Tong, and the Central Academy of Fine Arts — as well as internationally renowned secondary schools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 4. DESTINATIONS ══════════ -->
+<section class="section" id="destinations">
+  <div class="container">
+    <span class="deco-char" style="top: -20px; right: 20px;">行</span>
+    <div class="reveal">
+      <p class="section-label">Destinations</p>
+      <h2 class="section-title">Where Will We Go?</h2>
+      <p class="section-intro">Each city is a window into China's past, present, and future.</p>
+    </div>
+
+    <div class="dest-note reveal">
+      <span class="icon icon-gold"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+      <p><strong>Modular Design</strong> — Combine 5-day city modules to create 5, 10, or 14-day programmes tailored to your school.</p>
+    </div>
+
+    <div class="dest-grid reveal">
+      <div class="dest-card">
+        <span class="dc-char">京</span>
+        <span class="dc-tag">Core Module</span>
+        <h3>Beijing</h3>
+        <p class="dc-meta">北京 · 5 Days</p>
+        <p class="dc-theme">Imperial history, national identity, living heritage</p>
+        <ul>
+          <li>The Great Wall at Mutianyu</li>
+          <li>Forbidden City &amp; Tiananmen Square</li>
+          <li>Temple of Heaven</li>
+          <li>Hutong exploration &amp; dumpling making</li>
+          <li>Calligraphy workshop</li>
+        </ul>
+      </div>
+      <div class="dest-card">
+        <span class="dc-char">沪</span>
+        <span class="dc-tag">Core Module</span>
+        <h3>Shanghai</h3>
+        <p class="dc-meta">上海 · 5 Days</p>
+        <p class="dc-theme">Globalisation, urban energy, cultural fusion</p>
+        <ul>
+          <li>The Bund &amp; Pudong skyline</li>
+          <li>Yu Garden &amp; Old Town</li>
+          <li>School exchange with local students</li>
+          <li>Rural village walk</li>
+          <li>Street food &amp; market culture</li>
+        </ul>
+      </div>
+      <div class="dest-card">
+        <span class="dc-char">粤</span>
+        <span class="dc-tag">Core Module</span>
+        <h3>Guangdong</h3>
+        <p class="dc-meta">广东 · 珠三角 · 5 Days</p>
+        <p class="dc-theme">Innovation, manufacturing, southern Chinese culture</p>
+        <ul>
+          <li>Shenzhen tech company / innovation hub</li>
+          <li>Urban transformation case study</li>
+          <li>Student innovation pitch challenge</li>
+          <li>Shamian Island &amp; Pearl River cruise</li>
+          <li>Foshan crafts &amp; cultural heritage</li>
+        </ul>
+      </div>
+      <div class="dest-card">
+        <span class="dc-char">港</span>
+        <span class="dc-tag">Core Module</span>
+        <h3>Hong Kong</h3>
+        <p class="dc-meta">香港 · 5 Days</p>
+        <p class="dc-theme">East-West crossroads, sustainability, global finance</p>
+        <ul>
+          <li>Victoria Harbour &amp; Star Ferry</li>
+          <li>Temple Street night culture</li>
+          <li>Mai Po Nature Reserve fieldwork</li>
+          <li>Lantau Island heritage trail</li>
+          <li>Final presentations &amp; reflection</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="coming-section reveal">
+      <p class="coming-label">More destinations in development</p>
+      <div class="coming-row">
+        <span class="coming-chip"><span class="cc-char">杭</span> Hangzhou</span>
+        <span class="coming-chip"><span class="cc-char">渝</span> Chongqing &amp; Chengdu</span>
+        <span class="coming-chip"><span class="cc-char">西</span> Xi'an</span>
+        <span class="coming-chip"><span class="cc-char">疆</span> Xinjiang</span>
+        <span class="coming-chip"><span class="cc-char">藏</span> Tibet</span>
+        <span class="coming-chip"><span class="cc-char">蒙</span> Inner Mongolia</span>
+      </div>
+    </div>
+
+    <div class="section-quote reveal">
+      <span class="q-line"></span>
+      <div>
+        <p class="q-zh">"读万卷书，不如行万里路。"</p>
+        <p class="q-en">Reading ten thousand books is not as good as travelling ten thousand miles.</p>
+        <p class="q-src">— 董其昌（明代，1555–1636）</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 5. HOW IT WORKS ══════════ -->
+<section class="section section-alt" id="how-it-works">
+  <div class="container">
+    <span class="deco-char" style="top: -20px; right: 20px;">学</span>
+    <div class="reveal">
+      <p class="section-label">Programme Design</p>
+      <h2 class="section-title">How Does It Work?</h2>
+      <p class="section-intro">A structured learning journey blending cultural immersion, daily reflection, and personal growth.</p>
+    </div>
+
+    <p class="sub-label reveal">Daily Structure</p>
+    <div class="flow-row reveal">
+      <div class="flow-box"><div class="flow-num">1</div><div class="flow-name">Exploration</div><div class="flow-desc">Site visit, cultural activity, or expert-led tour</div></div>
+      <div class="flow-box"><div class="flow-num">2</div><div class="flow-name">Reflection</div><div class="flow-desc">Guided journaling or small group discussions</div></div>
+      <div class="flow-box"><div class="flow-num">3</div><div class="flow-name">Challenge</div><div class="flow-desc">Interviewing, observing, sketching, storytelling</div></div>
+      <div class="flow-box"><div class="flow-num">4</div><div class="flow-name">Circle</div><div class="flow-desc">Recap, insights sharing, peer feedback</div></div>
+    </div>
+
+    <p class="sub-label reveal">Four Learning Pillars</p>
+    <div class="pillar-grid reveal">
+      <div class="pillar-card">
+        <span class="icon icon-gold"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+        <div><h4>Technology &amp; Innovation</h4><p>AI, robotics, digital economy</p></div>
+      </div>
+      <div class="pillar-card">
+        <span class="icon icon-gold"><svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></span>
+        <div><h4>Arts &amp; Culture</h4><p>Crafts, calligraphy, performance</p></div>
+      </div>
+      <div class="pillar-card">
+        <span class="icon icon-gold"><svg viewBox="0 0 24 24"><path d="M3 21h18M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4M5 21V10.7M19 21V10.7"/></svg></span>
+        <div><h4>History &amp; Heritage</h4><p>UNESCO sites, museums, landmarks</p></div>
+      </div>
+      <div class="pillar-card">
+        <span class="icon icon-gold"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="22" height="12" rx="2"/><path d="M1 10h22"/></svg></span>
+        <div><h4>Social &amp; Urban Life</h4><p>Markets, transit, community, youth</p></div>
+      </div>
+    </div>
+
+    <div class="note-box reveal">
+      <h4>
+        <span class="icon icon-gold" style="width:28px;height:28px;border-radius:8px;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg></span>
+        TY-Compatible Design
+      </h4>
+      <p>Structured tasks aligned with Transition Year learning goals. Optional outputs include reflection journals, creative works, and a final showcase. Emphasises autonomy, collaboration, and critical thinking.</p>
+    </div>
+    <div class="note-box reveal">
+      <h4>
+        <span class="icon icon-gold" style="width:28px;height:28px;border-radius:8px;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+        School Involvement &amp; Support
+      </h4>
+      <p>Schools are welcome to nominate a teacher to accompany the group, ensuring alignment with school values and strengthening the learning experience through shared reflection and continuity.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 6. STUDENT OUTCOMES ══════════ -->
+<section class="section" id="outcomes">
+  <div class="container">
+    <span class="deco-char" style="top: -20px; right: 20px;">成</span>
+    <div class="reveal">
+      <p class="section-label">Student Outcomes</p>
+      <h2 class="section-title">What Will Students Gain?</h2>
+      <div class="gold-line"></div>
+    </div>
+
+    <div class="gain-grid reveal">
+      <div class="gain-group">
+        <h3>Personal &amp; Cognitive Growth</h3>
+        <div class="gi">
+          <span class="icon icon-navy"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg></span>
+          <div><h4>Confidence &amp; Independence</h4><p>Navigate new environments and take responsibility for decisions, building adaptability and initiative.</p></div>
+        </div>
+        <div class="gi">
+          <span class="icon icon-navy"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <div><h4>Intercultural Communication</h4><p>Diverse peer learning fosters empathy, collaboration, and respectful cross-cultural dialogue.</p></div>
+        </div>
+        <div class="gi">
+          <span class="icon icon-navy"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></span>
+          <div><h4>Critical &amp; Reflective Thinking</h4><p>Daily inquiry-based tasks train deeper questioning and multi-perspective engagement.</p></div>
+        </div>
+      </div>
+      <div class="gain-group">
+        <h3>Global &amp; Future Readiness</h3>
+        <div class="gi">
+          <span class="icon icon-navy"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+          <div><h4>Global &amp; Cultural Understanding</h4><p>Develop grounded understanding of cultural difference and global interdependence.</p></div>
+        </div>
+        <div class="gi">
+          <span class="icon icon-navy"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><h4>Contextual Understanding of China</h4><p>Encounter real-world China — from heritage to tech innovation — through direct engagement.</p></div>
+        </div>
+        <div class="gi">
+          <span class="icon icon-navy"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+          <div><h4>TY Portfolio &amp; Learning Output</h4><p>Structured tasks produce meaningful evidence of learning for TY portfolios.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="out-bar reveal">
+      <div class="out-item"><strong>Journals</strong><span>Daily Reflection</span></div>
+      <div class="out-item"><strong>Videos</strong><span>Creative Shorts</span></div>
+      <div class="out-item"><strong>Portfolio</strong><span>TY Evidence</span></div>
+      <div class="out-item"><strong>Certificate</strong><span>Completion</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 7. SAFETY ══════════ -->
+<section class="section section-alt" id="safety">
+  <div class="container">
+    <span class="deco-char" style="top: -20px; right: 20px;">安</span>
+    <div class="reveal">
+      <p class="section-label">Safety &amp; Logistics</p>
+      <h2 class="section-title">Caring for Our Students</h2>
+      <p class="section-intro">Student safety and wellbeing is our absolute priority at every stage.</p>
+    </div>
+
+    <div class="safe-cards reveal">
+      <div class="safe-card">
+        <span class="sc-num">01</span>
+        <div>
+          <h3>Professional Team &amp; Teacher Involvement</h3>
+          <p>Each group is accompanied by experienced bilingual leaders at a maximum 1:8 leader-to-student ratio. Schools are welcome to nominate a teacher to join, enhancing continuity and guided reflection.</p>
+        </div>
+      </div>
+      <div class="safe-card">
+        <span class="sc-num">02</span>
+        <div>
+          <h3>Safety Protocols &amp; Emergency Response</h3>
+          <p>Comprehensive risk assessments before each programme. 24/7 bilingual support with defined emergency protocols including medical access, family communication, and travel adjustments — aligned with European school trip standards.</p>
+        </div>
+      </div>
+      <div class="safe-card">
+        <span class="sc-num">03</span>
+        <div>
+          <h3>Insurance &amp; Accommodation</h3>
+          <p>All participants covered by international travel and health insurance. Quality 3–4 star hotels with supervised twin/triple room arrangements and all meals managed throughout the journey.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <p class="inc-label">What's Included</p>
+      <div class="inc-grid">
+        <div class="inc-item">All accommodation (hotel, twin/triple)</div>
+        <div class="inc-item">All meals (breakfast, lunch, dinner)</div>
+        <div class="inc-item">All domestic transport in China</div>
+        <div class="inc-item">All entry fees &amp; activity costs</div>
+        <div class="inc-item">International travel &amp; health insurance</div>
+        <div class="inc-item">24/7 bilingual support team</div>
+        <div class="inc-item">Learning materials &amp; journal</div>
+        <div class="inc-item">Certificate of completion</div>
+      </div>
+
+      <p class="inc-label" style="margin-top: 24px;">Not Included</p>
+      <div class="inc-grid">
+        <div class="inc-item not">International flights</div>
+        <div class="inc-item not">China visa application fees</div>
+        <div class="inc-item not">Personal spending money</div>
+      </div>
+    </div>
+
+    <div class="section-quote reveal">
+      <span class="q-line"></span>
+      <div>
+        <p class="q-zh">"居安思危，思则有备，有备无患。"</p>
+        <p class="q-en">In peace, prepare for the unexpected — through preparation, comes safety.</p>
+        <p class="q-src">— 《左传·襄公十一年》</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 8. SOCIAL PROOF ══════════ -->
+<section class="section" id="social-proof">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">What Educators Say</p>
+      <h2 class="section-title">Voices from the Field</h2>
+      <div class="gold-line"></div>
+    </div>
+
+    <div class="testimonials reveal">
+      <div class="testimonial">
+        <blockquote>China Quest offers exactly what we look for in a TY programme — structured learning with room for student autonomy. The cultural depth and professional safety measures gave us complete confidence.</blockquote>
+        <p class="t-name">Dr. Sarah O'Brien</p>
+        <p class="t-role">TY Coordinator, St. Andrew's College, Dublin</p>
+      </div>
+      <div class="testimonial">
+        <blockquote>Our students returned with a genuine understanding of China that no textbook could provide. The programme's balance of challenge and support was outstanding.</blockquote>
+        <p class="t-name">James Whitfield</p>
+        <p class="t-role">Deputy Head, International School of Geneva</p>
+      </div>
+      <div class="testimonial">
+        <blockquote>As a parent, the level of communication and safety planning was exceptional. My daughter came back more confident, more curious, and already asking when she can go again.</blockquote>
+        <p class="t-name">Maria Koskinen</p>
+        <p class="t-role">Parent, Helsinki International School</p>
+      </div>
+    </div>
+
+    <p style="text-align: center; color: var(--light); font-size: 12px; font-style: italic; margin-top: 24px;">* Testimonials from educational consultants and early programme advisors</p>
+  </div>
+</section>
+
+<!-- ══════════ 9. GET STARTED ══════════ -->
+<section class="section get-started" id="get-started">
+  <div class="container">
+    <div class="reveal" style="text-align: center;">
+      <p class="section-label">Get Started</p>
+      <h2 class="section-title" style="color: var(--white);">Let's Start a Conversation</h2>
+      <p class="section-subtitle">We'd love to explore a collaboration with your school</p>
+      <p class="section-intro" style="margin-left: auto; margin-right: auto;">Whether you're interested in a summer programme, Transition Year experience, or a tailored route — we're ready to co-design something that fits your students.</p>
+    </div>
+
+    <div class="steps-row reveal">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <p class="step-text">Request a school information pack</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <p class="step-text">Book a 20-minute virtual presentation</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <p class="step-text">Co-design your programme</p>
+      </div>
+    </div>
+
+    <div class="form-grid reveal">
+      <form class="contact-form" id="contact-form" action="" method="POST">
+        <div class="form-group">
+          <label for="name">Your Name *</label>
+          <input type="text" id="name" name="name" required placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label for="school">School Name *</label>
+          <input type="text" id="school" name="school" required placeholder="School name">
+        </div>
+        <div class="form-group">
+          <label for="role">Your Role</label>
+          <select id="role" name="role">
+            <option value="">Select your role</option>
+            <option>Principal</option>
+            <option>TY Coordinator</option>
+            <option>Teacher</option>
+            <option>Parent</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="timing">Preferred Timing</label>
+          <select id="timing" name="timing">
+            <option value="">Select timing</option>
+            <option>Summer 2026</option>
+            <option>Autumn 2026</option>
+            <option>2027</option>
+            <option>Just exploring</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message (optional)</label>
+          <textarea id="message" name="message" placeholder="Tell us about your interest..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Enquiry</button>
+      </form>
+
+      <div class="contact-info">
+        <h3>Gaojian Ge</h3>
+        <p class="ci-role">Programme Director</p>
+        <p class="ci-line">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:schools@chinaquest.milesminds.com">schools@chinaquest.milesminds.com</a>
+        </p>
+        <p class="ci-line">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +353 87 775 8146
+        </p>
+        <p class="ci-line">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <a href="https://chinaquest.milesminds.com">chinaquest.milesminds.com</a>
+        </p>
+        <p style="color: rgba(255,255,255,0.2); font-size: 12px; margin-top: 32px; font-style: italic;">Designed in consultation with Irish and European educators<br>A Miles Minds Limited programme</p>
+      </div>
+    </div>
+
+    <div class="section-quote reveal" style="margin-top: 48px;">
+      <span class="q-line" style="background: var(--gold); opacity: 0.3;"></span>
+      <div>
+        <p class="q-zh" style="color: var(--gold);">"志合者，不以山海为远。"</p>
+        <p class="q-en" style="color: rgba(255,255,255,0.4);">Those who share the same aspirations need not fear the distance between them.</p>
+        <p class="q-src" style="color: rgba(255,255,255,0.2);">— 葛洪（东晋，283–343）</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 10. FOOTER ══════════ -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer-logo">China Quest</p>
+    <div class="footer-links">
+      <a href="mailto:schools@chinaquest.milesminds.com">schools@chinaquest.milesminds.com</a>
+      <a href="https://chinaquest.milesminds.com">chinaquest.milesminds.com</a>
+    </div>
+    <a href="#" class="footer-download">↓ Download Programme Brochure</a>
+    <p class="footer-copy">© 2026 Miles Minds Limited · Ireland</p>
+  </div>
+</footer>
+
+<!-- ══════════ JAVASCRIPT ══════════ -->
+<script>
+/* ── Navigation scroll effect ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* ── Hamburger menu ── */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('active');
+  document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+});
+function closeMenu() {
+  hamburger.classList.remove('active');
+  mobileMenu.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+/* ── Scroll reveal animation ── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── Form validation ── */
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const school = document.getElementById('school').value.trim();
+  if (!name || !email || !school) {
+    alert('Please fill in all required fields.');
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+  // Form action is empty — will be connected to Formspree
+  alert('Thank you for your enquiry! We will be in touch shortly.');
+  this.reset();
+});
+</script>
+</body>
+</html>
