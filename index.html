@@ -37,9 +37,19 @@
   }
 }
 </script>
-<!-- Google Analytics 4 — Replace G-XXXXXXXXXX with actual Measurement ID -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+<!-- Google Analytics 4 — loaded conditionally via cookie consent -->
+<script>
+function loadGA4(){
+  if(document.getElementById('ga4-script'))return;
+  var s=document.createElement('script');s.id='ga4-script';s.async=true;
+  s.src='https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments)}
+  window.gtag=gtag;gtag('js',new Date());gtag('config','G-XXXXXXXXXX');
+}
+if(localStorage.getItem('cq-cookie-consent')==='accepted'){loadGA4();}
+</script>
 <style>
 /* ══════════════════════════════════════
    China Quest v1.0 — A Version (浩南)
@@ -519,6 +529,19 @@ a { color: inherit; text-decoration: none; }
 /* [CRITICAL-END: nav] */
 /* [CRITICAL-START: hero] — see .hero rules above */
 /* [CRITICAL-END: hero] */
+
+/* ══════════════════════════════════════
+   v1.8: GDPR COOKIE CONSENT BANNER
+   ══════════════════════════════════════ */
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;background:var(--navy-deep);color:#fff;padding:20px 24px;z-index:10001;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;transform:translateY(100%);animation:cookieSlideIn .5s ease forwards;box-shadow:0 -4px 20px rgba(0,0,0,.3)}
+@keyframes cookieSlideIn{to{transform:translateY(0)}}
+.cookie-banner p{font-size:14px;line-height:1.6;max-width:600px;margin:0}
+.cookie-banner a{color:var(--gold);text-decoration:underline}
+.cookie-btn-group{display:flex;gap:12px;flex-shrink:0}
+.cookie-btn{padding:10px 24px;border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:all .3s}
+.cookie-accept{background:var(--gold);color:#fff}.cookie-accept:hover{background:var(--gold-soft)}
+.cookie-decline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}.cookie-decline:hover{border-color:#fff}
+@media(max-width:600px){.cookie-banner{flex-direction:column;text-align:center;gap:16px}}
 </style>
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
@@ -1117,11 +1140,11 @@ a { color: inherit; text-decoration: none; }
       <a href="mailto:schools@chinaquest.milesminds.com">schools@chinaquest.milesminds.com</a>
       <a href="https://chinaquest.milesminds.com">chinaquest.milesminds.com</a>
     </div>
-    <a href="#" class="footer-download" onclick="alert('Programme brochure coming soon. Please contact us for details.');return false;">↓ Download Programme Brochure</a>
+    <a href="ChinaQuest_Brochure.pdf" class="footer-download" target="_blank">↓ Download Programme Brochure</a>
     <div class="footer-legal">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-      <a href="#">Cookie Policy</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="privacy.html#cookies">Cookie Policy</a>
     </div>
     <p class="footer-copy">© 2026 Miles Minds Limited · Ireland · All rights reserved</p>
   </div>
@@ -1131,6 +1154,15 @@ a { color: inherit; text-decoration: none; }
 <button class="back-to-top" id="back-to-top" aria-label="Back to top">
   <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
 </button>
+
+<!-- ══════════ COOKIE CONSENT BANNER ══════════ -->
+<div class="cookie-banner" id="cookie-banner" style="display:none" role="dialog" aria-label="Cookie consent">
+  <p>We use cookies to improve your experience. By continuing to browse, you agree to our use of cookies. <a href="privacy.html#cookies">Learn more</a></p>
+  <div class="cookie-btn-group">
+    <button class="cookie-btn cookie-accept" id="cookie-accept">Accept</button>
+    <button class="cookie-btn cookie-decline" id="cookie-decline">Decline</button>
+  </div>
+</div>
 
 <!-- ══════════ JAVASCRIPT ══════════ -->
 <script>
@@ -1277,6 +1309,24 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
       btn.disabled = false;
     });
 });
+
+/* ── Cookie consent banner ── */
+(function(){
+  var consent=localStorage.getItem('cq-cookie-consent');
+  if(!consent){
+    var banner=document.getElementById('cookie-banner');
+    banner.style.display='flex';
+    document.getElementById('cookie-accept').addEventListener('click',function(){
+      localStorage.setItem('cq-cookie-consent','accepted');
+      banner.style.display='none';
+      loadGA4();
+    });
+    document.getElementById('cookie-decline').addEventListener('click',function(){
+      localStorage.setItem('cq-cookie-consent','declined');
+      banner.style.display='none';
+    });
+  }
+})();
 </script>
 </body>
 </html>
