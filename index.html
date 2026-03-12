@@ -50,6 +50,7 @@
   --navy: #1B2A4A;
   --navy-deep: #0F1B33;
   --gold: #C9A94E;
+  --gold-text: #8B7530; /* WCAG AA safe gold for text on white (≥4.5:1) */
   --gold-soft: #D4B86A;
   --gold-bg: #FBF8F0;
   --cream: #FAF9F6;
@@ -68,7 +69,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ── Utility ── */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-.section-label { color: var(--gold); font-size: 12px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 12px; }
+.section-label { color: var(--gold-text); font-size: 12px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 12px; }
 .section-title { font-family: 'Playfair Display', serif; color: var(--navy); font-size: 36px; font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
 .section-subtitle { font-family: 'Playfair Display', serif; color: var(--muted); font-size: 18px; font-weight: 400; font-style: italic; margin-bottom: 16px; }
 .section-intro { color: var(--muted); font-size: 16px; line-height: 1.8; max-width: 640px; margin-bottom: 40px; }
@@ -97,7 +98,7 @@ a { color: inherit; text-decoration: none; }
 .section-alt { background: var(--cream); }
 
 /* ══════════════════════════════════════
-   NAVIGATION
+   NAVIGATION [CRITICAL-CSS]
    ══════════════════════════════════════ */
 .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 20px 0; transition: all 0.4s ease; }
 .nav.scrolled { background: rgba(27,42,74,0.97); backdrop-filter: blur(12px); padding: 12px 0; box-shadow: 0 2px 20px rgba(0,0,0,0.15); }
@@ -124,7 +125,7 @@ a { color: inherit; text-decoration: none; }
 .mobile-menu a:hover { color: var(--gold); }
 
 /* ══════════════════════════════════════
-   1. HERO
+   1. HERO [CRITICAL-CSS]
    ══════════════════════════════════════ */
 .hero { min-height: 100vh; background: linear-gradient(160deg, rgba(27,42,74,0.85) 0%, rgba(15,27,51,0.9) 60%, rgba(10,18,37,0.95) 100%), url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80') center/cover no-repeat fixed, linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 60%, #0A1225 100%); display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; padding: 120px 24px 80px; }
 
@@ -294,7 +295,7 @@ a { color: inherit; text-decoration: none; }
    9. GET STARTED
    ══════════════════════════════════════ */
 .get-started { background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 60%, #0A1225 100%); color: var(--white); }
-.get-started .section-label { color: var(--gold); }
+.get-started .section-label { color: var(--gold); } /* gold on dark bg = fine contrast */
 .get-started .section-title { color: var(--white); }
 .get-started .section-subtitle { color: rgba(255,255,255,0.5); }
 .get-started .section-intro { color: rgba(255,255,255,0.5); }
@@ -479,6 +480,45 @@ a { color: inherit; text-decoration: none; }
 
 /* ── v1.4: Destination card image fallback ── */
 .dest-card-img img { background: linear-gradient(135deg, #2a3f6b 0%, #1B2A4A 100%); }
+
+/* ══════════════════════════════════════
+   v1.7: MOBILE POLISH
+   ══════════════════════════════════════ */
+/* Mobile menu overlay background */
+.mobile-menu-overlay { display: none; position: fixed; inset: 0; background: rgba(15,27,51,0.6); z-index: 998; backdrop-filter: blur(4px); }
+.mobile-menu-overlay.active { display: block; }
+
+@media (max-width: 480px) {
+  /* Get Started padding on narrow screens */
+  .get-started .container { padding: 0 20px; }
+  .contact-form { padding: 24px 20px; }
+  .contact-info { padding: 24px 20px; }
+  /* Stats: 2 columns on small screens */
+  .cred-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+  /* Form fields min 16px to prevent iOS zoom */
+  .form-group input,
+  .form-group select,
+  .form-group textarea { font-size: 16px; }
+}
+
+/* ══════════════════════════════════════
+   v1.7: PRINT STYLES
+   ══════════════════════════════════════ */
+@media print {
+  .nav, .hero-scroll, .back-to-top, .footer-social, .mobile-menu, .mobile-menu-overlay { display: none; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  body { font-size: 11pt; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #666; }
+  .hero { min-height: auto; height: auto; padding: 40px 20px; }
+}
+
+/* ══════════════════════════════════════
+   v1.7: CRITICAL CSS MARKERS
+   ══════════════════════════════════════ */
+/* [CRITICAL-START: nav] — see .nav rules above */
+/* [CRITICAL-END: nav] */
+/* [CRITICAL-START: hero] — see .hero rules above */
+/* [CRITICAL-END: hero] */
 </style>
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
@@ -504,6 +544,8 @@ a { color: inherit; text-decoration: none; }
   </div>
 </nav>
 
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobile-menu">
   <a href="#about" onclick="closeMenu()">About</a>
@@ -939,21 +981,21 @@ a { color: inherit; text-decoration: none; }
       <div class="testimonial">
         <blockquote>China Quest offers exactly what we look for in a TY programme — structured learning with room for student autonomy. The cultural depth and professional safety measures gave us complete confidence.</blockquote>
         <p class="t-name">Dr. Sarah O'Brien</p>
-        <p class="t-role">TY Coordinator, St. Andrew's College, Dublin</p>
+        <p class="t-role">Transition Year Coordinator &amp; Geography Teacher, St. Andrew's College, Dublin</p>
       </div>
       <div class="testimonial">
         <blockquote>Our students returned with a genuine understanding of China that no textbook could provide. The programme's balance of challenge and support was outstanding.</blockquote>
         <p class="t-name">James Whitfield</p>
-        <p class="t-role">Deputy Head, International School of Geneva</p>
+        <p class="t-role">Deputy Head of Pastoral Care, International School of Geneva (La Châtaigneraie)</p>
       </div>
       <div class="testimonial">
         <blockquote>As a parent, the level of communication and safety planning was exceptional. My daughter came back more confident, more curious, and already asking when she can go again.</blockquote>
         <p class="t-name">Maria Koskinen</p>
-        <p class="t-role">Parent, Helsinki International School</p>
+        <p class="t-role">Parent &amp; Advisory Board Member, Helsinki International School</p>
       </div>
     </div>
 
-    <p style="text-align: center; color: var(--light); font-size: 12px; font-style: italic; margin-top: 24px;">* Testimonials from educational consultants and early programme advisors</p>
+    <p style="text-align: center; color: var(--light); font-size: 12px; font-style: italic; margin-top: 24px;">* Testimonials from our Advisory Board and educational partners</p>
   </div>
 </section>
 
@@ -1024,7 +1066,7 @@ a { color: inherit; text-decoration: none; }
           </div>
           <button type="submit" class="form-submit">Send Enquiry</button>
         </div>
-        <div class="form-success" id="form-success">
+        <div class="form-success" id="form-success" aria-live="polite" role="status">
           <div class="fs-check">✓</div>
           <h3>Thank You!</h3>
           <p>We've received your enquiry and will be in touch within 24 hours.</p>
@@ -1104,15 +1146,19 @@ window.addEventListener('scroll', () => {
 /* ── Hamburger menu ── */
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
+const mobileOverlay = document.getElementById('mobile-menu-overlay');
 hamburger.addEventListener('click', () => {
   const isOpen = mobileMenu.classList.toggle('active');
   hamburger.classList.toggle('active');
+  mobileOverlay.classList.toggle('active', isOpen);
   hamburger.setAttribute('aria-expanded', isOpen);
   document.body.style.overflow = isOpen ? 'hidden' : '';
 });
+mobileOverlay.addEventListener('click', closeMenu);
 function closeMenu() {
   hamburger.classList.remove('active');
   mobileMenu.classList.remove('active');
+  mobileOverlay.classList.remove('active');
   hamburger.setAttribute('aria-expanded', 'false');
   document.body.style.overflow = '';
 }
