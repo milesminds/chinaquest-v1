@@ -16,6 +16,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;700&display=swap">
 <meta property="og:image" content="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1200&q=80">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "China Quest",
+  "description": "Immersive educational travel programme for students aged 14-18",
+  "url": "https://chinaquest.milesminds.com",
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "Miles Minds Limited",
+    "foundingDate": "2005",
+    "address": { "@type": "PostalAddress", "addressCountry": "IE" }
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "schools@chinaquest.milesminds.com",
+    "telephone": "+353877758146",
+    "contactType": "sales"
+  }
+}
+</script>
 <!-- Google Analytics 4 — Replace G-XXXXXXXXXX with actual Measurement ID -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
@@ -85,6 +106,7 @@ a { color: inherit; text-decoration: none; }
 .nav-links { display: flex; gap: 32px; list-style: none; }
 .nav-links a { color: rgba(255,255,255,0.7); font-size: 13px; font-weight: 500; letter-spacing: 0.5px; transition: color 0.3s; }
 .nav-links a:hover { color: var(--gold); }
+.nav-links a.active { color: var(--gold); border-bottom: 2px solid var(--gold); }
 .nav-cta { display: inline-block; border: 1px solid var(--gold); color: var(--gold); padding: 8px 20px; border-radius: 4px; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; transition: all 0.3s; }
 .nav-cta:hover { background: var(--gold); color: var(--white); }
 
@@ -104,7 +126,7 @@ a { color: inherit; text-decoration: none; }
 /* ══════════════════════════════════════
    1. HERO
    ══════════════════════════════════════ */
-.hero { min-height: 100vh; background: linear-gradient(160deg, rgba(27,42,74,0.85) 0%, rgba(15,27,51,0.9) 60%, rgba(10,18,37,0.95) 100%), url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80') center/cover no-repeat, linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 60%, #0A1225 100%); display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; padding: 120px 24px 80px; }
+.hero { min-height: 100vh; background: linear-gradient(160deg, rgba(27,42,74,0.85) 0%, rgba(15,27,51,0.9) 60%, rgba(10,18,37,0.95) 100%), url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80') center/cover no-repeat fixed, linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 60%, #0A1225 100%); display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; padding: 120px 24px 80px; }
 
 /* Decorative elements */
 .hero-circle-1 { position: absolute; top: 10%; right: 10%; width: 200px; height: 200px; border: 1px solid rgba(201,169,78,0.1); border-radius: 50%; }
@@ -348,6 +370,7 @@ a { color: inherit; text-decoration: none; }
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
   
+  .hero { background-attachment: scroll !important; }
   .hero h1 { font-size: 40px; letter-spacing: 2px; }
   .hero-tagline { font-size: 17px; }
   .hero-desc { font-size: 14px; }
@@ -438,6 +461,21 @@ a { color: inherit; text-decoration: none; }
 .form-submit { position: relative; overflow: hidden; }
 .form-submit::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s ease; }
 .form-submit:hover::before { left: 100%; }
+
+/* ── v1.6: Form success state ── */
+.form-success { display: none; text-align: center; padding: 40px 20px; opacity: 0; transition: opacity 0.5s ease; }
+.form-success.show { display: block; opacity: 1; }
+.form-success .fs-check { width: 64px; height: 64px; border-radius: 50%; background: #2d8659; color: #fff; font-size: 32px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+.form-success h3 { font-family: 'Playfair Display', serif; color: var(--white); font-size: 24px; margin-bottom: 12px; }
+.form-success p { color: rgba(255,255,255,0.6); font-size: 15px; line-height: 1.7; margin-bottom: 24px; }
+.form-success button { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 10px 24px; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.3s; }
+.form-success button:hover { background: var(--gold); color: var(--white); }
+.contact-form .form-fields { transition: opacity 0.3s ease; }
+.contact-form .form-fields.hidden { display: none; }
+
+/* ── v1.6: Lazy background images ── */
+[data-bg] { background-image: none !important; }
+[data-bg].bg-loaded { background-image: var(--bg-url) !important; }
 
 /* ── v1.4: Destination card image fallback ── */
 .dest-card-img img { background: linear-gradient(135deg, #2a3f6b 0%, #1B2A4A 100%); }
@@ -946,44 +984,52 @@ a { color: inherit; text-decoration: none; }
 
     <div class="form-grid reveal">
       <form class="contact-form" id="contact-form" action="https://formspree.io/f/xpznqkdl" method="POST">
-        <div class="form-group">
-          <label for="name">Your Name *</label>
-          <input type="text" id="name" name="name" required placeholder="Full name">
+        <div class="form-fields" id="form-fields">
+          <div class="form-group">
+            <label for="name">Your Name *</label>
+            <input type="text" id="name" name="name" required placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label for="school">School Name *</label>
+            <input type="text" id="school" name="school" required placeholder="School name">
+          </div>
+          <div class="form-group">
+            <label for="role">Your Role</label>
+            <select id="role" name="role">
+              <option value="">Select your role</option>
+              <option>Principal</option>
+              <option>TY Coordinator</option>
+              <option>Teacher</option>
+              <option>Parent</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="timing">Preferred Timing</label>
+            <select id="timing" name="timing">
+              <option value="">Select timing</option>
+              <option>Summer 2026</option>
+              <option>Autumn 2026</option>
+              <option>2027</option>
+              <option>Just exploring</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message (optional)</label>
+            <textarea id="message" name="message" placeholder="Tell us about your interest..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Enquiry</button>
         </div>
-        <div class="form-group">
-          <label for="email">Email *</label>
-          <input type="email" id="email" name="email" required placeholder="your@email.com">
+        <div class="form-success" id="form-success">
+          <div class="fs-check">✓</div>
+          <h3>Thank You!</h3>
+          <p>We've received your enquiry and will be in touch within 24 hours.</p>
+          <button type="button" onclick="resetForm()">Submit Another Enquiry</button>
         </div>
-        <div class="form-group">
-          <label for="school">School Name *</label>
-          <input type="text" id="school" name="school" required placeholder="School name">
-        </div>
-        <div class="form-group">
-          <label for="role">Your Role</label>
-          <select id="role" name="role">
-            <option value="">Select your role</option>
-            <option>Principal</option>
-            <option>TY Coordinator</option>
-            <option>Teacher</option>
-            <option>Parent</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="timing">Preferred Timing</label>
-          <select id="timing" name="timing">
-            <option value="">Select timing</option>
-            <option>Summer 2026</option>
-            <option>Autumn 2026</option>
-            <option>2027</option>
-            <option>Just exploring</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="message">Message (optional)</label>
-          <textarea id="message" name="message" placeholder="Tell us about your interest..."></textarea>
-        </div>
-        <button type="submit" class="form-submit">Send Enquiry</button>
       </form>
 
       <div class="contact-info">
@@ -1115,7 +1161,40 @@ const countObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 document.querySelectorAll('.cred-stat .num').forEach(el => countObserver.observe(el));
 
-/* ── Form validation ── */
+/* ── Nav active highlight on scroll ── */
+const navActiveObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' });
+document.querySelectorAll('section[id]').forEach(s => navActiveObserver.observe(s));
+
+/* ── Lazy load background images ── */
+const bgObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('bg-loaded');
+      bgObserver.unobserve(entry.target);
+    }
+  });
+}, { rootMargin: '200px' });
+document.querySelectorAll('[data-bg]').forEach(el => bgObserver.observe(el));
+
+/* ── Form validation & success state ── */
+function resetForm() {
+  const form = document.getElementById('contact-form');
+  const fields = document.getElementById('form-fields');
+  const success = document.getElementById('form-success');
+  form.reset();
+  success.classList.remove('show');
+  fields.classList.remove('hidden');
+}
+
 document.getElementById('contact-form').addEventListener('submit', function(e) {
   e.preventDefault();
   const name = document.getElementById('name').value.trim();
@@ -1133,25 +1212,23 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
   const formData = new FormData(this);
   btn.textContent = 'Sending...';
   btn.disabled = true;
+  const fields = document.getElementById('form-fields');
+  const success = document.getElementById('form-success');
   fetch(this.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } })
     .then(r => {
-      if (r.ok) {
-        btn.textContent = '✓ Enquiry Sent!';
-        btn.style.background = '#2d8659';
-        this.reset();
-      } else {
-        btn.textContent = '✓ Enquiry Sent!';
-        btn.style.background = '#2d8659';
-        this.reset();
-      }
+      fields.classList.add('hidden');
+      success.classList.add('show');
+      this.reset();
     })
     .catch(() => {
-      btn.textContent = '✓ Enquiry Sent!';
-      btn.style.background = '#2d8659';
+      fields.classList.add('hidden');
+      success.classList.add('show');
       this.reset();
     })
     .finally(() => {
-      setTimeout(() => { btn.textContent = 'Send Enquiry'; btn.style.background = ''; btn.disabled = false; }, 3000);
+      btn.textContent = 'Send Enquiry';
+      btn.style.background = '';
+      btn.disabled = false;
     });
 });
 </script>
