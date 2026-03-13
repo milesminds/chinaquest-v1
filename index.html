@@ -171,7 +171,7 @@ a { color: inherit; text-decoration: none; }
 .glance-label { font-size: 10px; color: var(--gold); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
 .glance-value { font-size: 14px; color: var(--navy); font-weight: 600; }
 
-.about-text { color: var(--muted); font-size: 16px; line-height: 1.8; margin: 0 auto 16px; max-width: 800px; text-align: center; }
+.about-text { color: var(--muted); font-size: 16px; line-height: 1.8; margin: 0 auto 16px; max-width: 800px; text-align: left; }
 
 .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
 .feat-card { display: flex; gap: 14px; padding: 20px; border: 1px solid var(--border); border-radius: 10px; transition: all 0.3s; }
@@ -410,17 +410,20 @@ a { color: inherit; text-decoration: none; }
   .testimonials { gap: 16px; }
   .deco-char { font-size: 120px; }
   
-  /* v1.15: Force center alignment on all section headers for mobile */
+  /* v1.16: Precise centering — headers only, body text left-aligned */
   .section-label, .section-title, .section-subtitle, .section-intro,
-  .sub-label, h2, .section-quote, .about-text,
-  .coming-section, p.sub-label {
+  .sub-label, h2, .section-quote, .coming-section {
     text-align: center !important;
   }
   .gold-line {
     margin-left: auto !important;
     margin-right: auto !important;
   }
-  .about-text[style*="text-align: left"] {
+  /* Body text stays left-aligned */
+  .about-text, .expertise-detail, .card-text,
+  .faq-answer, .note-box, .safety-card, .testimonial-card,
+  .dest-card p, .dest-card ul,
+  p:not(.section-intro):not(.section-subtitle):not(.section-label):not(.sub-label) {
     text-align: left !important;
   }
 }
