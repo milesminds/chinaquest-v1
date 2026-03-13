@@ -604,6 +604,55 @@ section[id] { scroll-margin-top: 80px; }
 .hero-circle-1, .hero-circle-3 { will-change: transform; }
 .reveal { will-change: opacity, transform; }
 .reveal.visible { will-change: auto; }
+
+/* ══════════════════════════════════════
+   v1.11: FAQ ACCORDION
+   ══════════════════════════════════════ */
+.faq-list { max-width: 800px; margin: 0 auto; }
+.faq-item { border: 1px solid var(--gold); border-radius: 10px; margin-bottom: 12px; overflow: hidden; transition: box-shadow 0.3s; }
+.faq-item:hover { box-shadow: 0 4px 16px rgba(201,169,78,0.1); }
+.faq-toggle { display: none; }
+.faq-label { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; cursor: pointer; font-size: 16px; font-weight: 600; color: var(--navy); transition: background 0.3s, color 0.3s; user-select: none; }
+.faq-label:hover { background: var(--gold-bg); }
+.faq-label::after { content: '+'; font-size: 22px; font-weight: 300; color: var(--gold); transition: transform 0.3s; flex-shrink: 0; margin-left: 16px; }
+.faq-toggle:checked + .faq-label { background: var(--gold-bg); }
+.faq-toggle:checked + .faq-label::after { content: '−'; transform: rotate(180deg); }
+.faq-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
+.faq-toggle:checked ~ .faq-content { max-height: 300px; }
+.faq-content-inner { padding: 0 24px 20px; font-size: 14px; color: var(--muted); line-height: 1.8; }
+
+/* ══════════════════════════════════════
+   v1.11: SAMPLE ITINERARY TIMELINE
+   ══════════════════════════════════════ */
+.itinerary-timeline { position: relative; max-width: 700px; margin: 40px auto 0; padding-left: 40px; }
+.itinerary-timeline::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--gold), rgba(201,169,78,0.2)); }
+.itinerary-day { position: relative; margin-bottom: 28px; }
+.itinerary-day:last-child { margin-bottom: 0; }
+.itinerary-day::before { content: ''; position: absolute; left: -29px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); border: 3px solid var(--white); box-shadow: 0 0 0 2px var(--gold); z-index: 1; }
+.itinerary-day-label { font-size: 12px; font-weight: 700; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+.itinerary-day-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.itinerary-day-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.section-alt .itinerary-day::before { border-color: var(--cream); }
+
+/* ══════════════════════════════════════
+   v1.11: TRUST BADGES
+   ══════════════════════════════════════ */
+.trust-badges { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 48px; }
+.trust-badge { display: flex; align-items: center; gap: 10px; padding: 12px 20px; border: 1px solid var(--border); border-radius: 8px; background: var(--cream); transition: all 0.3s; }
+.trust-badge:hover { border-color: var(--gold); background: var(--gold-bg); }
+.trust-badge svg { width: 24px; height: 24px; flex-shrink: 0; }
+.trust-badge span { font-size: 13px; font-weight: 600; color: var(--navy); white-space: nowrap; }
+
+@media (max-width: 768px) {
+  .faq-label { font-size: 14px; padding: 14px 18px; }
+  .faq-content-inner { padding: 0 18px 16px; font-size: 13px; }
+  .itinerary-timeline { padding-left: 32px; }
+  .itinerary-timeline::before { left: 11px; }
+  .itinerary-day::before { left: -25px; width: 10px; height: 10px; }
+  .trust-badges { gap: 10px; }
+  .trust-badge { padding: 10px 14px; }
+  .trust-badge span { font-size: 11px; }
+}
 </style>
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
@@ -948,6 +997,35 @@ section[id] { scroll-margin-top: 80px; }
       </h4>
       <p>Schools are welcome to nominate a teacher to accompany the group, ensuring alignment with school values and strengthening the learning experience through shared reflection and continuity.</p>
     </div>
+
+    <p class="sub-label reveal" style="margin-top: 48px;">Sample 5-Day Itinerary — Beijing</p>
+    <div class="itinerary-timeline reveal">
+      <div class="itinerary-day">
+        <p class="itinerary-day-label">Day 1</p>
+        <p class="itinerary-day-title">Arrival &amp; Orientation</p>
+        <p class="itinerary-day-desc">Airport pickup, hotel check-in, neighbourhood walk, team briefing, and welcome dinner with your programme leaders.</p>
+      </div>
+      <div class="itinerary-day">
+        <p class="itinerary-day-label">Day 2</p>
+        <p class="itinerary-day-title">Imperial History</p>
+        <p class="itinerary-day-desc">Morning at the Great Wall (Mutianyu section). Afternoon exploring the Forbidden City and Tiananmen Square with guided historical context.</p>
+      </div>
+      <div class="itinerary-day">
+        <p class="itinerary-day-label">Day 3</p>
+        <p class="itinerary-day-title">Culture &amp; Craft</p>
+        <p class="itinerary-day-desc">Hutong neighbourhood exploration by rickshaw, hands-on calligraphy workshop, and traditional dumpling-making class with a local family.</p>
+      </div>
+      <div class="itinerary-day">
+        <p class="itinerary-day-label">Day 4</p>
+        <p class="itinerary-day-title">Innovation &amp; Future</p>
+        <p class="itinerary-day-desc">University campus visit (Tsinghua or Peking University), tech park tour, and student innovation challenge with peer presentations.</p>
+      </div>
+      <div class="itinerary-day">
+        <p class="itinerary-day-label">Day 5</p>
+        <p class="itinerary-day-title">Reflection &amp; Farewell</p>
+        <p class="itinerary-day-desc">Morning reflection session, final group showcase presentations, certificate ceremony, and farewell lunch before departure.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1080,6 +1158,71 @@ section[id] { scroll-margin-top: 80px; }
   </div>
 </section>
 
+<!-- ══════════ 7b. FAQ ══════════ -->
+<section class="section" id="faq">
+  <div class="container">
+    <span class="deco-char" style="top: -20px; right: 20px;">问</span>
+    <div class="reveal" style="text-align: center;">
+      <p class="section-label">FAQ</p>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="gold-line" style="margin: 0 auto 40px;"></div>
+    </div>
+
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <input type="checkbox" class="faq-toggle" id="faq1">
+        <label class="faq-label" for="faq1">What ages is China Quest suitable for?</label>
+        <div class="faq-content"><div class="faq-content-inner">China Quest is designed for students aged 14–18. Our programme content, supervision ratios, and activities are tailored to this age group, ensuring age-appropriate challenge, safety, and engagement throughout.</div></div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" class="faq-toggle" id="faq2">
+        <label class="faq-label" for="faq2">How long are the programmes?</label>
+        <div class="faq-content"><div class="faq-content-inner">We offer flexible modular programmes of 5, 10, or 14 days. Each city module is 5 days, and schools can combine modules to create longer itineraries. This modular design lets you tailor the experience to your school calendar and budget.</div></div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" class="faq-toggle" id="faq3">
+        <label class="faq-label" for="faq3">Is China safe for student groups?</label>
+        <div class="faq-content"><div class="faq-content-inner">Yes. China has very low crime rates and is widely regarded as safe for travellers. Our programmes include comprehensive risk assessments, 24/7 bilingual support, a maximum 1:8 leader-to-student ratio, defined emergency protocols, and full international travel and health insurance. We've been operating on the ground in China for over 20 years.</div></div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" class="faq-toggle" id="faq4">
+        <label class="faq-label" for="faq4">What is included in the programme fee?</label>
+        <div class="faq-content"><div class="faq-content-inner">The all-inclusive fee covers accommodation, all meals, domestic transport, entry fees, activities, insurance, learning materials, and 24/7 support. International flights, visa fees, and personal spending are not included. See our <a href="#safety" style="color:var(--gold);text-decoration:underline;">Safety &amp; Logistics</a> section for the full breakdown.</div></div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" class="faq-toggle" id="faq5">
+        <label class="faq-label" for="faq5">Can schools customise the itinerary?</label>
+        <div class="faq-content"><div class="faq-content-inner">Absolutely. Our modular design means you can choose which cities to visit, how many days to spend, and even request specific themes or activities. We co-design each programme with the school to align with curriculum goals, student interests, and logistical requirements.</div></div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" class="faq-toggle" id="faq6">
+        <label class="faq-label" for="faq6">Do students need to speak Chinese?</label>
+        <div class="faq-content"><div class="faq-content-inner">No — no Chinese language skills are required. All programme leaders are bilingual (English–Chinese), and activities are conducted in English. Students will pick up basic phrases naturally during the trip, which is part of the cultural immersion experience!</div></div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" class="faq-toggle" id="faq7">
+        <label class="faq-label" for="faq7">What happens in an emergency?</label>
+        <div class="faq-content"><div class="faq-content-inner">We have defined 24/7 emergency protocols including immediate medical access, direct family communication channels, and travel adjustment procedures. Each group has a dedicated emergency coordinator, and our protocols are aligned with European school trip standards.</div></div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" class="faq-toggle" id="faq8">
+        <label class="faq-label" for="faq8">How do I get started?</label>
+        <div class="faq-content"><div class="faq-content-inner">Simply fill out our <a href="#get-started" style="color:var(--gold);text-decoration:underline;">enquiry form</a> or email us at schools@chinaquest.milesminds.com. We'll send you an information pack and arrange a 20-minute virtual presentation to discuss your school's needs.</div></div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" class="faq-toggle" id="faq9">
+        <label class="faq-label" for="faq9">Is the programme Transition Year compatible?</label>
+        <div class="faq-content"><div class="faq-content-inner">Yes, China Quest is specifically designed to be TY-compatible. The programme includes structured reflection tasks, portfolio-building activities, and an optional certificate of completion — all aligned with Transition Year learning objectives around autonomy, collaboration, and critical thinking.</div></div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" class="faq-toggle" id="faq10">
+        <label class="faq-label" for="faq10">What insurance is provided?</label>
+        <div class="faq-content"><div class="faq-content-inner">All participants are covered by comprehensive international travel and health insurance for the duration of the programme. This includes medical expenses, emergency evacuation, trip interruption, and personal liability. Details are provided in the pre-departure information pack.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════ 8. SOCIAL PROOF ══════════ -->
 <section class="section" id="social-proof">
   <div class="container">
@@ -1108,6 +1251,29 @@ section[id] { scroll-margin-top: 80px; }
     </div>
 
     <p style="text-align: center; color: var(--light); font-size: 12px; font-style: italic; margin-top: 24px;">* Testimonials from our Advisory Board and educational partners</p>
+
+    <div class="trust-badges reveal">
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        <span>GDPR Compliant</span>
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <span>Fully Insured</span>
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>20+ Years Experience</span>
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M2 10h20"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Irish Registered Company</span>
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg>
+        <span>University Partnerships</span>
+      </div>
+    </div>
   </div>
 </section>
 
