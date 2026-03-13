@@ -556,6 +556,54 @@ section[id] { scroll-margin-top: 80px; }
 .page-loader { position:fixed; inset:0; background:var(--navy-deep); z-index:9999; display:flex; align-items:center; justify-content:center; transition: opacity 0.5s; }
 .page-loader.loaded { opacity:0; pointer-events:none; }
 .page-loader .logo { font-family:'Playfair Display',serif; font-size:48px; color:var(--gold); animation: pulse 1.5s ease-in-out infinite; }
+
+/* ══════════════════════════════════════
+   v1.10: DESTINATION CARD HOVER EXPAND
+   ══════════════════════════════════════ */
+.dest-card { max-height: 600px; transition: all 0.4s ease, max-height 0.5s ease; }
+.dest-card .dc-learn { display: block; margin-top: 14px; color: var(--gold); font-size: 14px; font-weight: 600; letter-spacing: 0.5px; opacity: 0; max-height: 0; overflow: hidden; transition: opacity 0.4s ease, max-height 0.4s ease; }
+.dest-card:hover .dc-learn { opacity: 1; max-height: 40px; }
+.dest-card:hover { max-height: 700px; }
+
+/* ══════════════════════════════════════
+   v1.10: HERO FLOATING DECORATIONS
+   ══════════════════════════════════════ */
+@keyframes heroFloat1 { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-30px) rotate(15deg); } }
+@keyframes heroFloat2 { 0%,100% { transform: translateY(0) rotate(45deg); } 50% { transform: translateY(-20px) rotate(60deg); } }
+@keyframes heroFloat3 { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-25px) rotate(-10deg); } }
+.hero-deco { position: absolute; pointer-events: none; will-change: transform; }
+.hero-deco-1 { top: 25%; left: 12%; width: 16px; height: 16px; border: 1px solid rgba(201,169,78,0.25); transform: rotate(45deg); animation: heroFloat1 7s ease-in-out infinite; }
+.hero-deco-2 { top: 35%; right: 18%; width: 10px; height: 10px; background: rgba(201,169,78,0.12); animation: heroFloat2 9s ease-in-out infinite 1s; }
+.hero-deco-3 { bottom: 30%; left: 20%; width: 12px; height: 12px; border: 1px solid rgba(201,169,78,0.15); border-radius: 2px; animation: heroFloat3 11s ease-in-out infinite 2s; }
+.hero-deco-4 { top: 55%; right: 8%; width: 8px; height: 8px; background: rgba(201,169,78,0.1); transform: rotate(45deg); animation: heroFloat1 8s ease-in-out infinite 3s; }
+
+/* ══════════════════════════════════════
+   v1.10: UNIVERSITY LOGO PLACEHOLDERS
+   ══════════════════════════════════════ */
+.uni-logos { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 32px; }
+.uni-logo { width: 100px; height: 60px; border: 1px solid var(--gold); border-radius: 8px; display: flex; align-items: center; justify-content: center; transition: all 0.3s; cursor: default; }
+.uni-logo:hover { background: var(--gold); }
+.uni-logo text { transition: fill 0.3s; }
+.uni-logo:hover text { fill: #fff !important; }
+
+/* ══════════════════════════════════════
+   v1.10: OUTCOME PROGRESS BARS
+   ══════════════════════════════════════ */
+.skill-bars { margin-top: 40px; max-width: 700px; }
+.skill-bar { margin-bottom: 20px; }
+.skill-bar-header { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.skill-bar-name { font-size: 14px; font-weight: 600; color: var(--navy); }
+.skill-bar-pct { font-size: 14px; font-weight: 600; color: var(--gold); }
+.skill-bar-track { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+.skill-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-soft)); border-radius: 4px; width: 0; transition: width 1.2s ease; will-change: width; }
+.skill-bar-note { font-size: 11px; color: var(--light); font-style: italic; margin-top: 12px; }
+
+/* ══════════════════════════════════════
+   v1.10: PERFORMANCE — will-change
+   ══════════════════════════════════════ */
+.hero-circle-1, .hero-circle-3 { will-change: transform; }
+.reveal { will-change: opacity, transform; }
+.reveal.visible { will-change: auto; }
 </style>
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
@@ -605,6 +653,10 @@ section[id] { scroll-margin-top: 80px; }
   <div class="hero-gold-line"></div>
   <div class="hero-gold-line-2"></div>
   <span class="hero-char">探</span>
+  <div class="hero-deco hero-deco-1"></div>
+  <div class="hero-deco hero-deco-2"></div>
+  <div class="hero-deco hero-deco-3"></div>
+  <div class="hero-deco hero-deco-4"></div>
   <div class="hero-mountain">
     <svg viewBox="0 0 1200 160" preserveAspectRatio="none">
       <path d="M0 160 L150 80 L270 120 L420 40 L570 90 L680 25 L780 70 L900 20 L1020 65 L1120 35 L1200 60 L1200 160Z" fill="white"/>
@@ -716,6 +768,14 @@ section[id] { scroll-margin-top: 80px; }
         <p>Collaboration with China's leading universities — Tsinghua, Peking, Fudan, Shanghai Jiao Tong, and the Central Academy of Fine Arts — as well as internationally renowned secondary schools.</p>
       </div>
     </div>
+
+    <div class="uni-logos reveal">
+      <div class="uni-logo"><svg width="60" height="28" viewBox="0 0 60 28"><text x="30" y="19" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#C9A94E">THU</text></svg></div>
+      <div class="uni-logo"><svg width="60" height="28" viewBox="0 0 60 28"><text x="30" y="19" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#C9A94E">PKU</text></svg></div>
+      <div class="uni-logo"><svg width="60" height="28" viewBox="0 0 60 28"><text x="30" y="19" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#C9A94E">FDU</text></svg></div>
+      <div class="uni-logo"><svg width="60" height="28" viewBox="0 0 60 28"><text x="30" y="19" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#C9A94E">SJTU</text></svg></div>
+      <div class="uni-logo"><svg width="60" height="28" viewBox="0 0 60 28"><text x="30" y="19" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#C9A94E">CAFA</text></svg></div>
+    </div>
   </div>
 </section>
 
@@ -752,6 +812,7 @@ section[id] { scroll-margin-top: 80px; }
           <li>Hutong exploration &amp; dumpling making</li>
           <li>Calligraphy workshop</li>
         </ul>
+        <a href="#get-started" class="dc-learn">Learn More →</a>
       </div>
       <div class="dest-card">
         <div class="dest-card-img">
@@ -770,6 +831,7 @@ section[id] { scroll-margin-top: 80px; }
           <li>Rural village walk</li>
           <li>Street food &amp; market culture</li>
         </ul>
+        <a href="#get-started" class="dc-learn">Learn More →</a>
       </div>
       <div class="dest-card">
         <div class="dest-card-img">
@@ -788,6 +850,7 @@ section[id] { scroll-margin-top: 80px; }
           <li>Shamian Island &amp; Pearl River cruise</li>
           <li>Foshan crafts &amp; cultural heritage</li>
         </ul>
+        <a href="#get-started" class="dc-learn">Learn More →</a>
       </div>
       <div class="dest-card">
         <div class="dest-card-img">
@@ -806,6 +869,7 @@ section[id] { scroll-margin-top: 80px; }
           <li>Lantau Island heritage trail</li>
           <li>Final presentations &amp; reflection</li>
         </ul>
+        <a href="#get-started" class="dc-learn">Learn More →</a>
       </div>
     </div>
 
@@ -935,6 +999,14 @@ section[id] { scroll-margin-top: 80px; }
       <div class="out-item"><strong>Videos</strong><span>Creative Shorts</span></div>
       <div class="out-item"><strong>Portfolio</strong><span>TY Evidence</span></div>
       <div class="out-item"><strong>Certificate</strong><span>Completion</span></div>
+    </div>
+
+    <div class="skill-bars reveal" id="skill-bars">
+      <div class="skill-bar"><div class="skill-bar-header"><span class="skill-bar-name">Cultural Awareness</span><span class="skill-bar-pct">95%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-header"><span class="skill-bar-name">Critical Thinking</span><span class="skill-bar-pct">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-header"><span class="skill-bar-name">Independence</span><span class="skill-bar-pct">92%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-header"><span class="skill-bar-name">Global Understanding</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div></div>
+      <p class="skill-bar-note">Based on programme assessment framework</p>
     </div>
   </div>
 </section>
@@ -1128,6 +1200,10 @@ section[id] { scroll-margin-top: 80px; }
         <p class="ci-line">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           <a href="https://chinaquest.milesminds.com">chinaquest.milesminds.com</a>
+        </p>
+        <p class="ci-line">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)" stroke="none"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm3.163 4.065c-1.658-.004-3.32.567-4.478 1.529-1.37 1.138-2.116 2.857-1.618 4.922.372 1.544 1.503 2.78 3.009 3.541a8.27 8.27 0 0 0 2.369.756c.186.028.378.04.57.054a7.61 7.61 0 0 0 2.14-.305.635.635 0 0 1 .527.072l1.398.819a.24.24 0 0 0 .122.04c.118 0 .213-.097.213-.218 0-.052-.021-.106-.035-.157l-.287-1.087a.434.434 0 0 1 .156-.49C19.36 18.417 24 16.18 24 13.871c0-2.97-3.455-5.815-7.239-5.815zm-1.848 2.5c.472 0 .853.388.853.866a.86.86 0 0 1-.853.865.86.86 0 0 1-.854-.865c0-.478.382-.866.854-.866zm4.274 0c.472 0 .854.388.854.866a.86.86 0 0 1-.854.865.86.86 0 0 1-.853-.865c0-.478.381-.866.853-.866z"/></svg>
+          WeChat: ChinaQuest2026
         </p>
         <p style="color: rgba(255,255,255,0.2); font-size: 12px; margin-top: 32px; font-style: italic;">Designed in consultation with Irish and European educators<br>A Miles Minds Limited programme</p>
       </div>
@@ -1347,6 +1423,20 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     });
   }
 })();
+
+/* ── v1.10: Skill bar animation ── */
+const skillObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+      });
+      skillObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+const skillBars = document.getElementById('skill-bars');
+if (skillBars) skillObserver.observe(skillBars);
 </script>
 </body>
 </html>
