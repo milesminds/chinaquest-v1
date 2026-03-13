@@ -80,17 +80,17 @@ a { color: inherit; text-decoration: none; }
 
 /* ── Utility ── */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-.section-label { color: var(--gold-text); font-size: 12px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 12px; }
-.section-title { font-family: 'Playfair Display', serif; color: var(--navy); font-size: 36px; font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
-.section-subtitle { font-family: 'Playfair Display', serif; color: var(--muted); font-size: 18px; font-weight: 400; font-style: italic; margin-bottom: 16px; }
-.section-intro { color: var(--muted); font-size: 16px; line-height: 1.8; max-width: 640px; margin-bottom: 40px; }
-.gold-line { width: 48px; height: 2px; background: var(--gold); margin-bottom: 20px; }
+.section-label { color: var(--gold-text); font-size: 12px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 12px; text-align: center; }
+.section-title { font-family: 'Playfair Display', serif; color: var(--navy); font-size: 36px; font-weight: 700; line-height: 1.2; margin-bottom: 8px; text-align: center; }
+.section-subtitle { font-family: 'Playfair Display', serif; color: var(--muted); font-size: 18px; font-weight: 400; font-style: italic; margin-bottom: 16px; text-align: center; }
+.section-intro { color: var(--muted); font-size: 16px; line-height: 1.8; max-width: 640px; margin: 0 auto 40px; text-align: center; }
+.gold-line { width: 48px; height: 2px; background: var(--gold); margin: 0 auto 20px; }
 
 /* ── Chinese decorative character ── */
 .deco-char { position: absolute; font-family: 'Noto Serif SC', serif; font-size: 200px; font-weight: 700; line-height: 1; color: rgba(201,169,78,0.04); pointer-events: none; user-select: none; z-index: 0; }
 
 /* ── Quote footer ── */
-.section-quote { margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 16px; }
+.section-quote { margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: center; gap: 16px; text-align: center; }
 .section-quote .q-line { width: 32px; height: 1px; background: var(--gold); flex-shrink: 0; }
 .section-quote .q-zh { font-family: 'Noto Serif SC', serif; color: var(--navy); font-size: 14px; }
 .section-quote .q-en { color: var(--muted); font-size: 11px; font-style: italic; margin-top: 2px; }
@@ -171,7 +171,7 @@ a { color: inherit; text-decoration: none; }
 .glance-label { font-size: 10px; color: var(--gold); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
 .glance-value { font-size: 14px; color: var(--navy); font-weight: 600; }
 
-.about-text { color: var(--muted); font-size: 16px; line-height: 1.8; margin-bottom: 16px; max-width: 800px; }
+.about-text { color: var(--muted); font-size: 16px; line-height: 1.8; margin: 0 auto 16px; max-width: 800px; text-align: center; }
 
 .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
 .feat-card { display: flex; gap: 14px; padding: 20px; border: 1px solid var(--border); border-radius: 10px; transition: all 0.3s; }
@@ -195,7 +195,7 @@ a { color: inherit; text-decoration: none; }
 /* ══════════════════════════════════════
    4. DESTINATIONS
    ══════════════════════════════════════ */
-.dest-note { padding: 16px 20px; background: var(--gold-bg); border-radius: 10px; margin-bottom: 32px; display: flex; align-items: center; gap: 14px; }
+.dest-note { padding: 16px 20px; background: var(--gold-bg); border-radius: 10px; margin: 0 auto 32px; display: flex; align-items: center; justify-content: center; gap: 14px; max-width: 700px; }
 .dest-note p { font-size: 14px; color: #8B7530; }
 .dest-note strong { color: var(--navy); }
 
@@ -217,9 +217,9 @@ a { color: inherit; text-decoration: none; }
 .dest-card ul li { font-size: 13px; color: var(--text); padding: 3px 0 3px 16px; position: relative; }
 .dest-card ul li::before { content: '—'; color: var(--gold); position: absolute; left: 0; font-weight: 700; }
 
-.coming-section { margin-top: 8px; }
+.coming-section { margin-top: 8px; text-align: center; }
 .coming-label { font-size: 11px; color: var(--light); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
-.coming-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.coming-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
 .coming-chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border: none; border-radius: 24px; font-size: 13px; font-weight: 500; color: var(--navy); background: var(--gold-bg); border: 1px solid rgba(201,169,78,0.25); transition: all 0.3s; }
 .coming-chip:hover { border-color: var(--gold); background: rgba(201,169,78,0.12); }
 .coming-chip .cc-char { font-family: 'Noto Serif SC', serif; color: var(--light); font-size: 14px; }
@@ -234,14 +234,14 @@ a { color: inherit; text-decoration: none; }
 .flow-name { font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
 .flow-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
 
-.sub-label { font-size: 12px; font-weight: 600; color: var(--navy); margin-bottom: 16px; letter-spacing: 2px; text-transform: uppercase; }
+.sub-label { font-size: 12px; font-weight: 600; color: var(--navy); margin-bottom: 16px; letter-spacing: 2px; text-transform: uppercase; text-align: center; }
 
 .pillar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 40px; }
 .pillar-card { display: flex; align-items: center; gap: 14px; padding: 18px 20px; border-left: 3px solid var(--gold); background: var(--gold-bg); border-radius: 0 10px 10px 0; }
 .pillar-card h4 { font-size: 15px; font-weight: 600; color: var(--navy); }
 .pillar-card p { font-size: 13px; color: var(--muted); }
 
-.note-box { padding: 20px 24px; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; }
+.note-box { padding: 20px 24px; border: 1px solid var(--border); border-radius: 10px; margin: 0 auto 12px; max-width: 800px; }
 .note-box h4 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
 .note-box p { font-size: 14px; color: var(--muted); line-height: 1.7; }
 
@@ -254,7 +254,7 @@ a { color: inherit; text-decoration: none; }
 .gi h4 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
 .gi p { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
-.out-bar { display: flex; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+.out-bar { display: flex; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); max-width: 700px; margin: 0 auto; }
 .out-item { flex: 1; text-align: center; padding: 16px 12px; border-right: 1px solid var(--border); }
 .out-item:last-child { border-right: none; }
 .out-item strong { display: block; font-size: 11px; color: var(--navy); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
@@ -274,7 +274,7 @@ a { color: inherit; text-decoration: none; }
 .inc-item { font-size: 14px; color: var(--text); padding: 4px 0 4px 20px; position: relative; }
 
 /* v1.5: Included/Not Included comparison layout */
-.inc-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 20px; }
+.inc-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px auto 0; max-width: 800px; }
 .inc-col { padding: 28px; border-radius: 12px; }
 .inc-col--included { background: #F0FAF4; border: 1px solid #B8E6CC; }
 .inc-col--excluded { background: #F7F7F8; border: 1px solid #E0E0E0; }
@@ -447,6 +447,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ── Pricing hint ── */
 .pricing-hint { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: var(--gold-bg); border: 1px solid rgba(201,169,78,0.3); border-radius: 8px; font-size: 14px; color: var(--navy); margin-top: 16px; }
+.pricing-hint-wrap { text-align: center; }
 .pricing-hint strong { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 18px; }
 
 /* ── v1.4: Visual rhythm — section-alt borders ── */
@@ -589,7 +590,7 @@ section[id] { scroll-margin-top: 80px; }
 /* ══════════════════════════════════════
    v1.10: OUTCOME PROGRESS BARS
    ══════════════════════════════════════ */
-.skill-bars { margin-top: 40px; max-width: 700px; }
+.skill-bars { margin: 40px auto 0; max-width: 700px; }
 .skill-bar { margin-bottom: 20px; }
 .skill-bar-header { display: flex; justify-content: space-between; margin-bottom: 6px; }
 .skill-bar-name { font-size: 14px; font-weight: 600; color: var(--navy); }
@@ -768,7 +769,7 @@ section[id] { scroll-margin-top: 80px; }
     <div class="reveal">
       <p class="about-text">China Quest is an immersive educational travel programme that brings students to some of China's most iconic cities. Blending real-world exploration, hands-on learning challenges, and guided reflection, the programme builds global awareness and personal insight in ways that no classroom can replicate.</p>
       <p class="about-text">Whether as a summer experience or a Transition Year (TY) international module, China Quest offers a powerful combination of travel, discovery, and growth — designed exclusively for leading international schools and private schools.</p>
-      <div class="pricing-hint">Programmes from <strong>€2,990</strong> per student (5-day module) · All-inclusive · <a href="#get-started" style="color:var(--gold);text-decoration:underline;">Contact for details</a></div>
+      <div class="pricing-hint-wrap"><div class="pricing-hint">Programmes from <strong>€2,990</strong> per student (5-day module) · All-inclusive · <a href="#get-started" style="color:var(--gold);text-decoration:underline;">Contact for details</a></div></div>
     </div>
 
     <div class="feat-grid reveal">
@@ -820,7 +821,7 @@ section[id] { scroll-margin-top: 80px; }
     </div>
 
     <div class="reveal" style="margin-bottom: 40px;">
-      <p class="about-text" style="font-style: italic; border-left: 3px solid var(--gold); padding-left: 20px;">Founded in 2005, Miles Minds began with a simple belief: that direct experience of China — its culture, its people, its pace of change — is the most powerful form of education. Over two decades, our team has grown to 150+ professionals across 9 Chinese cities, building partnerships with top universities and cultural institutions. China Quest is the culmination of everything we've learned about creating transformative educational experiences.</p>
+      <p class="about-text" style="font-style: italic; border-left: 3px solid var(--gold); padding-left: 20px; text-align: left;">Founded in 2005, Miles Minds began with a simple belief: that direct experience of China — its culture, its people, its pace of change — is the most powerful form of education. Over two decades, our team has grown to 150+ professionals across 9 Chinese cities, building partnerships with top universities and cultural institutions. China Quest is the culmination of everything we've learned about creating transformative educational experiences.</p>
     </div>
 
     <div class="cred-stats reveal">
