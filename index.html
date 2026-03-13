@@ -412,21 +412,56 @@ a { color: inherit; text-decoration: none; }
   .testimonials { gap: 16px; }
   .deco-char { font-size: 120px; }
   
-  /* v1.16: Precise centering — headers only, body text left-aligned */
-  .section-label, .section-title, .section-subtitle, .section-intro,
-  .sub-label, h2, .section-quote, .coming-section {
-    text-align: center !important;
+  /* v1.18: Clean centering — no !important, no conflicts */
+  /* === 居中元素：标题/装饰/展示型 === */
+  .section-header,
+  .section-label,
+  .section-title,
+  .section-subtitle,
+  .section-intro,
+  .sub-label,
+  h2,
+  .section-quote,
+  .coming-section,
+  .cred-stat,
+  .out-bar,
+  .cta-band,
+  .trust-badges,
+  .pricing-hint-wrap,
+  .steps-row,
+  .step-item,
+  .inc-header {
+    text-align: center;
   }
   .gold-line {
-    margin-left: auto !important;
-    margin-right: auto !important;
+    margin-left: auto;
+    margin-right: auto;
   }
-  /* Body text stays left-aligned */
-  .about-text, .expertise-detail, .card-text,
-  .faq-answer, .note-box, .safety-card, .testimonial-card,
-  .dest-card p, .dest-card ul,
-  p:not(.section-intro):not(.section-subtitle):not(.section-label):not(.sub-label) {
-    text-align: left !important;
+  .section-quote {
+    justify-content: center;
+  }
+  /* === 左对齐元素：阅读型内容 === */
+  .about-text,
+  .expertise-card,
+  .expertise-card p,
+  .feat-card,
+  .feat-card p,
+  .dest-body,
+  .dest-card p,
+  .dest-card ul,
+  .note-box,
+  .note-box p,
+  .safety-card,
+  .safety-card p,
+  .faq-answer,
+  .faq-label,
+  .testimonial-card blockquote,
+  .testimonial-card p,
+  .form-group,
+  .itinerary-timeline,
+  .gain-card p,
+  .inc-list {
+    text-align: left;
   }
 }
 /* ── Smooth focus styles for accessibility ── */
