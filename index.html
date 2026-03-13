@@ -409,6 +409,20 @@ a { color: inherit; text-decoration: none; }
   .step-item::after { display: none; }
   .testimonials { gap: 16px; }
   .deco-char { font-size: 120px; }
+  
+  /* v1.15: Force center alignment on all section headers for mobile */
+  .section-label, .section-title, .section-subtitle, .section-intro,
+  .sub-label, h2, .section-quote, .about-text,
+  .coming-section, p.sub-label {
+    text-align: center !important;
+  }
+  .gold-line {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .about-text[style*="text-align: left"] {
+    text-align: left !important;
+  }
 }
 /* ── Smooth focus styles for accessibility ── */
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
