@@ -1624,17 +1624,19 @@ if (floatingCta) {
 }
 
 /* ── Nav active highlight on scroll ── */
-const navActiveObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const id = entry.target.getAttribute('id');
-      document.querySelectorAll('.nav-links a').forEach(a => {
-        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
-      });
-    }
+function updateNavActive() {
+  const sections = document.querySelectorAll('section[id]');
+  const scrollY = window.scrollY + 120;
+  let currentId = '';
+  sections.forEach(s => {
+    if (s.offsetTop <= scrollY) currentId = s.id;
   });
-}, { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' });
-document.querySelectorAll('section[id]').forEach(s => navActiveObserver.observe(s));
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + currentId);
+  });
+}
+window.addEventListener('scroll', updateNavActive, { passive: true });
+updateNavActive();
 
 /* ── Lazy load background images ── */
 const bgObserver = new IntersectionObserver((entries) => {
