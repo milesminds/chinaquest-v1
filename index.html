@@ -43,11 +43,11 @@
 function loadGA4(){
   if(document.getElementById('ga4-script'))return;
   var s=document.createElement('script');s.id='ga4-script';s.async=true;
-  s.src='https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+  s.src='https://www.googletagmanager.com/gtag/js?id=G-4NNDFYDNHC';
   document.head.appendChild(s);
   window.dataLayer=window.dataLayer||[];
   function gtag(){dataLayer.push(arguments)}
-  window.gtag=gtag;gtag('js',new Date());gtag('config','G-XXXXXXXXXX');
+  window.gtag=gtag;gtag('js',new Date());gtag('config','G-4NNDFYDNHC');
 }
 if(localStorage.getItem('cq-cookie-consent')==='accepted'){loadGA4();}
 </script>
@@ -756,6 +756,7 @@ section[id] { scroll-margin-top: 80px; }
       <li><a href="#how-it-works">Programme</a></li>
       <li><a href="#outcomes">Outcomes</a></li>
       <li><a href="#safety">Safety</a></li>
+      <li><a href="#faq">FAQ</a></li>
     </ul>
     <a href="#get-started" class="nav-cta">Get Started</a>
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
