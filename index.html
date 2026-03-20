@@ -186,28 +186,8 @@ a { color: inherit; text-decoration: none; }
 br.desktop-only { display: inline; }
 
 /* How It Works — Cycle diagram */
-.cycle-wrap { display: flex; align-items: center; gap: 60px; margin-top: 24px; }
-.cycle-ring { position: relative; width: 360px; height: 360px; flex-shrink: 0; }
-.cycle-svg { width: 100%; height: 100%; }
-.cycle-node { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; transition: transform 0.2s; }
-.cycle-node:hover { transform: scale(1.08); }
-.cycle-num { width: 44px; height: 44px; border-radius: 50%; background: var(--navy); color: #fff; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(27,42,74,0.25); }
-.cycle-name { font-size: 13px; font-weight: 700; color: var(--navy); white-space: nowrap; }
-.cycle-n1 { top: 2px; left: 50%; transform: translateX(-50%); }
-.cycle-n2 { top: 50%; right: -8px; transform: translateY(-50%); }
-.cycle-n3 { bottom: 2px; left: 50%; transform: translateX(-50%); }
-.cycle-n4 { top: 50%; left: -8px; transform: translateY(-50%); }
-.cycle-n1:hover { transform: translateX(-50%) scale(1.08); }
-.cycle-n2:hover { transform: translateY(-50%) scale(1.08); }
-.cycle-n3:hover { transform: translateX(-50%) scale(1.08); }
-.cycle-n4:hover { transform: translateY(-50%) scale(1.08); }
-
-.cycle-details { flex: 1; }
-.cycle-detail { padding: 16px 20px; border-radius: 10px; margin-bottom: 10px; transition: background 0.2s; }
-.cycle-detail:hover { background: rgba(201,169,78,0.06); }
-.cycle-detail h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
-.cycle-detail p { font-size: 14px; color: var(--muted); line-height: 1.7; }
-.cycle-detail-num { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--gold-bg); color: var(--gold); font-size: 12px; font-weight: 700; margin-right: 8px; }
+.cycle-wrap { display: flex; justify-content: center; margin-top: 24px; }
+.cycle-svg { width: 100%; max-width: 520px; height: auto; }
 
 /* How It Works — Light pillars */
 .how-pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 12px; }
@@ -474,10 +454,7 @@ br.desktop-only { display: inline; }
   
   .feat-grid, .dest-grid, .pillar-grid, .gain-grid, .expertise-grid, .form-grid, .inc-comparison, .why-grid { grid-template-columns: 1fr; }
   .why-card { padding: 24px 20px; }
-  .cycle-wrap { flex-direction: column; gap: 32px; }
-  .cycle-ring { width: 280px; height: 280px; margin: 0 auto; }
-  .cycle-num { width: 36px; height: 36px; font-size: 14px; }
-  .cycle-name { font-size: 11px; }
+  .cycle-svg { max-width: 340px; }
   .how-pillars { grid-template-columns: 1fr 1fr; }
   .how-sample-inner { flex-direction: column; text-align: center; gap: 16px; }
   .how-sample-link { width: 100%; text-align: center; }
@@ -954,60 +931,55 @@ section[id] { scroll-margin-top: 80px; }
     <!-- Daily Structure — Cycle diagram -->
     <p class="sub-label reveal">Daily Structure</p>
     <div class="cycle-wrap reveal">
-      <div class="cycle-ring">
-        <svg class="cycle-svg" viewBox="0 0 400 400">
-          <!-- Circular track -->
-          <circle cx="200" cy="200" r="140" fill="none" stroke="#E8E0D0" stroke-width="2"/>
-          <!-- Arrow arcs -->
-          <path d="M200 60 A140 140 0 0 1 340 200" fill="none" stroke="var(--gold)" stroke-width="2" stroke-dasharray="4 6" opacity="0.5"/>
-          <path d="M340 200 A140 140 0 0 1 200 340" fill="none" stroke="var(--gold)" stroke-width="2" stroke-dasharray="4 6" opacity="0.5"/>
-          <path d="M200 340 A140 140 0 0 1 60 200" fill="none" stroke="var(--gold)" stroke-width="2" stroke-dasharray="4 6" opacity="0.5"/>
-          <path d="M60 200 A140 140 0 0 1 200 60" fill="none" stroke="var(--gold)" stroke-width="2" stroke-dasharray="4 6" opacity="0.5"/>
-          <!-- Arrow heads -->
-          <polygon points="335,185 345,200 325,200" fill="var(--gold)" opacity="0.6"/>
-          <polygon points="215,335 200,345 200,325" fill="var(--gold)" opacity="0.6"/>
-          <polygon points="65,215 55,200 75,200" fill="var(--gold)" opacity="0.6"/>
-          <polygon points="185,65 200,55 200,75" fill="var(--gold)" opacity="0.6"/>
-          <!-- Center text -->
-          <text x="200" y="193" text-anchor="middle" fill="var(--navy)" font-size="13" font-weight="700" font-family="'Playfair Display',serif" opacity="0.3">Daily</text>
-          <text x="200" y="213" text-anchor="middle" fill="var(--navy)" font-size="13" font-weight="700" font-family="'Playfair Display',serif" opacity="0.3">Cycle</text>
-        </svg>
-        <!-- 4 nodes positioned on the circle -->
-        <div class="cycle-node cycle-n1">
-          <div class="cycle-num">1</div>
-          <div class="cycle-name">Exploration</div>
-        </div>
-        <div class="cycle-node cycle-n2">
-          <div class="cycle-num">2</div>
-          <div class="cycle-name">Reflection</div>
-        </div>
-        <div class="cycle-node cycle-n3">
-          <div class="cycle-num">3</div>
-          <div class="cycle-name">Challenge</div>
-        </div>
-        <div class="cycle-node cycle-n4">
-          <div class="cycle-num">4</div>
-          <div class="cycle-name">Circle</div>
-        </div>
-      </div>
-      <div class="cycle-details">
-        <div class="cycle-detail" data-step="1">
-          <h4><span class="cycle-detail-num">1</span> Exploration</h4>
-          <p>Site visits, cultural encounters, and expert-led observation in real places.</p>
-        </div>
-        <div class="cycle-detail" data-step="2">
-          <h4><span class="cycle-detail-num">2</span> Reflection</h4>
-          <p>Guided journaling and discussion that help students process what they have seen and learned.</p>
-        </div>
-        <div class="cycle-detail" data-step="3">
-          <h4><span class="cycle-detail-num">3</span> Challenge</h4>
-          <p>Tasks that invite students to interview, observe, sketch, document, and think critically.</p>
-        </div>
-        <div class="cycle-detail" data-step="4">
-          <h4><span class="cycle-detail-num">4</span> Circle</h4>
-          <p>A shared end-of-day debrief where students exchange insights, questions, and perspectives.</p>
-        </div>
-      </div>
+      <svg class="cycle-svg" viewBox="0 0 520 520">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10" fill="#C9A94E" opacity="0.45"/></marker>
+        </defs>
+
+        <!-- 4 segment arcs with progressive color -->
+        <!-- Segment 1: top→right (Exploration) — lightest -->
+        <path d="M260 96 A164 164 0 0 1 424 260" fill="none" stroke="#1B2A4A" stroke-width="28" opacity="0.08" stroke-linecap="round"/>
+        <!-- Segment 2: right→bottom (Reflection) -->
+        <path d="M424 260 A164 164 0 0 1 260 424" fill="none" stroke="#1B2A4A" stroke-width="28" opacity="0.13" stroke-linecap="round"/>
+        <!-- Segment 3: bottom→left (Challenge) -->
+        <path d="M260 424 A164 164 0 0 1 96 260" fill="none" stroke="#1B2A4A" stroke-width="28" opacity="0.18" stroke-linecap="round"/>
+        <!-- Segment 4: left→top (Circle) — darkest -->
+        <path d="M96 260 A164 164 0 0 1 260 96" fill="none" stroke="#1B2A4A" stroke-width="28" opacity="0.24" stroke-linecap="round"/>
+
+        <!-- Flow arrows between segments -->
+        <path d="M405 155 A164 164 0 0 1 418 180" fill="none" stroke="#C9A94E" stroke-width="1.5" marker-end="url(#arr)" opacity="0.5"/>
+        <path d="M405 365 A164 164 0 0 1 380 392" fill="none" stroke="#C9A94E" stroke-width="1.5" marker-end="url(#arr)" opacity="0.5"/>
+        <path d="M115 365 A164 164 0 0 1 102 340" fill="none" stroke="#C9A94E" stroke-width="1.5" marker-end="url(#arr)" opacity="0.5"/>
+        <path d="M115 155 A164 164 0 0 1 140 128" fill="none" stroke="#C9A94E" stroke-width="1.5" marker-end="url(#arr)" opacity="0.5"/>
+
+        <!-- Center text -->
+        <text x="260" y="245" text-anchor="middle" fill="#1B2A4A" font-size="14" font-weight="600" font-family="-apple-system,sans-serif" opacity="0.25">Daily</text>
+        <text x="260" y="263" text-anchor="middle" fill="#1B2A4A" font-size="14" font-weight="600" font-family="-apple-system,sans-serif" opacity="0.25">Learning Cycle</text>
+
+        <!-- Node 1: Exploration (top) -->
+        <circle cx="260" cy="96" r="32" fill="#fff" stroke="#1B2A4A" stroke-width="2"/>
+        <text x="260" y="101" text-anchor="middle" fill="#1B2A4A" font-size="15" font-weight="700">1</text>
+        <text x="260" y="50" text-anchor="middle" fill="#1B2A4A" font-size="13" font-weight="700">Exploration</text>
+        <text x="260" y="66" text-anchor="middle" fill="#6B7280" font-size="10">Site visits &amp; cultural encounters</text>
+
+        <!-- Node 2: Reflection (right) -->
+        <circle cx="424" cy="260" r="32" fill="#fff" stroke="#1B2A4A" stroke-width="2"/>
+        <text x="424" y="265" text-anchor="middle" fill="#1B2A4A" font-size="15" font-weight="700">2</text>
+        <text x="488" y="252" text-anchor="start" fill="#1B2A4A" font-size="13" font-weight="700">Reflection</text>
+        <text x="488" y="268" text-anchor="start" fill="#6B7280" font-size="10">Journaling &amp; discussion</text>
+
+        <!-- Node 3: Challenge (bottom) -->
+        <circle cx="260" cy="424" r="32" fill="#fff" stroke="#1B2A4A" stroke-width="2"/>
+        <text x="260" y="429" text-anchor="middle" fill="#1B2A4A" font-size="15" font-weight="700">3</text>
+        <text x="260" y="476" text-anchor="middle" fill="#1B2A4A" font-size="13" font-weight="700">Challenge</text>
+        <text x="260" y="492" text-anchor="middle" fill="#6B7280" font-size="10">Observe, sketch, document &amp; think</text>
+
+        <!-- Node 4: Circle (left) -->
+        <circle cx="96" cy="260" r="32" fill="#fff" stroke="#1B2A4A" stroke-width="2"/>
+        <text x="96" y="265" text-anchor="middle" fill="#1B2A4A" font-size="15" font-weight="700">4</text>
+        <text x="32" y="252" text-anchor="end" fill="#1B2A4A" font-size="13" font-weight="700">Circle</text>
+        <text x="32" y="268" text-anchor="end" fill="#6B7280" font-size="10">Debrief &amp; peer reflection</text>
+      </svg>
     </div>
 
     <!-- Learning Pillars — Light supporting framework -->
