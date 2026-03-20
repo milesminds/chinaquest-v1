@@ -182,6 +182,14 @@ a { color: inherit; text-decoration: none; }
 
 .about-text { color: var(--muted); font-size: 16px; line-height: 1.8; margin: 0 auto 16px; max-width: 800px; text-align: left; }
 
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px; }
+.why-card { text-align: center; padding: 32px 24px; border-radius: 12px; background: var(--white); box-shadow: 0 2px 16px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; }
+.why-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.why-icon { width: 56px; height: 56px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gold-bg); }
+.why-icon svg { width: 28px; height: 28px; stroke: var(--gold); }
+.why-card h4 { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+.why-card p { font-size: 15px; color: var(--muted); line-height: 1.7; }
+.why-example { font-size: 13px; color: var(--gold); font-style: italic; margin-top: 16px; }
 .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
 .feat-card { display: flex; gap: 14px; padding: 20px; border: 1px solid var(--border); border-radius: 10px; transition: all 0.3s; }
 .feat-card:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(201,169,78,0.08); transform: translateY(-2px); }
@@ -412,7 +420,8 @@ a { color: inherit; text-decoration: none; }
   .glance-item:nth-child(n+4) { border-top: 1px solid rgba(201,169,78,0.2); }
   .glance-item:nth-child(4) { border-right: 1px solid rgba(201,169,78,0.2); }
   
-  .feat-grid, .dest-grid, .pillar-grid, .gain-grid, .expertise-grid, .form-grid, .inc-comparison { grid-template-columns: 1fr; }
+  .feat-grid, .dest-grid, .pillar-grid, .gain-grid, .expertise-grid, .form-grid, .inc-comparison, .why-grid { grid-template-columns: 1fr; }
+  .why-card { padding: 24px 20px; }
   .cred-stats { grid-template-columns: 1fr 1fr; }
   .flow-row { grid-template-columns: 1fr 1fr; }
   .inc-grid { grid-template-columns: 1fr; }
@@ -756,6 +765,7 @@ section[id] { scroll-margin-top: 80px; }
   <div class="nav-inner">
     <a href="#hero" class="nav-logo">China Quest</a>
     <ul class="nav-links">
+      <li><a href="#why">Why</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#expertise">Expertise</a></li>
       <li><a href="#destinations">Destinations</a></li>
@@ -775,6 +785,7 @@ section[id] { scroll-margin-top: 80px; }
 <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobile-menu">
+  <a href="#why" onclick="closeMenu()">Why</a>
   <a href="#about" onclick="closeMenu()">About</a>
   <a href="#expertise" onclick="closeMenu()">Expertise</a>
   <a href="#destinations" onclick="closeMenu()">Destinations</a>
@@ -813,11 +824,51 @@ section[id] { scroll-margin-top: 80px; }
     <p class="hero-desc">A structured educational journey through China's culture, technology, and future, designed to deliver real-world learning and meaningful student outcomes.</p>
     <p class="hero-detail">Summer Programmes, Transition Year &amp; School Groups · Ages 14–18</p>
     <div class="hero-cta-group">
-      <a href="#about" class="hero-cta">Explore the Programme</a>
+      <a href="#why" class="hero-cta">Explore the Programme</a>
       <a href="#get-started" class="hero-cta hero-cta-secondary">Request School Pack</a>
     </div>
   </div>
   <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ══════════ WHY CHINA QUEST ══════════ -->
+<section class="section" id="why">
+  <div class="container">
+    <span class="deco-char" style="top: -20px; right: 20px;">为</span>
+    <div class="section-header reveal">
+      <p class="section-label">Why China Quest</p>
+      <div class="gold-line"></div>
+      <h2 class="section-title">A structured learning journey, not just a study trip</h2>
+      <p class="section-intro">China Quest is designed to help students explore China through culture, technology, and real-world experience — with reflection, discussion, and meaningful outcomes built in.</p>
+    </div>
+
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h4>Real-World Learning</h4>
+        <p>Students observe, document, and reflect as they move through real places, real conversations, and real social contexts in China.</p>
+        <p class="why-example">From Tsinghua classrooms to Shenzhen maker spaces</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h4>Culture in Context</h4>
+        <p>Students encounter China not only through landmarks, but through neighbourhoods, daily life, and the textures of contemporary society.</p>
+        <p class="why-example">From hutong mornings to night market conversations</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h4>Future-Facing Discovery</h4>
+        <p>Innovation, mobility, technology, and urban change become part of the learning journey — not just the backdrop.</p>
+        <p class="why-example">From bullet trains to AI labs</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ══════════ 2. ABOUT ══════════ -->
