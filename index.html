@@ -184,6 +184,27 @@ a { color: inherit; text-decoration: none; }
 
 #why .section-title { font-size: 36px; max-width: none; margin-left: auto; margin-right: auto; margin-bottom: 20px; }
 br.desktop-only { display: inline; }
+
+/* How It Works — Light pillars */
+.how-pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 12px; }
+.how-pillar { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 16px 12px; background: rgba(255,255,255,0.6); border-radius: 10px; gap: 6px; }
+.how-pillar-icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; opacity: 0.5; }
+.how-pillar-icon svg { width: 20px; height: 20px; stroke: var(--navy); }
+.how-pillar strong { font-size: 13px; color: var(--navy); }
+.how-pillar span { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* How — Support block */
+.how-support { margin-top: 40px; padding: 24px 28px; border-left: 3px solid var(--gold); background: var(--gold-bg); border-radius: 0 12px 12px 0; }
+.how-support h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.how-support p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+/* How — Sample itinerary CTA */
+.how-sample { margin-top: 40px; }
+.how-sample-inner { display: flex; align-items: center; justify-content: space-between; padding: 28px 32px; background: var(--navy); border-radius: 12px; color: #fff; }
+.how-sample-inner h4 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+.how-sample-inner p { font-size: 14px; color: rgba(255,255,255,0.6); }
+.how-sample-link { display: inline-block; padding: 10px 24px; background: var(--gold); color: var(--navy); font-size: 13px; font-weight: 700; border-radius: 8px; text-decoration: none; white-space: nowrap; transition: opacity 0.2s; }
+.how-sample-link:hover { opacity: 0.85; }
 #why .section-intro { max-width: 760px; }
 .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px; }
 .why-card { text-align: center; padding: 32px 24px; border-radius: 12px; background: var(--white); box-shadow: 0 2px 16px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; align-items: center; }
@@ -429,6 +450,9 @@ br.desktop-only { display: inline; }
   
   .feat-grid, .dest-grid, .pillar-grid, .gain-grid, .expertise-grid, .form-grid, .inc-comparison, .why-grid { grid-template-columns: 1fr; }
   .why-card { padding: 24px 20px; }
+  .how-pillars { grid-template-columns: 1fr 1fr; }
+  .how-sample-inner { flex-direction: column; text-align: center; gap: 16px; }
+  .how-sample-link { width: 100%; text-align: center; }
   .cred-stats { grid-template-columns: 1fr 1fr; }
   .flow-row { grid-template-columns: 1fr 1fr; }
   .inc-grid { grid-template-columns: 1fr; }
@@ -1060,81 +1084,60 @@ section[id] { scroll-margin-top: 80px; }
   <div class="container">
     <span class="deco-char" style="top: -20px; right: 20px;">学</span>
     <div class="section-header reveal">
-      <p class="section-label">Programme Design</p>
+      <p class="section-label">How It Works</p>
       <div class="gold-line"></div>
-      <h2 class="section-title">How Does It Work?</h2>
-      <p class="section-intro">A structured learning journey blending cultural immersion, daily reflection, and personal growth.</p>
+      <h2 class="section-title">How the Learning Journey Works</h2>
+      <p class="section-intro">Each day combines exploration, reflection, challenge, and discussion — so students do more than visit places; they learn through them.</p>
     </div>
 
+    <!-- Daily Structure — Primary visual -->
     <p class="sub-label reveal">Daily Structure</p>
     <div class="flow-row reveal">
-      <div class="flow-box"><div class="flow-num">1</div><div class="flow-name">Exploration</div><div class="flow-desc">Site visit, cultural activity, or expert-led tour</div></div>
-      <div class="flow-box"><div class="flow-num">2</div><div class="flow-name">Reflection</div><div class="flow-desc">Guided journaling or small group discussions</div></div>
-      <div class="flow-box"><div class="flow-num">3</div><div class="flow-name">Challenge</div><div class="flow-desc">Interviewing, observing, sketching, storytelling</div></div>
-      <div class="flow-box"><div class="flow-num">4</div><div class="flow-name">Circle</div><div class="flow-desc">Recap, insights sharing, peer feedback</div></div>
+      <div class="flow-box"><div class="flow-num">1</div><div class="flow-name">Exploration</div><div class="flow-desc">Site visits, cultural encounters, and expert-led observation in real places.</div></div>
+      <div class="flow-box"><div class="flow-num">2</div><div class="flow-name">Reflection</div><div class="flow-desc">Guided journaling and discussion that help students process what they have seen and learned.</div></div>
+      <div class="flow-box"><div class="flow-num">3</div><div class="flow-name">Challenge</div><div class="flow-desc">Tasks that invite students to interview, observe, sketch, document, and think critically.</div></div>
+      <div class="flow-box"><div class="flow-num">4</div><div class="flow-name">Circle</div><div class="flow-desc">A shared end-of-day debrief where students exchange insights, questions, and perspectives.</div></div>
     </div>
 
-    <p class="sub-label reveal">Four Learning Pillars</p>
-    <div class="pillar-grid reveal">
-      <div class="pillar-card">
-        <span class="icon icon-gold"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
-        <div><h4>Technology &amp; Innovation</h4><p>AI, robotics, digital economy</p></div>
+    <!-- Learning Pillars — Light supporting framework -->
+    <p class="sub-label reveal" style="margin-top: 48px; font-size: 14px; opacity: 0.7;">Learning Pillars</p>
+    <div class="how-pillars reveal">
+      <div class="how-pillar">
+        <span class="how-pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+        <strong>Technology &amp; Innovation</strong>
+        <span>AI, robotics, mobility, digital change</span>
       </div>
-      <div class="pillar-card">
-        <span class="icon icon-gold"><svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></span>
-        <div><h4>Arts &amp; Culture</h4><p>Crafts, calligraphy, performance</p></div>
+      <div class="how-pillar">
+        <span class="how-pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg></span>
+        <strong>Arts &amp; Culture</strong>
+        <span>Craft, calligraphy, performance, creativity</span>
       </div>
-      <div class="pillar-card">
-        <span class="icon icon-gold"><svg viewBox="0 0 24 24"><path d="M3 21h18M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4M5 21V10.7M19 21V10.7"/></svg></span>
-        <div><h4>History &amp; Heritage</h4><p>UNESCO sites, museums, landmarks</p></div>
+      <div class="how-pillar">
+        <span class="how-pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4"/></svg></span>
+        <strong>History &amp; Heritage</strong>
+        <span>Landmarks, museums, memory, identity</span>
       </div>
-      <div class="pillar-card">
-        <span class="icon icon-gold"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="22" height="12" rx="2"/><path d="M1 10h22"/></svg></span>
-        <div><h4>Social &amp; Urban Life</h4><p>Markets, transit, community, youth</p></div>
+      <div class="how-pillar">
+        <span class="how-pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="6" width="22" height="12" rx="2"/><path d="M1 10h22"/></svg></span>
+        <strong>Social &amp; Urban Life</strong>
+        <span>Neighbourhoods, transit, markets, youth culture</span>
       </div>
     </div>
 
-    <div class="note-box reveal">
-      <h4>
-        <span class="icon icon-gold" style="width:28px;height:28px;border-radius:8px;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg></span>
-        TY-Compatible Design
-      </h4>
-      <p>Structured tasks aligned with Transition Year learning goals. Optional outputs include reflection journals, creative works, and a final showcase. Emphasises autonomy, collaboration, and critical thinking.</p>
-    </div>
-    <div class="note-box reveal">
-      <h4>
-        <span class="icon icon-gold" style="width:28px;height:28px;border-radius:8px;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
-        School Involvement &amp; Support
-      </h4>
-      <p>Schools are welcome to nominate a teacher to accompany the group, ensuring alignment with school values and strengthening the learning experience through shared reflection and continuity.</p>
+    <!-- TY + School Support — Merged block -->
+    <div class="how-support reveal">
+      <h4>Designed with TY and school-led learning in mind</h4>
+      <p>Structured tasks can support reflection journals, creative outputs, and portfolio-style evidence. Schools are welcome to nominate a teacher to accompany the group, strengthening continuity, shared reflection, and alignment with school values.</p>
     </div>
 
-    <p class="sub-label reveal" style="margin-top: 48px;">Sample 5-Day Itinerary — Beijing</p>
-    <div class="itinerary-timeline reveal">
-      <div class="itinerary-day">
-        <p class="itinerary-day-label">Day 1</p>
-        <p class="itinerary-day-title">Arrival &amp; Orientation</p>
-        <p class="itinerary-day-desc">Airport pickup, hotel check-in, neighbourhood walk, team briefing, and welcome dinner with your programme leaders.</p>
-      </div>
-      <div class="itinerary-day">
-        <p class="itinerary-day-label">Day 2</p>
-        <p class="itinerary-day-title">Imperial History</p>
-        <p class="itinerary-day-desc">Morning at the Great Wall (Mutianyu section). Afternoon exploring the Forbidden City and Tiananmen Square with guided historical context.</p>
-      </div>
-      <div class="itinerary-day">
-        <p class="itinerary-day-label">Day 3</p>
-        <p class="itinerary-day-title">Culture &amp; Craft</p>
-        <p class="itinerary-day-desc">Hutong neighbourhood exploration by rickshaw, hands-on calligraphy workshop, and traditional dumpling-making class with a local family.</p>
-      </div>
-      <div class="itinerary-day">
-        <p class="itinerary-day-label">Day 4</p>
-        <p class="itinerary-day-title">Innovation &amp; Future</p>
-        <p class="itinerary-day-desc">University campus visit (Tsinghua or Peking University), tech park tour, and student innovation challenge with peer presentations.</p>
-      </div>
-      <div class="itinerary-day">
-        <p class="itinerary-day-label">Day 5</p>
-        <p class="itinerary-day-title">Reflection &amp; Farewell</p>
-        <p class="itinerary-day-desc">Morning reflection session, final group showcase presentations, certificate ceremony, and farewell lunch before departure.</p>
+    <!-- Sample Itinerary — Compressed CTA -->
+    <div class="how-sample reveal">
+      <div class="how-sample-inner">
+        <div>
+          <h4>Sample 5-Day Beijing Journey</h4>
+          <p>Imperial history, living culture, innovation, and guided reflection across one city module.</p>
+        </div>
+        <a href="#get-started" class="how-sample-link">View sample itinerary →</a>
       </div>
     </div>
   </div>
