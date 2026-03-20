@@ -187,7 +187,7 @@ br.desktop-only { display: inline; }
 
 /* How It Works — Cycle diagram */
 .cycle-wrap { display: flex; justify-content: center; margin-top: 24px; }
-.cycle-svg { width: 100%; max-width: 820px; height: auto; display: block; margin: 0 auto; }
+.cycle-svg { width: 100%; max-width: 900px; height: auto; display: block; margin: 0 auto; }
 
 /* How It Works — Light pillars */
 .how-pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 12px; }
@@ -931,7 +931,7 @@ section[id] { scroll-margin-top: 80px; }
     <!-- Daily Learning Cycle — ring diagram -->
     <p class="sub-label reveal">Daily Learning Cycle</p>
     <div class="cycle-wrap reveal">
-      <svg class="cycle-svg" viewBox="-40 80 820 520">
+      <svg class="cycle-svg" viewBox="-80 80 900 450">
         <defs>
           <!-- Text paths along mid-radius arcs -->
           <path id="tarc1" d="M408.7,166.1 A142.5,142.5 0 0,1 493.9,251.3" fill="none"/>
@@ -947,51 +947,47 @@ section[id] { scroll-margin-top: 80px; }
         <path d="M190.6,285.2 A170,170 0 0,1 321.8,134.4 L324.9,119.4 L355,157.6 L340.7,200.9 L334.1,187.9 A115,115 0 0,0 245.4,290 Z" fill="#1B2A4A"/>
 
         <!-- ═══ Center text ═══ -->
-        <text x="360" y="296" text-anchor="middle" fill="#3B5068" font-size="13" font-weight="500" font-family="-apple-system,sans-serif" opacity="0.5" letter-spacing="0.3">Repeated daily,</text>
-        <text x="360" y="313" text-anchor="middle" fill="#3B5068" font-size="13" font-weight="500" font-family="-apple-system,sans-serif" opacity="0.5" letter-spacing="0.3">deepened over time</text>
+        <text x="360" y="293" text-anchor="middle" fill="#1B2A4A" font-size="16" font-weight="600" font-family="-apple-system,sans-serif" opacity="0.5" letter-spacing="0.3">Repeated daily</text>
+        <text x="360" y="315" text-anchor="middle" fill="#1B2A4A" font-size="16" font-weight="600" font-family="-apple-system,sans-serif" opacity="0.5" letter-spacing="0.3">Deepened over time</text>
 
         <!-- ═══ Titles curved along ring ═══ -->
-        <text font-size="13" font-weight="700" fill="#fff" letter-spacing="2.5" opacity="0.9">
+        <text font-size="15" font-weight="700" fill="#fff" letter-spacing="3" opacity="0.9">
           <textPath href="#tarc1" startOffset="50%" text-anchor="middle">EXPLORATION</textPath>
         </text>
-        <text font-size="13" font-weight="700" fill="#fff" letter-spacing="2.5" opacity="0.9">
+        <text font-size="15" font-weight="700" fill="#fff" letter-spacing="3" opacity="0.9">
           <textPath href="#tarc2" startOffset="50%" text-anchor="middle">REFLECTION</textPath>
         </text>
-        <text font-size="13" font-weight="700" fill="#fff" letter-spacing="2.5" opacity="0.95">
+        <text font-size="15" font-weight="700" fill="#fff" letter-spacing="3" opacity="0.95">
           <textPath href="#tarc3" startOffset="50%" text-anchor="middle">CHALLENGE</textPath>
         </text>
-        <text font-size="13" font-weight="700" fill="#fff" letter-spacing="2.5" opacity="1">
+        <text font-size="15" font-weight="700" fill="#fff" letter-spacing="3" opacity="1">
           <textPath href="#tarc4" startOffset="50%" text-anchor="middle">CIRCLE</textPath>
         </text>
 
         <!-- ═══ Elbow connectors + Descriptions ═══ -->
         <!-- 1. Exploration (top-right → right) -->
         <circle cx="486" cy="174" r="2.5" fill="#C9A94E" opacity="0.5"/>
-        <polyline points="486,174 540,140 555,140" fill="none" stroke="#C9A94E" stroke-width="0.8" opacity="0.4"/>
-        <text x="562" y="133" text-anchor="start" fill="#1B2A4A" font-size="14" font-weight="700" font-family="-apple-system,sans-serif">Exploration</text>
-        <text x="562" y="149" text-anchor="start" fill="#5A6474" font-size="11.5" font-family="-apple-system,sans-serif">Site visits, cultural encounters,</text>
-        <text x="562" y="162" text-anchor="start" fill="#5A6474" font-size="11.5" font-family="-apple-system,sans-serif">and expert-led observation.</text>
+        <polyline points="486,174 540,148 555,148" fill="none" stroke="#C9A94E" stroke-width="0.8" opacity="0.4"/>
+        <text x="562" y="143" text-anchor="start" fill="#1B2A4A" font-size="16" font-weight="700" font-family="-apple-system,sans-serif">Exploration</text>
+        <text x="562" y="163" text-anchor="start" fill="#5A6474" font-size="13" font-family="-apple-system,sans-serif">Real places and expert-led observation</text>
 
         <!-- 2. Reflection (bottom-right → right) -->
         <circle cx="486" cy="426" r="2.5" fill="#C9A94E" opacity="0.5"/>
-        <polyline points="486,426 540,460 555,460" fill="none" stroke="#C9A94E" stroke-width="0.8" opacity="0.4"/>
-        <text x="562" y="453" text-anchor="start" fill="#1B2A4A" font-size="14" font-weight="700" font-family="-apple-system,sans-serif">Reflection</text>
-        <text x="562" y="469" text-anchor="start" fill="#5A6474" font-size="11.5" font-family="-apple-system,sans-serif">Guided journaling and discussion</text>
-        <text x="562" y="482" text-anchor="start" fill="#5A6474" font-size="11.5" font-family="-apple-system,sans-serif">to process what was learned.</text>
+        <polyline points="486,426 540,452 555,452" fill="none" stroke="#C9A94E" stroke-width="0.8" opacity="0.4"/>
+        <text x="562" y="447" text-anchor="start" fill="#1B2A4A" font-size="16" font-weight="700" font-family="-apple-system,sans-serif">Reflection</text>
+        <text x="562" y="467" text-anchor="start" fill="#5A6474" font-size="13" font-family="-apple-system,sans-serif">Journaling and discussion</text>
 
         <!-- 3. Challenge (bottom-left → left) -->
         <circle cx="234" cy="426" r="2.5" fill="#C9A94E" opacity="0.5"/>
-        <polyline points="234,426 180,460 165,460" fill="none" stroke="#C9A94E" stroke-width="0.8" opacity="0.4"/>
-        <text x="158" y="453" text-anchor="end" fill="#1B2A4A" font-size="14" font-weight="700" font-family="-apple-system,sans-serif">Challenge</text>
-        <text x="158" y="469" text-anchor="end" fill="#5A6474" font-size="11.5" font-family="-apple-system,sans-serif">Interview, observe, sketch,</text>
-        <text x="158" y="482" text-anchor="end" fill="#5A6474" font-size="11.5" font-family="-apple-system,sans-serif">document, and think critically.</text>
+        <polyline points="234,426 180,452 165,452" fill="none" stroke="#C9A94E" stroke-width="0.8" opacity="0.4"/>
+        <text x="158" y="447" text-anchor="end" fill="#1B2A4A" font-size="16" font-weight="700" font-family="-apple-system,sans-serif">Challenge</text>
+        <text x="158" y="467" text-anchor="end" fill="#5A6474" font-size="13" font-family="-apple-system,sans-serif">Inquiry, documentation, and creative response</text>
 
         <!-- 4. Circle (top-left → left) -->
         <circle cx="234" cy="174" r="2.5" fill="#C9A94E" opacity="0.5"/>
-        <polyline points="234,174 180,140 165,140" fill="none" stroke="#C9A94E" stroke-width="0.8" opacity="0.4"/>
-        <text x="158" y="133" text-anchor="end" fill="#1B2A4A" font-size="14" font-weight="700" font-family="-apple-system,sans-serif">Circle</text>
-        <text x="158" y="149" text-anchor="end" fill="#5A6474" font-size="11.5" font-family="-apple-system,sans-serif">End-of-day debrief — exchange</text>
-        <text x="158" y="162" text-anchor="end" fill="#5A6474" font-size="11.5" font-family="-apple-system,sans-serif">insights and perspectives.</text>
+        <polyline points="234,174 180,148 165,148" fill="none" stroke="#C9A94E" stroke-width="0.8" opacity="0.4"/>
+        <text x="158" y="143" text-anchor="end" fill="#1B2A4A" font-size="16" font-weight="700" font-family="-apple-system,sans-serif">Circle</text>
+        <text x="158" y="163" text-anchor="end" fill="#5A6474" font-size="13" font-family="-apple-system,sans-serif">Shared debrief and exchange</text>
       </svg>
     </div>
 
