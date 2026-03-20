@@ -186,13 +186,13 @@ a { color: inherit; text-decoration: none; }
 br.desktop-only { display: inline; }
 #why .section-intro { max-width: 760px; }
 .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px; }
-.why-card { text-align: center; padding: 32px 24px; border-radius: 12px; background: var(--white); box-shadow: 0 2px 16px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; display: grid; grid-template-rows: auto auto 1fr auto; align-items: start; justify-items: center; }
+.why-card { text-align: center; padding: 32px 24px; border-radius: 12px; background: var(--white); box-shadow: 0 2px 16px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; align-items: center; }
 .why-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
-.why-icon { width: 56px; height: 56px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gold-bg); }
+.why-icon { width: 56px; height: 56px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gold-bg); flex-shrink: 0; }
 .why-icon svg { width: 28px; height: 28px; stroke: var(--gold); }
-.why-card h4 { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
-.why-card p { font-size: 15px; color: var(--muted); line-height: 1.7; }
-.why-example { font-size: 13px; color: var(--gold); font-style: italic; padding-top: 16px; align-self: end; }
+.why-card h4 { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 12px; flex-shrink: 0; }
+.why-card-desc { font-size: 15px; color: var(--muted); line-height: 1.7; }
+.why-example { font-size: 13px; color: var(--gold); font-style: italic; padding-top: 16px; flex-shrink: 0; }
 .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
 .feat-card { display: flex; gap: 14px; padding: 20px; border: 1px solid var(--border); border-radius: 10px; transition: all 0.3s; }
 .feat-card:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(201,169,78,0.08); transform: translateY(-2px); }
@@ -853,7 +853,7 @@ section[id] { scroll-margin-top: 80px; }
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </div>
         <h4>Real-World Learning</h4>
-        <p>Students observe, document, and reflect as they move through real places, real conversations, and real social contexts in China.</p>
+        <p class="why-card-desc">Students observe, document, and reflect as they move through real places, real conversations, and real social contexts in China.</p>
         <p class="why-example">From Tsinghua classrooms to Shenzhen maker spaces</p>
       </div>
       <div class="why-card">
@@ -861,7 +861,7 @@ section[id] { scroll-margin-top: 80px; }
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
         </div>
         <h4>Culture in Context</h4>
-        <p>Students encounter China not only through landmarks, but through neighbourhoods, daily life, and the textures of contemporary society.</p>
+        <p class="why-card-desc">Students encounter China not only through landmarks, but through neighbourhoods, daily life, and the textures of contemporary society.</p>
         <p class="why-example">From hutong mornings to night market conversations</p>
       </div>
       <div class="why-card">
@@ -869,7 +869,7 @@ section[id] { scroll-margin-top: 80px; }
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
         </div>
         <h4>Future-Facing Discovery</h4>
-        <p>Innovation, mobility, technology, and urban change become part of the learning journey — not just the backdrop.</p>
+        <p class="why-card-desc">Innovation, mobility, technology, and urban change become part of the learning journey — not just the backdrop.</p>
         <p class="why-example">From bullet trains to AI labs</p>
       </div>
     </div>
@@ -1806,6 +1806,20 @@ if (skillBars) skillObserver.observe(skillBars);
     current = (current + 1) % imgs.length;
     imgs[current].classList.add('hero-bg-img-active');
   }, 6000);
+})();
+
+// Equalize why-card description heights
+(function() {
+  function equalizeWhyCards() {
+    var descs = document.querySelectorAll('.why-card-desc');
+    if (descs.length < 2) return;
+    descs.forEach(function(d) { d.style.minHeight = ''; });
+    var maxH = 0;
+    descs.forEach(function(d) { if (d.offsetHeight > maxH) maxH = d.offsetHeight; });
+    descs.forEach(function(d) { d.style.minHeight = maxH + 'px'; });
+  }
+  window.addEventListener('load', equalizeWhyCards);
+  window.addEventListener('resize', equalizeWhyCards);
 })();
 </script>
 </body>
