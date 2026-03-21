@@ -259,7 +259,8 @@ br.desktop-only { display: inline; }
 .dest-card .dc-tag { display: inline-block; font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 3px 10px; border-radius: 2px; background: var(--gold); color: var(--white); margin-bottom: 8px; }
 .dest-card h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); font-weight: 700; margin-bottom: 2px; position: relative; }
 .dest-card .dc-meta { font-size: 13px; color: var(--light); margin-bottom: 6px; }
-.dest-card .dc-theme { font-size: 14px; color: var(--muted); font-style: italic; margin-bottom: 12px; line-height: 1.5; }
+.dest-card .dc-theme { font-size: 13px; color: var(--muted); margin-bottom: 4px; line-height: 1.5; }
+.dest-card .dc-mission { font-size: 13px; color: var(--navy); font-style: italic; margin-top: 12px; margin-bottom: 12px; line-height: 1.6; opacity: 0.7; }
 .dest-card ul { list-style: none; }
 .dest-card ul li { font-size: 13px; color: var(--text); padding: 3px 0 3px 16px; position: relative; }
 .dest-card ul li::before { content: '—'; color: var(--gold); position: absolute; left: 0; font-weight: 700; }
@@ -803,7 +804,7 @@ section[id] { scroll-margin-top: 80px; }
     <ul class="nav-links">
       <li><a href="#why">Why</a></li>
       <li><a href="#expertise">Expertise</a></li>
-      <li><a href="#destinations">Destinations</a></li>
+      <li><a href="#destinations">Modules</a></li>
       <li><a href="#how-it-works">Programme</a></li>
       <li><a href="#outcomes">Outcomes</a></li>
       <li><a href="#safety">Safety</a></li>
@@ -822,7 +823,7 @@ section[id] { scroll-margin-top: 80px; }
 <div class="mobile-menu" id="mobile-menu">
   <a href="#why" onclick="closeMenu()">Why</a>
   <a href="#expertise" onclick="closeMenu()">Expertise</a>
-  <a href="#destinations" onclick="closeMenu()">Destinations</a>
+  <a href="#destinations" onclick="closeMenu()">Modules</a>
   <a href="#how-it-works" onclick="closeMenu()">Programme</a>
   <a href="#outcomes" onclick="closeMenu()">Outcomes</a>
   <a href="#safety" onclick="closeMenu()">Safety</a>
@@ -1075,15 +1076,15 @@ section[id] { scroll-margin-top: 80px; }
   <div class="container">
     <span class="deco-char" style="top: -20px; right: 20px;">行</span>
     <div class="section-header reveal">
-      <p class="section-label">Destinations</p>
+      <p class="section-label">Where Students Go</p>
       <div class="gold-line"></div>
-      <h2 class="section-title">Where Will We Go?</h2>
-      <p class="section-intro">Each city is a window into China's past, present, and future.</p>
+      <h2 class="section-title">Four Core Modules across Modern China</h2>
+      <p class="section-intro">Each city module is built around a distinct learning lens — with its own theme, duration, and set of core experiences.</p>
     </div>
 
     <div class="dest-note reveal">
       <span class="icon icon-gold"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
-      <p><strong>Modular Design</strong> — Combine 5-day city modules to create 5, 10, or 14-day programmes tailored to your school.</p>
+      <p>Core city modules are typically 5 days and can be combined into longer programmes tailored to your school.</p>
     </div>
 
     <div class="dest-grid reveal">
@@ -1095,16 +1096,11 @@ section[id] { scroll-margin-top: 80px; }
         </div>
         <span class="dc-tag">Core Module</span>
         <h3>Beijing</h3>
-        <p class="dc-meta">北京 · 5 Days</p>
-        <p class="dc-theme">Imperial history, national identity, living heritage</p>
-        <ul>
-          <li>The Great Wall at Mutianyu</li>
-          <li>Forbidden City &amp; Tiananmen Square</li>
-          <li>Temple of Heaven</li>
-          <li>Hutong exploration &amp; dumpling making</li>
-          <li>Calligraphy workshop</li>
-        </ul>
-        <a href="#get-started" class="dc-learn">Learn More →</a>
+        <p class="dc-meta">北京 · Origins, Identity, and Living Heritage</p>
+        <p class="dc-theme">Great Wall, imperial landmarks, and national memory</p>
+        <p class="dc-theme">Hutong life, calligraphy, and cultural practice</p>
+        <p class="dc-mission">A module focused on how history, identity, and continuity shape modern China.</p>
+        <a href="#get-started" class="dc-learn">View module →</a>
       </div>
       <div class="dest-card">
         <div class="dest-card-img">
@@ -1114,35 +1110,25 @@ section[id] { scroll-margin-top: 80px; }
         </div>
         <span class="dc-tag">Core Module</span>
         <h3>Shanghai</h3>
-        <p class="dc-meta">上海 · 5 Days</p>
-        <p class="dc-theme">Globalisation, urban energy, cultural fusion</p>
-        <ul>
-          <li>The Bund &amp; Pudong skyline</li>
-          <li>Yu Garden &amp; Old Town</li>
-          <li>School exchange with local students</li>
-          <li>Rural village walk</li>
-          <li>Street food &amp; market culture</li>
-        </ul>
-        <a href="#get-started" class="dc-learn">Learn More →</a>
+        <p class="dc-meta">上海 · Globalisation, Exchange, and Modern Chinese Identity</p>
+        <p class="dc-theme">The Bund, Pudong, and urban transformation</p>
+        <p class="dc-theme">Local exchange, neighbourhood discovery, and city life</p>
+        <p class="dc-mission">A module focused on commerce, culture, and China in a connected world.</p>
+        <a href="#get-started" class="dc-learn">View module →</a>
       </div>
       <div class="dest-card">
         <div class="dest-card-img">
-          <img src="https://images.unsplash.com/photo-1626526913691-df6b2c926301?w=600&q=80" alt="Guangdong" loading="lazy">
-          <span class="dc-img-char">粤</span>
-          <span class="dc-img-name">Guangdong</span>
+          <img src="https://images.unsplash.com/photo-1626526913691-df6b2c926301?w=600&q=80" alt="Shenzhen" loading="lazy">
+          <span class="dc-img-char">深</span>
+          <span class="dc-img-name">Shenzhen</span>
         </div>
         <span class="dc-tag">Core Module</span>
-        <h3>Guangdong</h3>
-        <p class="dc-meta">广东 · 珠三角 · 5 Days</p>
-        <p class="dc-theme">Innovation, manufacturing, southern Chinese culture</p>
-        <ul>
-          <li>Shenzhen tech company / innovation hub</li>
-          <li>Urban transformation case study</li>
-          <li>Student innovation pitch challenge</li>
-          <li>Shamian Island &amp; Pearl River cruise</li>
-          <li>Foshan crafts &amp; cultural heritage</li>
-        </ul>
-        <a href="#get-started" class="dc-learn">Learn More →</a>
+        <h3>Shenzhen</h3>
+        <p class="dc-meta">深圳 · Innovation, Making, and Future City Life</p>
+        <p class="dc-theme">Innovation ecosystems, robotics, and technology exposure</p>
+        <p class="dc-theme">Smart mobility, urban transformation, and modern infrastructure</p>
+        <p class="dc-mission">A module focused on design, industry, and future-facing learning.</p>
+        <a href="#get-started" class="dc-learn">View module →</a>
       </div>
       <div class="dest-card">
         <div class="dest-card-img">
@@ -1152,16 +1138,11 @@ section[id] { scroll-margin-top: 80px; }
         </div>
         <span class="dc-tag">Core Module</span>
         <h3>Hong Kong</h3>
-        <p class="dc-meta">香港 · 5 Days</p>
-        <p class="dc-theme">East-West crossroads, sustainability, global finance</p>
-        <ul>
-          <li>Victoria Harbour &amp; Star Ferry</li>
-          <li>Temple Street night culture</li>
-          <li>Mai Po Nature Reserve fieldwork</li>
-          <li>Lantau Island heritage trail</li>
-          <li>Final presentations &amp; reflection</li>
-        </ul>
-        <a href="#get-started" class="dc-learn">Learn More →</a>
+        <p class="dc-meta">香港 · Crossroads, Sustainability, and Global Outlook</p>
+        <p class="dc-theme">Harbour, density, and East–West urban histories</p>
+        <p class="dc-theme">Nature, field observation, and sustainability themes</p>
+        <p class="dc-mission">A module focused on comparison, reflection, and global perspective.</p>
+        <a href="#get-started" class="dc-learn">View module →</a>
       </div>
     </div>
 
@@ -1169,11 +1150,8 @@ section[id] { scroll-margin-top: 80px; }
       <p class="coming-label">More destinations in development</p>
       <div class="coming-row">
         <span class="coming-chip"><span class="cc-char">杭</span> Hangzhou</span>
-        <span class="coming-chip"><span class="cc-char">渝</span> Chongqing &amp; Chengdu</span>
+        <span class="coming-chip"><span class="cc-char">蓉</span> Chengdu</span>
         <span class="coming-chip"><span class="cc-char">西</span> Xi'an</span>
-        <span class="coming-chip"><span class="cc-char">疆</span> Xinjiang</span>
-        <span class="coming-chip"><span class="cc-char">藏</span> Tibet</span>
-        <span class="coming-chip"><span class="cc-char">蒙</span> Inner Mongolia</span>
       </div>
     </div>
 
