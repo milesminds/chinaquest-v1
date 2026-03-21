@@ -304,11 +304,10 @@ br.desktop-only { display: inline; }
 .gain-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
 .gain-detail { margin-top: 10px; font-size: 13px; opacity: 0.8; }
 
-.out-bar { display: flex; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); max-width: 700px; margin: 0 auto; }
-.out-item { flex: 1; text-align: center; padding: 16px 12px; border-right: 1px solid var(--border); }
-.out-item:last-child { border-right: none; }
-.out-item strong { display: block; font-size: 11px; color: var(--navy); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-.out-item span { font-size: 13px; color: var(--muted); }
+.out-bar { display: flex; justify-content: center; align-items: center; gap: 0; max-width: 760px; margin: 0 auto; padding: 14px 0; }
+.out-item { text-align: center; padding: 0 20px; position: relative; }
+.out-item:not(:last-child)::after { content: '·'; position: absolute; right: -3px; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 14px; opacity: 0.5; }
+.out-item strong { font-size: 13px; color: var(--navy); font-weight: 600; letter-spacing: 0.3px; }
 
 /* ══════════════════════════════════════
    7. SAFETY
@@ -464,9 +463,9 @@ br.desktop-only { display: inline; }
   .cred-stats { grid-template-columns: 1fr 1fr; }
   .flow-row { grid-template-columns: 1fr 1fr; }
   .inc-grid { grid-template-columns: 1fr; }
-  .out-bar { flex-direction: column; }
-  .out-item { border-right: none; border-bottom: 1px solid var(--border); }
-  .out-item:last-child { border-bottom: none; }
+  .out-bar { flex-wrap: wrap; gap: 8px; }
+  .out-item { padding: 0 12px; }
+  .out-item:not(:last-child)::after { display: none; }
   .steps-row { flex-direction: column; gap: 24px; }
   .step-item::after { display: none; }
   .testimonials { gap: 16px; }
@@ -1174,7 +1173,7 @@ section[id] { scroll-margin-top: 80px; }
       <p class="section-label">What Students Gain</p>
       <div class="gold-line"></div>
       <h2 class="section-title">What Students Gain</h2>
-      <p class="section-intro">Students return with more than memories — they gain confidence, perspective, and meaningful evidence of learning.</p>
+      <p class="section-intro">Students return with more than memories — they gain confidence, perspective, and evidence of meaningful learning.</p>
     </div>
 
     <div class="gain-grid reveal">
@@ -1182,7 +1181,7 @@ section[id] { scroll-margin-top: 80px; }
         <span class="icon icon-navy"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
         <h4>Tangible Learning Evidence</h4>
         <p>Students return with documented observations, reflective journals, creative outputs, and a certificate of completion that can support TY portfolio work.</p>
-        <p class="gain-detail">Depending on the module, students may also produce interview notes, short-form research tasks, visual documentation, or digital storytelling outputs.</p>
+        <p class="gain-detail">Depending on the module, students may also produce interview notes, short research tasks, visual documentation, or digital storytelling work.</p>
       </div>
       <div class="gain-card">
         <span class="icon icon-navy"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
@@ -1194,7 +1193,7 @@ section[id] { scroll-margin-top: 80px; }
         <span class="icon icon-navy"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
         <h4>Career &amp; Future Pathways</h4>
         <p>Exposure to innovation, urban change, and professional environments helps students connect academic interests with future possibilities.</p>
-        <p class="gain-detail">From technology ecosystems to cultural institutions and university settings, students gain first-hand insight into the kinds of worlds they may one day study, work in, or help shape.</p>
+        <p class="gain-detail">From technology ecosystems to cultural institutions and university settings, students gain first-hand insight into the worlds they may one day study in, work in, or help shape.</p>
       </div>
     </div>
 
