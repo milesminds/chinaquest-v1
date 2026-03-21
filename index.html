@@ -187,7 +187,7 @@ br.desktop-only { display: inline; }
 
 /* How It Works — Cycle diagram */
 .cycle-wrap { display: flex; justify-content: center; margin-top: 24px; }
-.cycle-svg { width: 100%; max-width: 900px; height: auto; display: block; margin: 0 auto; }
+.cycle-svg { width: 100%; max-width: 1020px; height: auto; display: block; margin: 0 auto; }
 
 /* How It Works — Light pillars */
 .how-pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 12px; }
@@ -805,7 +805,7 @@ section[id] { scroll-margin-top: 80px; }
     <ul class="nav-links">
       <li><a href="#why">Why</a></li>
       <li><a href="#destinations">Modules</a></li>
-      <li><a href="#how-it-works">Programme</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
       <li><a href="#outcomes">Outcomes</a></li>
       <li><a href="#safety">Safety</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -824,7 +824,7 @@ section[id] { scroll-margin-top: 80px; }
   <a href="#why" onclick="closeMenu()">Why</a>
   <a href="#expertise" onclick="closeMenu()">Expertise</a>
   <a href="#destinations" onclick="closeMenu()">Modules</a>
-  <a href="#how-it-works" onclick="closeMenu()">Programme</a>
+  <a href="#how-it-works" onclick="closeMenu()">How It Works</a>
   <a href="#outcomes" onclick="closeMenu()">Outcomes</a>
   <a href="#safety" onclick="closeMenu()">Safety</a>
   <a href="#faq" onclick="closeMenu()">FAQ</a>
@@ -932,13 +932,13 @@ section[id] { scroll-margin-top: 80px; }
     <!-- Daily Learning Cycle — ring diagram -->
     <p class="sub-label reveal" style="font-size: 16px; letter-spacing: 3px;">Daily Learning Cycle</p>
     <div class="cycle-wrap reveal">
-      <svg class="cycle-svg" viewBox="-80 80 900 450">
+      <svg class="cycle-svg" viewBox="-200 80 1020 450">
         <defs>
           <!-- Text paths along mid-radius arcs -->
           <path id="tarc1" d="M374.9,158.3 A142.5,142.5 0 0,1 498.3,265.5" fill="none"/>
           <path id="tarc2" d="M501.7,314.9 A142.5,142.5 0 0,1 394.5,438.3" fill="none"/>
-          <path id="tarc3" d="M345.1,441.7 A142.5,142.5 0 0,1 221.7,334.5" fill="none"/>
-          <path id="tarc4" d="M218.3,285.1 A142.5,142.5 0 0,1 325.5,161.7" fill="none"/>
+          <path id="tarc3" d="M221.7,334.5 A142.5,142.5 0 0,0 345.1,441.7" fill="none"/>
+          <path id="tarc4" d="M325.5,161.7 A142.5,142.5 0 0,0 218.3,285.1" fill="none"/>
         </defs>
 
         <!-- ═══ 4 Segments: flat tail + prominent flared arrowhead ═══ -->
@@ -954,8 +954,8 @@ section[id] { scroll-margin-top: 80px; }
         <!-- ═══ Segment labels via textPath ═══ -->
         <text fill="#fff" font-size="14" font-weight="700" letter-spacing="3" opacity="0.95"><textPath href="#tarc1" startOffset="50%" text-anchor="middle" dy="5">EXPLORATION</textPath></text>
         <text fill="#fff" font-size="14" font-weight="700" letter-spacing="3" opacity="0.95"><textPath href="#tarc2" startOffset="50%" text-anchor="middle" dy="5">REFLECTION</textPath></text>
-        <text fill="#fff" font-size="14" font-weight="700" letter-spacing="3" opacity="0.95"><textPath href="#tarc3" startOffset="50%" text-anchor="middle" dy="5">CHALLENGE</textPath></text>
-        <text fill="#fff" font-size="14" font-weight="700" letter-spacing="3" opacity="0.95"><textPath href="#tarc4" startOffset="50%" text-anchor="middle" dy="5">CIRCLE</textPath></text>
+        <text fill="#fff" font-size="14" font-weight="700" letter-spacing="3" opacity="0.95"><textPath href="#tarc3" startOffset="50%" text-anchor="middle" dy="-3">CHALLENGE</textPath></text>
+        <text fill="#fff" font-size="14" font-weight="700" letter-spacing="3" opacity="0.95"><textPath href="#tarc4" startOffset="50%" text-anchor="middle" dy="-3">CIRCLE</textPath></text>
 
         <!-- ═══ Elbow connectors + Descriptions ═══ -->
         <!-- 1. Exploration (top-right → right) -->
@@ -1115,17 +1115,11 @@ section[id] { scroll-margin-top: 80px; }
   </div>
 </section>
 
-<!-- ══════════ MID-CTA: After Destinations ══════════ -->
-<div class="mid-cta mid-cta--navy">
-  <p>Ready to explore China with your students?</p>
-  <a href="#get-started" class="mid-cta-btn">Get Started</a>
-</div>
-
 <section class="section" id="outcomes">
   <div class="container">
     <span class="deco-char" style="top: -20px; right: 20px;">成</span>
     <div class="section-header reveal">
-      <p class="section-label">What Students Gain</p>
+      <p class="section-label">Student Outcomes</p>
       <div class="gold-line"></div>
       <h2 class="section-title">What Students Gain</h2>
       <p class="section-intro">Students return with more than memories — they gain confidence, perspective, and evidence of meaningful learning.</p>
@@ -1161,12 +1155,6 @@ section[id] { scroll-margin-top: 80px; }
   </div>
 </section>
 
-<!-- ══════════ MID-CTA: After Outcomes ══════════ -->
-<div class="mid-cta mid-cta--gold">
-  <p>Give your students an experience they'll remember</p>
-  <a href="#get-started" class="mid-cta-btn">Start a Conversation</a>
-</div>
-
 <!-- ══════════ 7. SAFETY & SCHOOL SUPPORT ══════════ -->
 <section class="section section-alt" id="safety">
   <div class="container">
@@ -1174,7 +1162,7 @@ section[id] { scroll-margin-top: 80px; }
     <div class="section-header reveal">
       <p class="section-label">Safety &amp; School Support</p>
       <div class="gold-line"></div>
-      <h2 class="section-title">Supporting Student Wellbeing at Every Stage of the Journey</h2>
+      <h2 class="section-title">Supporting Student Wellbeing<br class="desktop-only"> at Every Stage</h2>
       <p class="section-intro">China Quest is designed to support student wellbeing, clear supervision, and practical collaboration with schools throughout the journey.</p>
     </div>
 
