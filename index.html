@@ -935,9 +935,13 @@ section[id] { scroll-margin-top: 80px; }
       <svg class="cycle-svg" viewBox="-200 80 1020 450">
         <defs>
           <!-- Text paths along mid-radius arcs -->
+          <!-- tarc1: Exploration (top-right, ~-49deg center) CW = text reads left-to-right ✓ -->
           <path id="tarc1" d="M374.9,158.3 A142.5,142.5 0 0,1 498.3,265.5" fill="none"/>
-          <path id="tarc2" d="M501.7,314.9 A142.5,142.5 0 0,1 394.5,438.3" fill="none"/>
+          <!-- tarc2: Reflection (bottom-right, ~41deg center) reversed CCW so text reads correctly -->
+          <path id="tarc2" d="M394.5,438.3 A142.5,142.5 0 0,0 501.7,314.9" fill="none"/>
+          <!-- tarc3: Challenge (bottom-left, ~131deg center) reversed CCW -->
           <path id="tarc3" d="M221.7,334.5 A142.5,142.5 0 0,0 345.1,441.7" fill="none"/>
+          <!-- tarc4: Circle (top-left, ~221deg center) reversed CCW -->
           <path id="tarc4" d="M325.5,161.7 A142.5,142.5 0 0,0 218.3,285.1" fill="none"/>
         </defs>
 
@@ -953,7 +957,7 @@ section[id] { scroll-margin-top: 80px; }
 
         <!-- ═══ Segment labels via textPath ═══ -->
         <text fill="#fff" font-size="14" font-weight="700" letter-spacing="3" opacity="0.95"><textPath href="#tarc1" startOffset="50%" text-anchor="middle" dy="5">EXPLORATION</textPath></text>
-        <text fill="#fff" font-size="14" font-weight="700" letter-spacing="3" opacity="0.95"><textPath href="#tarc2" startOffset="50%" text-anchor="middle" dy="5">REFLECTION</textPath></text>
+        <text fill="#fff" font-size="14" font-weight="700" letter-spacing="3" opacity="0.95"><textPath href="#tarc2" startOffset="50%" text-anchor="middle" dy="-3">REFLECTION</textPath></text>
         <text fill="#fff" font-size="14" font-weight="700" letter-spacing="3" opacity="0.95"><textPath href="#tarc3" startOffset="50%" text-anchor="middle" dy="-3">CHALLENGE</textPath></text>
         <text fill="#fff" font-size="14" font-weight="700" letter-spacing="3" opacity="0.95"><textPath href="#tarc4" startOffset="50%" text-anchor="middle" dy="-3">CIRCLE</textPath></text>
 
