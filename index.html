@@ -297,11 +297,12 @@ br.desktop-only { display: inline; }
 /* ══════════════════════════════════════
    6. STUDENT OUTCOMES
    ══════════════════════════════════════ */
-.gain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 40px; }
-.gain-group h3 { font-size: 18px; font-weight: 600; color: var(--navy); margin-bottom: 24px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); display: inline-block; }
-.gi { display: flex; gap: 14px; margin-bottom: 20px; }
-.gi h4 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
-.gi p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.gain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-bottom: 40px; }
+.gain-card { padding: 28px 24px; border-radius: 12px; background: var(--white); box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+.gain-card .icon { margin-bottom: 16px; }
+.gain-card h4 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+.gain-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.gain-detail { margin-top: 10px; font-size: 13px; opacity: 0.8; }
 
 .out-bar { display: flex; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); max-width: 700px; margin: 0 auto; }
 .out-item { flex: 1; text-align: center; padding: 16px 12px; border-right: 1px solid var(--border); }
@@ -1170,58 +1171,38 @@ section[id] { scroll-margin-top: 80px; }
   <div class="container">
     <span class="deco-char" style="top: -20px; right: 20px;">成</span>
     <div class="section-header reveal">
-      <p class="section-label">Student Outcomes</p>
+      <p class="section-label">What Students Gain</p>
       <div class="gold-line"></div>
-      <h2 class="section-title">What Will Students Gain?</h2>
-      <p class="section-intro">Skills, confidence, and global understanding that last a lifetime.</p>
+      <h2 class="section-title">What Students Gain</h2>
+      <p class="section-intro">Students return with more than memories — they gain confidence, perspective, and meaningful evidence of learning.</p>
     </div>
 
     <div class="gain-grid reveal">
-      <div class="gain-group">
-        <h3>Personal &amp; Cognitive Growth</h3>
-        <div class="gi">
-          <span class="icon icon-navy"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg></span>
-          <div><h4>Confidence &amp; Independence</h4><p>Navigate new environments and take responsibility for decisions, building adaptability and initiative.</p></div>
-        </div>
-        <div class="gi">
-          <span class="icon icon-navy"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-          <div><h4>Intercultural Communication</h4><p>Diverse peer learning fosters empathy, collaboration, and respectful cross-cultural dialogue.</p></div>
-        </div>
-        <div class="gi">
-          <span class="icon icon-navy"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></span>
-          <div><h4>Critical &amp; Reflective Thinking</h4><p>Daily inquiry-based tasks train deeper questioning and multi-perspective engagement.</p></div>
-        </div>
+      <div class="gain-card">
+        <span class="icon icon-navy"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+        <h4>Tangible Learning Evidence</h4>
+        <p>Students return with documented observations, reflective journals, creative outputs, and a certificate of completion that can support TY portfolio work.</p>
+        <p class="gain-detail">Depending on the module, students may also produce interview notes, short-form research tasks, visual documentation, or digital storytelling outputs.</p>
       </div>
-      <div class="gain-group">
-        <h3>Global &amp; Future Readiness</h3>
-        <div class="gi">
-          <span class="icon icon-navy"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
-          <div><h4>Global &amp; Cultural Understanding</h4><p>Develop grounded understanding of cultural difference and global interdependence.</p></div>
-        </div>
-        <div class="gi">
-          <span class="icon icon-navy"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-          <div><h4>Contextual Understanding of China</h4><p>Encounter real-world China — from heritage to tech innovation — through direct engagement.</p></div>
-        </div>
-        <div class="gi">
-          <span class="icon icon-navy"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
-          <div><h4>TY Portfolio &amp; Learning Output</h4><p>Structured tasks produce meaningful evidence of learning for TY portfolios.</p></div>
-        </div>
+      <div class="gain-card">
+        <span class="icon icon-navy"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+        <h4>Global Fluency &amp; Core Competencies</h4>
+        <p>Through teamwork, reflection, and cross-cultural engagement, students strengthen adaptability, communication, collaboration, and critical thinking.</p>
+        <p class="gain-detail">The programme helps students move beyond passive observation and develop the confidence to interpret, question, and respond to unfamiliar environments.</p>
+      </div>
+      <div class="gain-card">
+        <span class="icon icon-navy"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+        <h4>Career &amp; Future Pathways</h4>
+        <p>Exposure to innovation, urban change, and professional environments helps students connect academic interests with future possibilities.</p>
+        <p class="gain-detail">From technology ecosystems to cultural institutions and university settings, students gain first-hand insight into the kinds of worlds they may one day study, work in, or help shape.</p>
       </div>
     </div>
 
     <div class="out-bar reveal">
-      <div class="out-item"><strong>Journals</strong><span>Daily Reflection</span></div>
-      <div class="out-item"><strong>Videos</strong><span>Creative Shorts</span></div>
-      <div class="out-item"><strong>Portfolio</strong><span>TY Evidence</span></div>
-      <div class="out-item"><strong>Certificate</strong><span>Completion</span></div>
-    </div>
-
-    <div class="skill-bars reveal" id="skill-bars">
-      <div class="skill-bar"><div class="skill-bar-header"><span class="skill-bar-name">Cultural Awareness</span><span class="skill-bar-pct">95%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div></div>
-      <div class="skill-bar"><div class="skill-bar-header"><span class="skill-bar-name">Critical Thinking</span><span class="skill-bar-pct">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div></div>
-      <div class="skill-bar"><div class="skill-bar-header"><span class="skill-bar-name">Independence</span><span class="skill-bar-pct">92%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div></div>
-      <div class="skill-bar"><div class="skill-bar-header"><span class="skill-bar-name">Global Understanding</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div></div>
-      <p class="skill-bar-note">Based on programme assessment framework</p>
+      <div class="out-item"><strong>Reflection Journals</strong></div>
+      <div class="out-item"><strong>Creative Outputs</strong></div>
+      <div class="out-item"><strong>TY Portfolio Evidence</strong></div>
+      <div class="out-item"><strong>Certificate of Completion</strong></div>
     </div>
   </div>
 </section>
