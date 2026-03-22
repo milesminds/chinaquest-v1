@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>China Quest — School Information Pack</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
+:root { --navy: #1B2A4A; --gold: #C9A94E; --gold-light: #F5F0E8; --white: #fff; --text: #1F2937; --muted: #6B7280; --light: #9CA3AF; --border: #E8E2D8; --bg: #FAFAF8; }
+* { margin:0; padding:0; box-sizing:border-box; }
+@page { size: A4; margin: 0; }
+body { font-family: 'Inter', -apple-system, sans-serif; color: var(--text); line-height: 1.65; background: #eee; margin: 0; }
+
+.page { width: 210mm; height: 297mm; margin: 10mm auto; background: var(--white); position: relative; overflow: hidden; box-shadow: 0 2px 20px rgba(0,0,0,0.1); page-break-after: always; page-break-inside: avoid; }
+@media print {
+  body { background: #fff; margin: 0; }
+  .page { margin: 0; box-shadow: none; }
+}
+
+/* Cover */
+.cover { background: var(--navy); color: #fff; padding: 50mm 18mm 20mm; height: 297mm; display: flex; flex-direction: column; justify-content: space-between; page-break-after: always; }
+.cover-top { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.cover-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 6mm; }
+.cover-line { width: 30mm; height: 1.5px; background: var(--gold); margin-bottom: 8mm; }
+.cover h1 { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; line-height: 1.2; margin-bottom: 5mm; }
+.cover h1 span { color: var(--gold); }
+.cover .sub { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 130mm; }
+.cover-meta { font-size: 9px; color: rgba(255,255,255,0.3); display: flex; justify-content: space-between; padding-top: 6mm; border-top: 1px solid rgba(255,255,255,0.08); }
+.cover-badge { font-size: 9px; padding: 2mm 4mm; border: 1px solid rgba(201,169,78,0.4); border-radius: 3mm; color: var(--gold); letter-spacing: 0.5px; display: inline-block; margin-right: 2mm; margin-top: 6mm; }
+
+/* Content */
+.content { padding: 16mm 18mm 12mm; height: 297mm; display: flex; flex-direction: column; overflow: hidden; }
+.page-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 3mm; }
+.page-line { width: 25mm; height: 1.5px; background: var(--gold); margin-bottom: 6mm; }
+.page-title { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); font-weight: 700; margin-bottom: 3mm; line-height: 1.25; }
+.page-sub { font-size: 12px; color: var(--muted); margin-bottom: 6mm; line-height: 1.6; }
+
+h3 { font-size: 14px; color: var(--navy); font-weight: 700; margin-top: 6mm; margin-bottom: 3mm; }
+h4 { font-size: 12px; color: var(--navy); font-weight: 600; margin-top: 4mm; margin-bottom: 2mm; }
+p { font-size: 11px; margin-bottom: 3mm; line-height: 1.65; }
+.small { font-size: 10px; color: var(--muted); }
+
+table { width: 100%; border-collapse: collapse; margin: 3mm 0 5mm; font-size: 10.5px; }
+th { background: var(--navy); color: #fff; padding: 2.5mm 4mm; text-align: left; font-weight: 600; font-size: 10px; }
+td { padding: 2.5mm 4mm; border-bottom: 1px solid var(--border); }
+
+.card-row { display: flex; gap: 4mm; margin: 3mm 0; }
+.card { flex: 1; padding: 4mm; border-radius: 3mm; background: var(--bg); border: 1px solid var(--border); }
+.card h4 { font-size: 11px; margin-top: 0; }
+.card p { font-size: 10px; margin-bottom: 0; }
+
+.mod { border: 1px solid var(--border); border-radius: 3mm; padding: 5mm; margin-bottom: 4mm; }
+.mod h4 { font-size: 13px; margin-top: 0; }
+.mod .theme { font-size: 10px; color: var(--gold); font-weight: 600; margin-bottom: 2mm; }
+.mod p { font-size: 10px; margin-bottom: 1mm; }
+.mod .mission { font-style: italic; color: var(--muted); font-size: 10px; margin-top: 2mm; }
+.mod ul { padding-left: 5mm; font-size: 10px; margin: 2mm 0; }
+.mod li { margin-bottom: 1mm; }
+
+.inc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin: 3mm 0; }
+.inc-box { padding: 4mm; border-radius: 3mm; }
+.inc-yes { background: #F0FAF0; border: 1px solid #C6E6C6; }
+.inc-no { background: #FFF5F5; border: 1px solid #FECACA; }
+.inc-box h4 { font-size: 11px; margin-top: 0; }
+.inc-box ul { padding-left: 4mm; font-size: 10px; }
+.inc-box li { margin-bottom: 1mm; }
+
+.note { padding: 4mm 5mm; border-left: 2.5px solid var(--gold); background: var(--gold-light); border-radius: 0 3mm 3mm 0; margin: 3mm 0; font-size: 10px; line-height: 1.6; }
+
+.safe-items { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 3mm 0; }
+.safe-item { padding: 4mm; border-left: 2px solid var(--gold); background: var(--bg); border-radius: 0 3mm 3mm 0; }
+.safe-item h4 { font-size: 11px; margin-top: 0; margin-bottom: 1mm; }
+.safe-item p { font-size: 9.5px; color: var(--muted); margin: 0; }
+
+.contact { background: var(--navy); color: #fff; padding: 8mm; border-radius: 4mm; margin-top: auto; text-align: center; }
+.contact h3 { color: var(--gold); font-size: 16px; margin-bottom: 3mm; }
+.contact p { color: rgba(255,255,255,0.6); font-size: 11px; margin-bottom: 1mm; }
+.contact a { color: var(--gold); text-decoration: none; font-weight: 600; }
+
+.page-footer { position: absolute; bottom: 5mm; left: 18mm; right: 18mm; font-size: 8px; color: var(--light); display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<!-- ═══ PAGE 1: COVER ═══ -->
+<div class="page cover">
+  <div class="cover-top">
+    <div class="cover-label">School Information Pack</div>
+    <div class="cover-line"></div>
+    <h1><span>China Quest</span></h1>
+    <h1>Structured International<br>Learning Programme</h1>
+    <p class="sub">A structured educational journey through China for schools seeking cultural depth, real-world learning, and meaningful student outcomes.</p>
+    <div>
+      <span class="cover-badge">Ages 14–18</span>
+      <span class="cover-badge">TY Compatible</span>
+      <span class="cover-badge">Modular Design</span>
+      <span class="cover-badge">From €2,990</span>
+    </div>
+  </div>
+  <div class="cover-meta">
+    <span>Miles Minds Limited · Ireland · Confidential</span>
+    <span>chinaquest.milesminds.com</span>
+  </div>
+</div>
+
+<!-- ═══ PAGE 2: PROGRAMME OVERVIEW ═══ -->
+<div class="page content">
+  <p class="page-label">Programme Overview</p>
+  <div class="page-line"></div>
+  <div class="page-title">Programme at a Glance</div>
+
+  <table>
+    <tr><th>Parameter</th><th>Details</th></tr>
+    <tr><td><strong>Target Age</strong></td><td>14–18 years</td></tr>
+    <tr><td><strong>Group Size</strong></td><td>10–30 students</td></tr>
+    <tr><td><strong>Duration</strong></td><td>5–14 days (modular, combinable)</td></tr>
+    <tr><td><strong>Format</strong></td><td>Summer programme / Transition Year / School-designed module</td></tr>
+    <tr><td><strong>Supervision</strong></td><td>1:8 bilingual leader-to-student ratio</td></tr>
+    <tr><td><strong>Pricing</strong></td><td>From €2,990 per student (5-day module, all-inclusive*)</td></tr>
+    <tr><td><strong>Accommodation</strong></td><td>Quality 3–4 star hotels, twin/triple supervised rooms</td></tr>
+    <tr><td><strong>Teacher Accompaniment</strong></td><td>Schools welcome to nominate a teacher (travel supported)</td></tr>
+  </table>
+
+  <h3>Learning Framework</h3>
+  <p>China Quest is built on three learning pillars delivered through a daily cycle of structured inquiry:</p>
+
+  <div class="card-row">
+    <div class="card"><h4>Evidence-Based Learning</h4><p>Guided observation, discussion, reflection, and documented outputs</p></div>
+    <div class="card"><h4>Authentic Cultural Immersion</h4><p>Neighbourhoods, daily life, meaningful interaction — beyond tourism</p></div>
+    <div class="card"><h4>Next-Gen Innovation</h4><p>Robotics, AI, mobility, connecting interests with future pathways</p></div>
+  </div>
+
+  <h3>Daily Learning Cycle</h3>
+  <table>
+    <tr><th>Step</th><th>Activity</th><th>Purpose</th></tr>
+    <tr><td><strong>1. Exploration</strong></td><td>Site visits, expert encounters</td><td>Direct observation and exposure</td></tr>
+    <tr><td><strong>2. Reflection</strong></td><td>Journaling, small group discussion</td><td>Processing and meaning-making</td></tr>
+    <tr><td><strong>3. Challenge</strong></td><td>Interview, sketch, document tasks</td><td>Active inquiry and critical thinking</td></tr>
+    <tr><td><strong>4. Circle</strong></td><td>Group debrief, peer exchange</td><td>Shared learning and perspective</td></tr>
+  </table>
+
+  <div class="page-footer"><span>China Quest · School Information Pack · Confidential</span><span>2</span></div>
+</div>
+
+<!-- ═══ PAGE 3: BEIJING MODULE ═══ -->
+<div class="page content">
+  <p class="page-label">City Module — Beijing</p>
+  <div class="page-line"></div>
+  <div class="page-title">Beijing: Roots, Identity, and Living Heritage</div>
+  <p class="page-sub">A module focused on how history, memory, and identity shape modern China.</p>
+
+  <h3>Core Experiences</h3>
+  <table>
+    <tr><th>Day</th><th>Theme</th><th>Core Activities</th></tr>
+    <tr><td>Day 1</td><td>Arrival &amp; Orientation</td><td>Airport pickup, hotel check-in, neighbourhood walk, team briefing, welcome dinner</td></tr>
+    <tr><td>Day 2</td><td>Imperial History</td><td>Great Wall (Mutianyu section), Forbidden City, guided historical context, evening reflection</td></tr>
+    <tr><td>Day 3</td><td>Culture &amp; Craft</td><td>Hutong exploration, calligraphy workshop, local family cooking experience, peer circle</td></tr>
+    <tr><td>Day 4</td><td>Innovation &amp; Future</td><td>University campus visit (Tsinghua/PKU), tech park tour, student innovation challenge</td></tr>
+    <tr><td>Day 5</td><td>Reflection &amp; Departure</td><td>Morning reflection session, group showcase, certificate ceremony, farewell lunch</td></tr>
+  </table>
+
+  <div class="note">This is an indicative itinerary. All programmes are co-designed with the school and can be adjusted to fit specific learning goals, student interests, and scheduling requirements.</div>
+
+  <h3>Learning Outcomes</h3>
+  <ul style="font-size:10.5px;padding-left:5mm;">
+    <li>Understanding of Chinese imperial history and its modern legacy</li>
+    <li>Experience of living cultural heritage through hutong life and traditional craft</li>
+    <li>Exposure to China's top academic institutions</li>
+    <li>Practice in observation, documentation, and reflective writing</li>
+    <li>Cross-cultural communication and team collaboration</li>
+  </ul>
+
+  <div class="page-footer"><span>China Quest · School Information Pack · Confidential</span><span>3</span></div>
+</div>
+
+<!-- ═══ PAGE 4: SHANGHAI MODULE ═══ -->
+<div class="page content">
+  <p class="page-label">City Module — Shanghai</p>
+  <div class="page-line"></div>
+  <div class="page-title">Shanghai: Global Interface, Exchange, and Modern Chinese Identity</div>
+  <p class="page-sub">A module focused on global connection, cultural fusion, and city life in contemporary China.</p>
+
+  <h3>Core Experiences</h3>
+  <table>
+    <tr><th>Day</th><th>Theme</th><th>Core Activities</th></tr>
+    <tr><td>Day 1</td><td>Arrival &amp; Orientation</td><td>Airport pickup, Pudong skyline walk, team briefing, welcome dinner</td></tr>
+    <tr><td>Day 2</td><td>Urban Transformation</td><td>The Bund historical walk, Pudong vs Puxi contrast study, urban observation challenge</td></tr>
+    <tr><td>Day 3</td><td>Culture &amp; Exchange</td><td>Yu Garden &amp; Old Town, school exchange with local students, peer dialogue session</td></tr>
+    <tr><td>Day 4</td><td>Neighbourhoods &amp; Daily Life</td><td>Lane house (lilong) exploration, local market visit, street food culture, reflection circle</td></tr>
+    <tr><td>Day 5</td><td>Reflection &amp; Departure</td><td>Morning reflection, group showcase, certificate ceremony, departure</td></tr>
+  </table>
+
+  <div class="note">Shanghai's school exchange component can be tailored to match your students' age group and interests. We work with partner schools across the city.</div>
+
+  <div class="page-footer"><span>China Quest · School Information Pack · Confidential</span><span>4</span></div>
+</div>
+
+<!-- ═══ PAGE 5: SHENZHEN + HK MODULES ═══ -->
+<div class="page content">
+  <p class="page-label">City Modules — Shenzhen &amp; Hong Kong</p>
+  <div class="page-line"></div>
+
+  <div class="mod">
+    <h4>Shenzhen: Future Ecosystems, Innovation, and STEM Exploration</h4>
+    <div class="theme">A module focused on design, making, and innovation</div>
+    <ul>
+      <li>Technology company visit (robotics, AI, or digital economy)</li>
+      <li>Huaqiangbei electronics market — grassroots innovation ecosystem</li>
+      <li>Maker space hands-on workshop</li>
+      <li>Urban transformation case study (OCT Creative Park)</li>
+      <li>Student innovation pitch challenge</li>
+    </ul>
+    <div class="mission">Ideal for schools with STEM focus, design thinking curriculum, or entrepreneurship programmes.</div>
+  </div>
+
+  <div class="mod">
+    <h4>Hong Kong: Capstone Perspective, Sustainability, and Global Outlook</h4>
+    <div class="theme">A module focused on comparison, reflection, and global perspective</div>
+    <ul>
+      <li>Victoria Harbour &amp; Star Ferry — city as text</li>
+      <li>East–West urban histories walking tour</li>
+      <li>Field-based sustainability observation (Mai Po or Lantau)</li>
+      <li>Local community and neighbourhood discovery</li>
+      <li>Final programme reflection, showcase, and certificate ceremony</li>
+    </ul>
+    <div class="mission">Recommended as a capstone module. Its comparative and reflective focus helps students synthesise learning from earlier modules.</div>
+  </div>
+
+  <div class="note">Additional city modules (Hangzhou, Chengdu, Xi'an) are available on request. Multi-module programmes can be designed as 10-day or 14-day journeys combining two or three cities.</div>
+
+  <div class="page-footer"><span>China Quest · School Information Pack · Confidential</span><span>5</span></div>
+</div>
+
+<!-- ═══ PAGE 6: STUDENT OUTCOMES ═══ -->
+<div class="page content">
+  <p class="page-label">Student Outcomes</p>
+  <div class="page-line"></div>
+  <div class="page-title">What Students Gain</div>
+  <p class="page-sub">Students return with more than memories — they gain confidence, perspective, and evidence of meaningful learning.</p>
+
+  <h3>Tangible Learning Evidence</h3>
+  <p>Students return with documented observations, reflective journals, creative outputs, and a certificate of completion. Depending on the module, students may also produce interview notes, short research tasks, visual documentation, or digital storytelling work. All outputs are designed to support TY portfolio submission.</p>
+
+  <h3>Global Fluency &amp; Core Competencies</h3>
+  <p>Through teamwork, reflection, and cross-cultural engagement, students strengthen adaptability, communication, collaboration, and critical thinking. The programme helps students move beyond passive observation and develop the confidence to interpret, question, and respond to unfamiliar environments.</p>
+
+  <h3>Career &amp; Future Pathways</h3>
+  <p>Exposure to innovation, urban change, and professional environments helps students connect academic interests with future possibilities. From technology ecosystems to cultural institutions and university settings, students gain first-hand insight into the worlds they may one day study in, work in, or help shape.</p>
+
+  <h3>Programme Outputs</h3>
+  <table>
+    <tr><th>Output</th><th>Description</th><th>TY Relevance</th></tr>
+    <tr><td>Reflection Journal</td><td>Daily structured reflections</td><td>Portfolio evidence, personal development</td></tr>
+    <tr><td>Creative Outputs</td><td>Photography, sketches, writing, digital work</td><td>Creative expression, documentation skills</td></tr>
+    <tr><td>Challenge Responses</td><td>Interview notes, observation logs, research tasks</td><td>Inquiry skills, critical thinking</td></tr>
+    <tr><td>Certificate of Completion</td><td>Formal programme certificate</td><td>TY record, college application support</td></tr>
+  </table>
+
+  <div class="note">Some programme elements may also align with aspects of Gaisce, depending on each student's goals and school or PAL guidance. We recommend discussing this with your school in advance.</div>
+
+  <div class="page-footer"><span>China Quest · School Information Pack · Confidential</span><span>6</span></div>
+</div>
+
+<!-- ═══ PAGE 7: SAFETY & PRACTICAL ═══ -->
+<div class="page content">
+  <p class="page-label">Safety &amp; School Support</p>
+  <div class="page-line"></div>
+  <div class="page-title">Supporting Student Wellbeing</div>
+  <p class="page-sub">China Quest is designed to support student wellbeing, clear supervision, and practical collaboration with schools throughout the journey.</p>
+
+  <div class="safe-items">
+    <div class="safe-item"><h4>Clear Supervision</h4><p>Experienced bilingual leaders with structured daily coordination. Maximum 1:8 leader-to-student ratio.</p></div>
+    <div class="safe-item"><h4>Risk-Aware Planning</h4><p>Route planning, activity review, emergency response procedures, and clear communication protocols.</p></div>
+    <div class="safe-item"><h4>School-Facing Support</h4><p>Schools can nominate a teacher. Pre-trip briefing, daily updates available, post-trip summary.</p></div>
+    <div class="safe-item"><h4>Student Wellbeing</h4><p>Accommodation, transport, meals, insurance, medical access, and communication all built into planning.</p></div>
+  </div>
+
+  <h3>What's Included</h3>
+  <div class="inc-grid">
+    <div class="inc-box inc-yes">
+      <h4>✓ Included in Programme Fee</h4>
+      <ul>
+        <li>All accommodation (hotel, twin/triple, supervised)</li>
+        <li>All meals (breakfast, lunch, dinner)</li>
+        <li>All domestic transport within China</li>
+        <li>All entry fees &amp; activity costs</li>
+        <li>International travel &amp; health insurance</li>
+        <li>24/7 bilingual support team</li>
+        <li>Learning materials &amp; reflection journal</li>
+        <li>Certificate of completion</li>
+        <li>Pre-departure information pack</li>
+        <li>Teacher travel support (if nominated)</li>
+      </ul>
+    </div>
+    <div class="inc-box inc-no">
+      <h4>✗ Not Included</h4>
+      <ul>
+        <li>International flights to/from China</li>
+        <li>China visa application fees</li>
+        <li>Personal spending money</li>
+        <li>Travel to/from home airport</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Pricing</h3>
+  <table>
+    <tr><th>Module</th><th>Duration</th><th>Starting Price</th></tr>
+    <tr><td>Single city module</td><td>5 days</td><td>From €2,990 per student</td></tr>
+    <tr><td>Dual city programme</td><td>10 days</td><td>On request</td></tr>
+    <tr><td>Extended programme</td><td>14+ days</td><td>On request</td></tr>
+  </table>
+  <p class="small">Pricing is per student and based on group size of 15+. Smaller groups or custom requirements may affect pricing. Contact us for a detailed quote.</p>
+
+  <div class="page-footer"><span>China Quest · School Information Pack · Confidential</span><span>7</span></div>
+</div>
+
+<!-- ═══ PAGE 8: NEXT STEPS ═══ -->
+<div class="page content">
+  <p class="page-label">Next Steps</p>
+  <div class="page-line"></div>
+  <div class="page-title">How to Get Started</div>
+
+  <table>
+    <tr><th>Step</th><th>What Happens</th><th>Timeline</th></tr>
+    <tr><td><strong>1. Initial Enquiry</strong></td><td>Get in touch via email or website. We arrange an introductory call.</td><td>Day 1</td></tr>
+    <tr><td><strong>2. Discovery Call</strong></td><td>20-minute conversation about your school's goals, students, and schedule.</td><td>Week 1</td></tr>
+    <tr><td><strong>3. Programme Proposal</strong></td><td>Tailored proposal with recommended modules, itinerary, and pricing.</td><td>Week 2</td></tr>
+    <tr><td><strong>4. School Approval</strong></td><td>Internal review, board/leadership sign-off, parent communication.</td><td>Week 3–6</td></tr>
+    <tr><td><strong>5. Confirmation &amp; Deposit</strong></td><td>Confirm dates, finalise logistics, secure places with deposit.</td><td>Week 6–8</td></tr>
+    <tr><td><strong>6. Pre-Departure</strong></td><td>Student/parent info packs, teacher briefing, final logistics coordination.</td><td>4 weeks before</td></tr>
+    <tr><td><strong>7. Programme Delivery</strong></td><td>On-the-ground delivery with full support.</td><td>Programme dates</td></tr>
+    <tr><td><strong>8. Post-Programme</strong></td><td>Summary report, certificate distribution, feedback collection.</td><td>Within 2 weeks</td></tr>
+  </table>
+
+  <div class="note">For Summer 2026 programmes, we recommend initiating enquiries by April 2026 to allow adequate planning time.</div>
+
+  <div class="contact">
+    <h3>Ready to Explore?</h3>
+    <p>We'd love to hear from your school.</p>
+    <p style="margin-top:3mm;">
+      <a href="mailto:info@milesminds.com">info@milesminds.com</a><br>
+      <a href="https://chinaquest.milesminds.com">chinaquest.milesminds.com</a><br>
+      <span style="color:rgba(255,255,255,0.4);">+353 87 775 8146</span>
+    </p>
+    <p style="margin-top:5mm;font-size:9px;color:rgba(255,255,255,0.25);">Miles Minds Limited · Ireland<br>This document is confidential and intended for the receiving school only.</p>
+  </div>
+
+  <div class="page-footer"><span>China Quest · School Information Pack · Confidential</span><span>8</span></div>
+</div>
+
+</body>
+</html>
