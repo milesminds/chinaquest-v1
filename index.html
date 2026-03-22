@@ -13,10 +13,11 @@
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%231B2A4A'/%3E%3Ctext x='90' y='120' text-anchor='middle' font-family='serif' font-size='100' font-weight='700' fill='%23C9A94E'%3ECQ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;700&display=swap">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;700&display=swap">
 <meta property="og:image" content="https://images.unsplash.com/photo-1623481374014-4ee538c4d3da?w=1200&q=80">
-<link rel="preload" as="image" href="https://images.unsplash.com/photo-1623481374014-4ee538c4d3da?w=1920&q=80">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1623481374014-4ee538c4d3da?w=1920&q=80&fm=webp">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -234,10 +235,6 @@ br.desktop-only { display: inline; }
 .cred-stat .num { font-family: 'Playfair Display', serif; font-size: 40px; color: var(--navy); font-weight: 700; }
 .cred-stat .label { font-size: 12px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
 
-.expertise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-.expertise-card { padding: 28px; border-radius: 12px; background: var(--white); box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
-.expertise-card h4 { font-size: 18px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
-.expertise-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
 
 /* ══════════════════════════════════════
    4. DESTINATIONS
@@ -276,9 +273,6 @@ br.desktop-only { display: inline; }
 /* ══════════════════════════════════════
    5. HOW IT WORKS
    ══════════════════════════════════════ */
-.flow-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 48px; }
-.flow-box { text-align: center; padding: 24px 16px; border: 1px solid var(--border); border-radius: 10px; transition: all 0.3s; }
-.flow-box:hover { border-color: var(--gold); }
 .flow-num { width: 32px; height: 32px; border-radius: 50%; background: var(--navy); color: var(--white); font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
 .flow-name { font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
 .flow-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
@@ -323,20 +317,6 @@ br.desktop-only { display: inline; }
 .inc-item { font-size: 14px; color: var(--text); padding: 4px 0 4px 20px; position: relative; }
 
 /* v1.5: Included/Not Included comparison layout */
-.inc-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px auto 0; max-width: 800px; }
-.inc-col { padding: 28px; border-radius: 12px; }
-.inc-col--included { background: #F0FAF4; border: 1px solid #B8E6CC; }
-.inc-col--excluded { background: #F7F7F8; border: 1px solid #E0E0E0; }
-.inc-col-title { font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid; }
-.inc-col--included .inc-col-title { color: #1A7A42; border-color: #B8E6CC; }
-.inc-col--excluded .inc-col-title { color: #6B7280; border-color: #E0E0E0; }
-.inc-col-list { list-style: none; }
-.inc-col-list li { font-size: 14px; padding: 6px 0 6px 28px; position: relative; line-height: 1.6; }
-.inc-col--included .inc-col-list li { color: var(--text); }
-.inc-col--excluded .inc-col-list li { color: var(--light); }
-.inc-col-list li::before { position: absolute; left: 0; font-weight: 700; font-size: 15px; }
-.inc-col--included .inc-col-list li::before { content: '✓'; color: #1A7A42; }
-.inc-col--excluded .inc-col-list li::before { content: '✗'; color: #9CA3AF; }
 .inc-item::before { content: '✓'; color: var(--gold); position: absolute; left: 0; font-weight: 700; }
 .inc-item.not { color: var(--light); }
 .inc-item.not::before { content: '✗'; color: var(--light); }
@@ -344,12 +324,6 @@ br.desktop-only { display: inline; }
 /* ══════════════════════════════════════
    8. SOCIAL PROOF
    ══════════════════════════════════════ */
-.testimonials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.testimonial { padding: 32px; background: var(--white); border-radius: 12px; border: 1px solid var(--border); position: relative; }
-.testimonial::before { content: '\201C'; font-family: 'Playfair Display', serif; font-size: 80px; color: rgba(201,169,78,0.2); position: absolute; top: 8px; left: 24px; line-height: 1; }
-.testimonial blockquote { font-size: 15px; color: var(--text); line-height: 1.7; font-style: italic; margin-bottom: 16px; padding-top: 20px; }
-.testimonial .t-name { font-size: 14px; font-weight: 600; color: var(--navy); }
-.testimonial .t-role { font-size: 12px; color: var(--muted); }
 
 /* ══════════════════════════════════════
    9. GET STARTED
@@ -427,7 +401,6 @@ br.desktop-only { display: inline; }
   .hero h1 { font-size: 56px; }
   .section-title { font-size: 30px; }
   .feat-grid { grid-template-columns: 1fr 1fr; }
-  .testimonials { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
@@ -454,21 +427,19 @@ br.desktop-only { display: inline; }
   .glance-item:nth-child(n+4) { border-top: 1px solid rgba(201,169,78,0.2); }
   .glance-item:nth-child(4) { border-right: 1px solid rgba(201,169,78,0.2); }
   
-  .feat-grid, .dest-grid, .pillar-grid, .gain-grid, .expertise-grid, .form-grid, .inc-comparison, .why-grid { grid-template-columns: 1fr; }
+  .feat-grid, .dest-grid, .pillar-grid, .gain-grid, .form-grid, .why-grid { grid-template-columns: 1fr; }
   .why-card { padding: 24px 20px; }
   .cycle-svg { max-width: 100%; }
   .how-pillars { grid-template-columns: 1fr 1fr; }
   .how-sample-inner { flex-direction: column; text-align: center; gap: 16px; }
   .how-sample-link { width: 100%; text-align: center; }
   .cred-stats { grid-template-columns: 1fr 1fr; }
-  .flow-row { grid-template-columns: 1fr 1fr; }
   .inc-grid { grid-template-columns: 1fr; }
   .out-bar { flex-wrap: wrap; gap: 8px; }
   .out-item { padding: 0 12px; }
   .out-item:not(:last-child)::after { display: none; }
   .steps-row { flex-direction: column; gap: 24px; }
   .step-item::after { display: none; }
-  .testimonials { gap: 16px; }
   .deco-char { font-size: 120px; }
   
   /* v1.18: Clean centering — no !important, no conflicts */
@@ -501,8 +472,6 @@ br.desktop-only { display: inline; }
   }
   /* === 左对齐元素：阅读型内容 === */
   .about-text,
-  .expertise-card,
-  .expertise-card p,
   .feat-card,
   .feat-card p,
   .dest-body,
@@ -514,8 +483,6 @@ br.desktop-only { display: inline; }
   .safety-card p,
   .faq-answer,
   .faq-label,
-  .testimonial-card blockquote,
-  .testimonial-card p,
   .form-group,
   .itinerary-timeline,
   .gain-card p,
@@ -577,9 +544,6 @@ br.desktop-only { display: inline; }
 .cred-stat:hover .num::after { width: 100%; }
 
 /* ── v1.4: How It Works step connectors ── */
-.flow-box { position: relative; }
-.flow-box:not(:last-child)::after { content: '→'; position: absolute; top: 50%; right: -12px; transform: translateY(-50%); color: rgba(201,169,78,0.4); font-size: 18px; font-weight: 300; z-index: 1; }
-@media (max-width: 768px) { .flow-box:not(:last-child)::after { display: none; } }
 
 /* ── v1.4: Get Started CTA enhancement ── */
 .get-started { background: linear-gradient(160deg, #1B2A4A 0%, #0F1B33 40%, #0A1225 100%), repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(201,169,78,0.02) 40px, rgba(201,169,78,0.02) 80px); }
@@ -703,14 +667,6 @@ section[id] { scroll-margin-top: 80px; }
 /* ══════════════════════════════════════
    v1.10: OUTCOME PROGRESS BARS
    ══════════════════════════════════════ */
-.skill-bars { margin: 40px auto 0; max-width: 700px; }
-.skill-bar { margin-bottom: 20px; }
-.skill-bar-header { display: flex; justify-content: space-between; margin-bottom: 6px; }
-.skill-bar-name { font-size: 14px; font-weight: 600; color: var(--navy); }
-.skill-bar-pct { font-size: 14px; font-weight: 600; color: var(--gold); }
-.skill-bar-track { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
-.skill-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-soft)); border-radius: 4px; width: 0; transition: width 1.2s ease; will-change: width; }
-.skill-bar-note { font-size: 11px; color: var(--light); font-style: italic; margin-top: 12px; }
 
 /* ══════════════════════════════════════
    v1.10: PERFORMANCE — will-change
@@ -822,7 +778,6 @@ section[id] { scroll-margin-top: 80px; }
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobile-menu">
   <a href="#why" onclick="closeMenu()">Why</a>
-  <a href="#expertise" onclick="closeMenu()">Expertise</a>
   <a href="#destinations" onclick="closeMenu()">Modules</a>
   <a href="#how-it-works" onclick="closeMenu()">How It Works</a>
   <a href="#outcomes" onclick="closeMenu()">Outcomes</a>
@@ -1042,7 +997,7 @@ section[id] { scroll-margin-top: 80px; }
     <div class="dest-grid reveal">
       <div class="dest-card">
         <div class="dest-card-img">
-          <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=600&q=80" alt="Beijing" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=600&q=80&fm=webp" alt="Beijing" loading="lazy" width="600" height="400">
           <span class="dc-img-char">京</span>
           <span class="dc-img-name">Beijing</span>
         </div>
@@ -1056,7 +1011,7 @@ section[id] { scroll-margin-top: 80px; }
       </div>
       <div class="dest-card">
         <div class="dest-card-img">
-          <img src="https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=600&q=80" alt="Shanghai" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=600&q=80&fm=webp" alt="Shanghai" loading="lazy" width="600" height="400">
           <span class="dc-img-char">沪</span>
           <span class="dc-img-name">Shanghai</span>
         </div>
@@ -1070,7 +1025,7 @@ section[id] { scroll-margin-top: 80px; }
       </div>
       <div class="dest-card">
         <div class="dest-card-img">
-          <img src="https://images.unsplash.com/photo-1626526913691-df6b2c926301?w=600&q=80" alt="Shenzhen" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1626526913691-df6b2c926301?w=600&q=80&fm=webp" alt="Shenzhen" loading="lazy" width="600" height="400">
           <span class="dc-img-char">深</span>
           <span class="dc-img-name">Shenzhen</span>
         </div>
@@ -1084,7 +1039,7 @@ section[id] { scroll-margin-top: 80px; }
       </div>
       <div class="dest-card">
         <div class="dest-card-img">
-          <img src="https://images.unsplash.com/photo-1502099530544-2b61cbaed85c?w=600&q=80" alt="Hong Kong" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1502099530544-2b61cbaed85c?w=600&q=80&fm=webp" alt="Hong Kong" loading="lazy" width="600" height="400">
           <span class="dc-img-char">港</span>
           <span class="dc-img-name">Hong Kong</span>
         </div>
@@ -1625,20 +1580,6 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     });
   }
 })();
-
-/* ── v1.10: Skill bar animation ── */
-const skillObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
-        bar.style.width = bar.dataset.width + '%';
-      });
-      skillObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.3 });
-const skillBars = document.getElementById('skill-bars');
-if (skillBars) skillObserver.observe(skillBars);
 
 // Hero background carousel
 (function() {
