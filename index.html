@@ -144,7 +144,7 @@ a { color: inherit; text-decoration: none; }
 /* ══════════════════════════════════════
    1. HERO [CRITICAL-CSS]
    ══════════════════════════════════════ */
-.hero { min-height: 100vh; background: var(--navy); display: flex; align-items: center; justify-content: center; text-align: center; position: relative; padding: 120px 24px 80px; }
+.hero { min-height: 100vh; background: var(--navy); display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; padding: 120px 24px 80px; }
 .hero-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0; transition: opacity 1.5s ease-in-out; }
 .hero-bg-img-active { opacity: 1; }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(15,27,51,0.65) 0%, rgba(27,42,74,0.6) 50%, rgba(15,27,51,0.7) 100%); z-index: 1; transition: opacity 0.4s ease; }
@@ -168,6 +168,7 @@ a { color: inherit; text-decoration: none; }
 
 /* Mountain silhouette */
 .hero-mountain { position: absolute; bottom: 0; left: 0; right: 0; height: 160px; opacity: 0.03; }
+.hero-mountain svg { width: 100%; height: 100%; }
 
 
 .hero h1 { font-family: 'Playfair Display', serif; color: var(--white); font-size: 80px; font-weight: 700; letter-spacing: 6px; margin-bottom: 12px; position: relative; text-shadow: 0 2px 8px rgba(0,0,0,0.4); }
@@ -796,6 +797,9 @@ section[id] { scroll-margin-top: -20px; }
   <img class="hero-bg-img" src="images/hero-tech-lab.jpg" alt="Students exploring drone technology lab" loading="lazy">
   <img class="hero-bg-img" src="images/hero-scene4.jpg" alt="Students walking tree-lined streets in China" loading="lazy">
   <div class="hero-overlay"></div>
+  <div class="hero-gold-line"></div>
+  <div class="hero-gold-line-2"></div>
+  <div class="hero-mountain">
     <svg viewBox="0 0 1200 160" preserveAspectRatio="none">
       <path d="M0 160 L150 80 L270 120 L420 40 L570 90 L680 25 L780 70 L900 20 L1020 65 L1120 35 L1200 60 L1200 160Z" fill="white"/>
     </svg>
@@ -1402,19 +1406,15 @@ const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   const hero = document.querySelector('.hero');
   const heroH = hero ? hero.offsetHeight : 600;
-  // Nav goes solid when approaching Why section (near end of hero)
   nav.classList.toggle('scrolled', window.scrollY > heroH - 100);
-  // Hero scroll animation
   if (hero) {
-    const sy = window.scrollY;
-    const scrollPct = Math.min(sy / (heroH * 0.6), 1);
+    const scrollPct = Math.min(window.scrollY / (heroH * 0.6), 1);
     hero.classList.toggle('scrolling', scrollPct > 0.03);
-    // h1: scale up while naturally scrolling with the page
     const h1 = hero.querySelector('h1');
     if (h1) {
       const scale = 1 + scrollPct * 6;
       const fadeStart = 0.5;
-      const opacity = scrollPct > fadeStart ? Math.max(0, 1 - (scrollPct - fadeStart) / (0.5)) : 1;
+      const opacity = scrollPct > fadeStart ? Math.max(0, 1 - (scrollPct - fadeStart) / 0.5) : 1;
       h1.style.transform = 'scale(' + scale.toFixed(2) + ')';
       h1.style.opacity = opacity.toFixed(2);
     }
