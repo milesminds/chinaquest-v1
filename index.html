@@ -1441,7 +1441,7 @@ const dividerObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) entry.target.classList.add('visible');
   });
-}, { threshold: 0.5 });
+}, { threshold: 0, rootMargin: '0px 0px -60px 0px' });
 document.querySelectorAll('.section-divider').forEach(el => dividerObserver.observe(el));
 
 /* ── Back to top button ── */
