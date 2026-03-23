@@ -144,7 +144,7 @@ a { color: inherit; text-decoration: none; }
 /* ══════════════════════════════════════
    1. HERO [CRITICAL-CSS]
    ══════════════════════════════════════ */
-.hero { min-height: 100vh; background: var(--navy); display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; padding: 120px 24px 80px; }
+.hero { min-height: 100vh; background: var(--navy); display: flex; align-items: center; justify-content: center; text-align: center; position: relative; padding: 120px 24px 80px; }
 .hero-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0; transition: opacity 1.5s ease-in-out; }
 .hero-bg-img-active { opacity: 1; }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(15,27,51,0.65) 0%, rgba(27,42,74,0.6) 50%, rgba(15,27,51,0.7) 100%); z-index: 1; transition: opacity 0.4s ease; }
@@ -155,7 +155,7 @@ a { color: inherit; text-decoration: none; }
 .hero.scrolling .hero-cta-group,
 .hero.scrolling .hero-scroll { opacity: 0; transform: translateY(-20px); }
 .hero-tagline, .hero-desc, .hero-detail, .hero-cta-group, .hero-scroll { transition: opacity 0.4s ease, transform 0.4s ease; }
-.hero h1 { transition: none; transform-origin: center center; will-change: transform, opacity; }
+.hero h1 { transform-origin: center center; will-change: transform, opacity; }
 .hero .container, .hero-scroll, .hero-gold-line, .hero-gold-line-2, .hero-deco-1, .hero-deco-2, .hero-deco-3, .hero-deco-4, .hero-circle-1, .hero-circle-2, .hero-circle-3, .hero-char, .hero-mountain { position: relative; z-index: 2; }
 
 /* Decorative elements */
@@ -1418,14 +1418,15 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > heroH - 100);
   // Hero scroll animation
   if (hero) {
-    const scrollPct = Math.min(window.scrollY / (heroH * 0.6), 1);
+    const sy = window.scrollY;
+    const scrollPct = Math.min(sy / (heroH * 0.6), 1);
     hero.classList.toggle('scrolling', scrollPct > 0.03);
-    // h1: scale from 1 to ~8 as user scrolls through hero, then fade out
+    // h1: scale up while naturally scrolling with the page
     const h1 = hero.querySelector('h1');
     if (h1) {
-      const scale = 1 + scrollPct * 7;
-      const fadeStart = 0.6; // start fading at 60% scroll
-      const opacity = scrollPct > fadeStart ? Math.max(0, 1 - (scrollPct - fadeStart) / (1 - fadeStart)) : 1;
+      const scale = 1 + scrollPct * 6;
+      const fadeStart = 0.5;
+      const opacity = scrollPct > fadeStart ? Math.max(0, 1 - (scrollPct - fadeStart) / (0.5)) : 1;
       h1.style.transform = 'scale(' + scale.toFixed(2) + ')';
       h1.style.opacity = opacity.toFixed(2);
     }
