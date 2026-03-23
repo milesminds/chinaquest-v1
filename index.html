@@ -109,8 +109,9 @@ a { color: inherit; text-decoration: none; }
 
 /* Section spacing */
 .section { padding: 100px 0; position: relative; overflow: hidden; }
-.section-divider { display: flex; justify-content: center; padding: 0; margin: -1px 0; position: relative; z-index: 2; }
-.section-divider span { display: block; width: 1.5px; height: 48px; background: linear-gradient(to bottom, rgba(201,169,78,0), var(--gold), rgba(201,169,78,0)); }
+.section-divider { display: flex; justify-content: center; padding: 0; margin: -24px 0; position: relative; z-index: 2; height: 48px; }
+.section-divider span { display: block; width: 1.5px; height: 0; background: var(--gold); transition: height 0.6s ease-out; }
+.section-divider.visible span { height: 48px; }
 .section-alt { background: var(--cream); }
 
 /* ══════════════════════════════════════
@@ -1434,6 +1435,14 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── Section divider animation ── */
+const dividerObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.section-divider').forEach(el => dividerObserver.observe(el));
 
 /* ── Back to top button ── */
 const backToTop = document.getElementById('back-to-top');
