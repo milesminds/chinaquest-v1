@@ -17,7 +17,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;700&display=swap">
 <meta property="og:image" content="https://images.unsplash.com/photo-1623481374014-4ee538c4d3da?w=1200&q=80">
-<link rel="preload" as="image" href="https://images.unsplash.com/photo-1623481374014-4ee538c4d3da?w=1920&q=80&fm=webp">
+<link rel="preload" as="image" href="images/hero-great-wall.jpg">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -631,7 +631,7 @@ section[id] { scroll-margin-top: 80px; }
    v1.9: PAGE LOADER
    ══════════════════════════════════════ */
 @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.05); } }
-.page-loader { position:fixed; inset:0; background:var(--navy-deep); z-index:9999; display:flex; align-items:center; justify-content:center; transition: opacity 0.5s; }
+.page-loader { position:fixed; inset:0; background:var(--navy-deep); z-index:9999; display:flex; align-items:center; justify-content:center; transition: opacity 0.3s; }
 .page-loader.loaded { opacity:0; pointer-events:none; }
 .page-loader .logo { font-family:'Playfair Display',serif; font-size:48px; color:var(--gold); animation: pulse 1.5s ease-in-out infinite; }
 
@@ -780,9 +780,9 @@ section[id] { scroll-margin-top: 80px; }
 <!-- ══════════ 1. HERO ══════════ -->
 <section class="hero" id="hero">
   <img class="hero-bg-img hero-bg-img-active" src="images/hero-great-wall.jpg" alt="Great Wall at sunrise" loading="eager">
-  <img class="hero-bg-img" src="images/hero-drone-field.jpg" alt="Drone over karst rice fields" loading="eager">
-  <img class="hero-bg-img" src="images/hero-tech-lab.jpg" alt="Students exploring drone technology lab" loading="eager">
-  <img class="hero-bg-img" src="images/hero-scene4.jpg" alt="Students walking tree-lined streets in China" loading="eager">
+  <img class="hero-bg-img" src="images/hero-drone-field.jpg" alt="Drone over karst rice fields" loading="lazy">
+  <img class="hero-bg-img" src="images/hero-tech-lab.jpg" alt="Students exploring drone technology lab" loading="lazy">
+  <img class="hero-bg-img" src="images/hero-scene4.jpg" alt="Students walking tree-lined streets in China" loading="lazy">
   <div class="hero-overlay"></div>
   <div class="hero-circle-1"></div>
   <div class="hero-circle-2"></div>
@@ -1381,8 +1381,13 @@ section[id] { scroll-margin-top: 80px; }
 /* ── Remove no-js class ── */
 document.documentElement.classList.remove('no-js');
 
-/* ── Page loader ── */
-window.addEventListener('load', () => { document.querySelector('.page-loader').classList.add('loaded'); });
+/* ── Page loader — dismiss on DOMContentLoaded or after 1.5s max ── */
+(function() {
+  var loader = document.querySelector('.page-loader');
+  function hideLoader() { if (loader) loader.classList.add('loaded'); }
+  document.addEventListener('DOMContentLoaded', hideLoader);
+  setTimeout(hideLoader, 1500);
+})();
 
 /* ── Navigation scroll effect ── */
 const nav = document.getElementById('nav');
