@@ -264,7 +264,7 @@ br.desktop-only { display: inline; }
 
 /* Tab columns — full height, side by side on top of image */
 .ds-nav { display: flex; position: absolute; inset: 0; z-index: 2; }
-.ds-tab { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; cursor: pointer; position: relative; transition: all 0.5s ease; border-right: 1px solid rgba(255,255,255,0.08); text-align: center; }
+.ds-tab { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding: 80px 20px 40px; cursor: pointer; position: relative; transition: all 0.5s ease; border-right: 1px solid rgba(255,255,255,0.08); text-align: center; }
 .ds-tab:last-child { border-right: none; }
 /* Hover column overlay — top-to-bottom gradient like XDF */
 .ds-tab::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.05) 100%); opacity: 0; transition: opacity 0.5s ease; }
