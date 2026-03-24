@@ -1529,11 +1529,10 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   imgArea.parentNode.insertBefore(placeholder, imgArea.nextSibling);
 
   window.addEventListener('scroll', function() {
-    var rect = section.getBoundingClientRect();
-    var imgTop = section.offsetTop + imgArea.offsetTop;
     var sy = window.scrollY;
-    // Fix when image reaches top
-    if (sy >= imgTop && rect.bottom > 0) {
+    var imgTop = placeholder.style.display === 'block' ? placeholder.getBoundingClientRect().top + sy : imgArea.getBoundingClientRect().top + sy;
+    // Fix when image top reaches viewport top
+    if (sy >= imgTop) {
       if (!imgArea.classList.contains('ds-fixed')) {
         imgArea.classList.add('ds-fixed');
         placeholder.style.display = 'block';
