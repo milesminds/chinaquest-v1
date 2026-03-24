@@ -252,6 +252,38 @@ br.desktop-only { display: inline; }
 /* ══════════════════════════════════════
    4. DESTINATIONS
    ══════════════════════════════════════ */
+/* Destination Showcase */
+.dest-showcase { position: relative; min-height: 90vh; overflow: hidden; display: flex; align-items: center; scroll-margin-top: -20px; }
+.ds-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease; z-index: 0; }
+.ds-bg.ds-bg-active { opacity: 1; }
+.ds-overlay { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(15,27,51,0.7) 0%, rgba(27,42,74,0.6) 50%, rgba(15,27,51,0.75) 100%); z-index: 1; }
+.ds-content { position: relative; z-index: 2; width: 100%; max-width: 1200px; margin: 0 auto; padding: 80px 24px 60px; color: #fff; }
+.ds-header { text-align: center; margin-bottom: 40px; }
+.ds-support { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 8px; letter-spacing: 0.5px; }
+.ds-nav { display: flex; justify-content: center; gap: 0; margin-bottom: 32px; }
+.ds-tab { flex: 1; text-align: center; padding: 24px 16px; cursor: pointer; border-bottom: 2px solid rgba(255,255,255,0.1); transition: all 0.3s; position: relative; }
+.ds-tab:hover { background: rgba(255,255,255,0.05); }
+.ds-tab.ds-tab-active { border-bottom-color: var(--gold); }
+.ds-char { font-family: 'Noto Serif SC', serif; font-size: 32px; color: rgba(255,255,255,0.25); display: block; line-height: 1; margin-bottom: 6px; transition: color 0.3s; }
+.ds-tab.ds-tab-active .ds-char { color: var(--gold); }
+.ds-city { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: rgba(255,255,255,0.7); display: block; transition: color 0.3s; }
+.ds-tab.ds-tab-active .ds-city { color: #fff; }
+.ds-sub { display: block; font-size: 11px; color: rgba(255,255,255,0); max-height: 0; overflow: hidden; transition: all 0.4s ease; margin-top: 0; line-height: 1.4; }
+.ds-tab.ds-tab-active .ds-sub { color: rgba(255,255,255,0.5); max-height: 40px; margin-top: 8px; }
+.ds-panel { display: none; text-align: center; max-width: 640px; margin: 0 auto; }
+.ds-panel.ds-panel-active { display: block; }
+.ds-desc { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 8px; }
+.ds-mission { font-size: 14px; color: var(--gold); font-style: italic; }
+.ds-more { text-align: center; font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 24px; }
+
+@media (max-width: 768px) {
+  .dest-showcase { min-height: auto; }
+  .ds-nav { flex-wrap: wrap; }
+  .ds-tab { flex: 1 1 50%; }
+  .ds-char { font-size: 24px; }
+  .ds-city { font-size: 16px; }
+}
+
 .dest-note { padding: 16px 20px; background: var(--gold-bg); border-radius: 10px; margin: 0 auto 32px; display: flex; align-items: center; justify-content: center; gap: 14px; max-width: 700px; }
 .dest-note p { font-size: 14px; color: #8B7530; }
 .dest-note strong { color: var(--navy); }
@@ -985,95 +1017,68 @@ section[id] { scroll-margin-top: -20px; }
 <div class="section-divider"><span></span></div>
 
 <!-- ══════════ 4. DESTINATIONS ══════════ -->
-<section class="section" id="destinations">
-  <div class="container">
-    <span class="deco-char" style="top: -20px; right: 20px;">行</span>
-    <div class="section-header reveal">
-      <p class="section-label">Where Students Go</p>
-      <div class="gold-line"></div>
-      <h2 class="section-title">Four Core Modules Across Modern China</h2>
-      <p class="section-intro">Each city module offers a distinct lens on China — from historical roots and cultural exchange to innovation, sustainability, and global perspective.</p>
+<section class="dest-showcase" id="destinations">
+  <!-- Background images — one per city -->
+  <img class="ds-bg ds-bg-active" data-city="beijing" src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80&fm=webp" alt="Beijing">
+  <img class="ds-bg" data-city="shanghai" src="https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=1920&q=80&fm=webp" alt="Shanghai">
+  <img class="ds-bg" data-city="shenzhen" src="https://images.unsplash.com/photo-1626526913691-df6b2c926301?w=1920&q=80&fm=webp" alt="Shenzhen">
+  <img class="ds-bg" data-city="hongkong" src="https://images.unsplash.com/photo-1502099530544-2b61cbaed85c?w=1920&q=80&fm=webp" alt="Hong Kong">
+  <div class="ds-overlay"></div>
+
+  <div class="ds-content">
+    <div class="ds-header">
+      <p class="section-label" style="color:var(--gold);">Where Students Go</p>
+      <p class="ds-support">Core city modules · typically 5 days · combinable into longer programmes</p>
     </div>
 
-    <div class="dest-note reveal">
-      <span class="icon icon-gold"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
-      <p>Core city modules are typically 5 days and can be combined into longer programmes tailored to your school.</p>
+    <nav class="ds-nav">
+      <a class="ds-tab ds-tab-active" data-city="beijing">
+        <span class="ds-char">京</span>
+        <span class="ds-city">Beijing</span>
+        <span class="ds-sub">Roots, Identity, and Living Heritage</span>
+      </a>
+      <a class="ds-tab" data-city="shanghai">
+        <span class="ds-char">沪</span>
+        <span class="ds-city">Shanghai</span>
+        <span class="ds-sub">Global Interface, Exchange, and Modern Chinese Identity</span>
+      </a>
+      <a class="ds-tab" data-city="shenzhen">
+        <span class="ds-char">深</span>
+        <span class="ds-city">Shenzhen</span>
+        <span class="ds-sub">Future Ecosystems, Innovation, and STEM Exploration</span>
+      </a>
+      <a class="ds-tab" data-city="hongkong">
+        <span class="ds-char">港</span>
+        <span class="ds-city">Hong Kong</span>
+        <span class="ds-sub">Crossroads, Sustainability, and Global Outlook</span>
+      </a>
+    </nav>
+
+    <!-- City detail panels -->
+    <div class="ds-panel ds-panel-active" data-city="beijing">
+      <p class="ds-desc">Great Wall, imperial landmarks, and the continuity of Chinese civilisation. Hutong observation, calligraphy, and everyday cultural practice.</p>
+      <p class="ds-mission">A module focused on how history, memory, and identity shape modern China</p>
+    </div>
+    <div class="ds-panel" data-city="shanghai">
+      <p class="ds-desc">The Bund, Pudong, and the story of urban transformation. School exchange, peer dialogue, and neighbourhood discovery.</p>
+      <p class="ds-mission">A module focused on global connection, cultural fusion, and city life in contemporary China</p>
+    </div>
+    <div class="ds-panel" data-city="shenzhen">
+      <p class="ds-desc">Technology ecosystems, robotics, and hands-on innovation exposure. Smart mobility, urban change, and future city systems.</p>
+      <p class="ds-mission">A module focused on how design, making, and innovation shape the world students are growing into</p>
+    </div>
+    <div class="ds-panel" data-city="hongkong">
+      <p class="ds-desc">Harbour, density, and East–West urban histories. Field-based sustainability learning and local community observation.</p>
+      <p class="ds-mission">A module focused on comparison, reflection, and bringing the wider journey into sharper perspective</p>
     </div>
 
-    <div class="dest-grid reveal">
-      <div class="dest-card">
-        <div class="dest-card-img">
-          <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=600&q=80&fm=webp" alt="Beijing" loading="lazy" width="600" height="400">
-          <span class="dc-img-char">京</span>
-          <span class="dc-img-name">Beijing</span>
-        </div>
-        <span class="dc-tag">Core Module</span>
-        <h3>Beijing</h3>
-        <p class="dc-meta">北京 · Roots, Identity, and Living Heritage</p>
-        <p class="dc-theme">Great Wall, imperial landmarks, and the continuity of Chinese civilisation</p>
-        <p class="dc-theme">Hutong observation, calligraphy, and everyday cultural practice</p>
-        <p class="dc-mission">A module focused on how history, memory, and identity shape modern China</p>
-        <a href="#get-started" class="dc-learn">View module →</a>
-      </div>
-      <div class="dest-card">
-        <div class="dest-card-img">
-          <img src="https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=600&q=80&fm=webp" alt="Shanghai" loading="lazy" width="600" height="400">
-          <span class="dc-img-char">沪</span>
-          <span class="dc-img-name">Shanghai</span>
-        </div>
-        <span class="dc-tag">Core Module</span>
-        <h3>Shanghai</h3>
-        <p class="dc-meta">上海 · Global Interface, Exchange, and Modern Chinese Identity</p>
-        <p class="dc-theme">The Bund, Pudong, and the story of urban transformation</p>
-        <p class="dc-theme">School exchange, peer dialogue, and neighbourhood discovery</p>
-        <p class="dc-mission">A module focused on global connection, cultural fusion, and city life in contemporary China</p>
-        <a href="#get-started" class="dc-learn">View module →</a>
-      </div>
-      <div class="dest-card">
-        <div class="dest-card-img">
-          <img src="https://images.unsplash.com/photo-1626526913691-df6b2c926301?w=600&q=80&fm=webp" alt="Shenzhen" loading="lazy" width="600" height="400">
-          <span class="dc-img-char">深</span>
-          <span class="dc-img-name">Shenzhen</span>
-        </div>
-        <span class="dc-tag">Core Module</span>
-        <h3>Shenzhen</h3>
-        <p class="dc-meta">深圳 · Future Ecosystems, Innovation, and STEM Exploration</p>
-        <p class="dc-theme">Technology ecosystems, robotics, and hands-on innovation exposure</p>
-        <p class="dc-theme">Smart mobility, urban change, and future city systems</p>
-        <p class="dc-mission">A module focused on how design, making, and innovation shape the world students are growing into</p>
-        <a href="#get-started" class="dc-learn">View module →</a>
-      </div>
-      <div class="dest-card">
-        <div class="dest-card-img">
-          <img src="https://images.unsplash.com/photo-1502099530544-2b61cbaed85c?w=600&q=80&fm=webp" alt="Hong Kong" loading="lazy" width="600" height="400">
-          <span class="dc-img-char">港</span>
-          <span class="dc-img-name">Hong Kong</span>
-        </div>
-        <span class="dc-tag">Core Module</span>
-        <h3>Hong Kong</h3>
-        <p class="dc-meta">香港 · Capstone Perspective, Sustainability, and Global Outlook</p>
-        <p class="dc-theme">Harbour, density, and East–West urban histories</p>
-        <p class="dc-theme">Field-based sustainability learning and local community observation</p>
-        <p class="dc-mission">A module focused on comparison, reflection, and bringing the wider journey into sharper perspective</p>
-        <a href="#get-started" class="dc-learn">View module →</a>
-      </div>
-    </div>
+    <p class="ds-more">Additional city modules (Hangzhou, Chengdu, Xi'an) available on request.</p>
 
-    <div class="coming-section reveal">
-      <p class="coming-label">Additional city modules</p>
-      <p class="coming-desc">Beyond the four core modules, further city options are available on request.</p>
-      <div class="coming-row">
-        <span class="coming-chip"><span class="cc-char">杭</span> Hangzhou</span>
-        <span class="coming-chip"><span class="cc-char">蓉</span> Chengdu</span>
-        <span class="coming-chip"><span class="cc-char">西</span> Xi'an</span>
-      </div>
-    </div>
-
-    <div class="section-quote reveal">
+    <div class="section-quote" style="border-top-color:rgba(255,255,255,0.1);margin-top:32px;">
       <div>
-        <p class="q-zh">"读万卷书，不如行万里路。"</p>
-        <p class="q-en">Reading ten thousand books is not as good as travelling ten thousand miles.</p>
-        <p class="q-src">— Dong Qichang, Ming Dynasty scholar (1555–1636)</p>
+        <p class="q-zh" style="color:rgba(255,255,255,0.5);">"读万卷书，不如行万里路。"</p>
+        <p class="q-en" style="color:#fff;">Reading ten thousand books is not as good as travelling ten thousand miles.</p>
+        <p class="q-src" style="color:rgba(255,255,255,0.5);">— Dong Qichang, Ming Dynasty scholar (1555–1636)</p>
       </div>
     </div>
   </div>
@@ -1460,6 +1465,19 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── Destination showcase tab switching ── */
+document.querySelectorAll('.ds-tab').forEach(tab => {
+  tab.addEventListener('mouseenter', function() {
+    const city = this.dataset.city;
+    document.querySelectorAll('.ds-tab').forEach(t => t.classList.remove('ds-tab-active'));
+    document.querySelectorAll('.ds-bg').forEach(b => b.classList.remove('ds-bg-active'));
+    document.querySelectorAll('.ds-panel').forEach(p => p.classList.remove('ds-panel-active'));
+    this.classList.add('ds-tab-active');
+    document.querySelector('.ds-bg[data-city="'+city+'"]').classList.add('ds-bg-active');
+    document.querySelector('.ds-panel[data-city="'+city+'"]').classList.add('ds-panel-active');
+  });
+});
 
 /* ── Section divider animation ── */
 const dividerObserver = new IntersectionObserver((entries) => {
