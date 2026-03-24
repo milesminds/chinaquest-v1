@@ -252,40 +252,46 @@ br.desktop-only { display: inline; }
 /* ══════════════════════════════════════
    4. DESTINATIONS
    ══════════════════════════════════════ */
-/* Destination Showcase — XDF layout */
-.dest-showcase { scroll-margin-top: -20px; background: var(--white); }
-.ds-header { text-align: center; padding: 80px 24px 40px; }
+/* Destination Showcase — XDF exact clone */
+.dest-showcase { scroll-margin-top: -20px; }
+.ds-header { text-align: center; padding: 80px 24px 40px; background: var(--white); }
 .ds-support { font-size: 14px; color: var(--muted); margin-top: 10px; }
 
-/* Image area with tabs on top */
-.ds-img-area { position: relative; height: 55vh; min-height: 400px; overflow: hidden; }
-.ds-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.2s ease; }
+/* Full-screen image area */
+.ds-img-area { position: relative; width: 100%; height: 75vh; min-height: 500px; overflow: hidden; }
+.ds-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease; }
 .ds-bg.ds-bg-active { opacity: 1; }
 
-/* Tab navigation — on top of image */
-.ds-nav { display: flex; position: absolute; top: 0; left: 0; right: 0; z-index: 2; }
-.ds-tab { flex: 1; text-align: center; padding: 32px 16px 28px; cursor: pointer; transition: all 0.4s ease; position: relative; background: rgba(255,255,255,0.08); backdrop-filter: blur(2px); border-right: 1px solid rgba(255,255,255,0.08); }
+/* Tab columns — full height, side by side on top of image */
+.ds-nav { display: flex; position: absolute; inset: 0; z-index: 2; }
+.ds-tab { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; cursor: pointer; position: relative; transition: all 0.5s ease; border-right: 1px solid rgba(255,255,255,0.08); text-align: center; }
 .ds-tab:last-child { border-right: none; }
-.ds-tab:hover, .ds-tab.ds-tab-active { background: rgba(15,27,51,0.45); }
-.ds-city { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: rgba(255,255,255,0.7); display: block; transition: all 0.3s; letter-spacing: 1px; }
-.ds-tab:hover .ds-city, .ds-tab.ds-tab-active .ds-city { color: #fff; }
-.ds-char { font-family: 'Noto Serif SC', serif; font-size: 14px; color: rgba(255,255,255,0.3); display: block; margin-top: 4px; transition: color 0.3s; }
+/* Hover column overlay — top-to-bottom gradient like XDF */
+.ds-tab::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.05) 100%); opacity: 0; transition: opacity 0.5s ease; }
+.ds-tab:hover::before, .ds-tab.ds-tab-active::before { opacity: 1; }
+
+/* Tab text — all white */
+.ds-city { position: relative; z-index: 1; font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: #fff; display: block; letter-spacing: 1px; text-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+.ds-char { position: relative; z-index: 1; font-family: 'Noto Serif SC', serif; font-size: 16px; color: rgba(255,255,255,0.7); display: block; margin-top: 6px; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
 .ds-tab:hover .ds-char, .ds-tab.ds-tab-active .ds-char { color: var(--gold); }
-.ds-sub { display: block; font-size: 12px; color: rgba(255,255,255,0); max-height: 0; overflow: hidden; transition: all 0.5s ease; margin-top: 0; line-height: 1.5; }
-.ds-tab:hover .ds-sub, .ds-tab.ds-tab-active .ds-sub { color: rgba(255,255,255,0.65); max-height: 50px; margin-top: 8px; }
-.ds-tab::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--gold); transform: scaleX(0); transition: transform 0.4s ease; }
-.ds-tab:hover::after, .ds-tab.ds-tab-active::after { transform: scaleX(1); }
+/* Subtitle — hidden by default, expands on hover */
+.ds-sub { position: relative; z-index: 1; display: block; font-size: 14px; color: #fff; max-height: 0; overflow: hidden; opacity: 0; transition: all 0.5s ease; margin-top: 0; line-height: 1.6; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
+.ds-tab:hover .ds-sub, .ds-tab.ds-tab-active .ds-sub { max-height: 120px; opacity: 1; margin-top: 14px; }
+/* Description + mission inside tab */
+.ds-tab-desc { position: relative; z-index: 1; font-size: 13px; color: #fff; max-height: 0; overflow: hidden; opacity: 0; transition: all 0.5s ease 0.1s; margin-top: 0; line-height: 1.6; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
+.ds-tab:hover .ds-tab-desc, .ds-tab.ds-tab-active .ds-tab-desc { max-height: 200px; opacity: 0.8; margin-top: 12px; }
+.ds-tab-mission { position: relative; z-index: 1; font-size: 13px; color: var(--gold); font-style: italic; max-height: 0; overflow: hidden; opacity: 0; transition: all 0.5s ease 0.15s; margin-top: 0; text-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+.ds-tab:hover .ds-tab-mission, .ds-tab.ds-tab-active .ds-tab-mission { max-height: 80px; opacity: 1; margin-top: 8px; }
 
 /* Bottom area */
-.ds-bottom { text-align: center; padding: 32px 24px 60px; }
+.ds-bottom { text-align: center; padding: 32px 24px 60px; background: var(--white); }
 .ds-more { font-size: 13px; color: var(--muted); }
 
 @media (max-width: 768px) {
-  .ds-header { padding: 60px 16px 28px; }
-  .ds-img-area { height: 45vh; min-height: 300px; }
+  .ds-img-area { height: 60vh; }
   .ds-nav { flex-wrap: wrap; }
-  .ds-tab { flex: 1 1 50%; padding: 20px 10px; }
-  .ds-city { font-size: 17px; }
+  .ds-tab { flex: 1 1 50%; padding: 24px 12px; justify-content: flex-start; padding-top: 30px; }
+  .ds-city { font-size: 20px; }
 }
 
 .dest-note { padding: 16px 20px; background: var(--gold-bg); border-radius: 10px; margin: 0 auto 32px; display: flex; align-items: center; justify-content: center; gap: 14px; max-width: 700px; }
@@ -1037,27 +1043,35 @@ section[id] { scroll-margin-top: -20px; }
     <img class="ds-bg" data-city="shenzhen" src="https://images.unsplash.com/photo-1626526913691-df6b2c926301?w=1920&q=80&fm=webp" alt="Shenzhen">
     <img class="ds-bg" data-city="hongkong" src="https://images.unsplash.com/photo-1502099530544-2b61cbaed85c?w=1920&q=80&fm=webp" alt="Hong Kong">
 
-    <!-- Tab navigation — directly on image -->
+    <!-- Tab columns — full height on image -->
     <nav class="ds-nav">
       <a class="ds-tab ds-tab-active" data-city="beijing">
         <span class="ds-city">Beijing</span>
         <span class="ds-char">京</span>
         <span class="ds-sub">Roots, Identity, and Living Heritage</span>
+        <span class="ds-tab-desc">Great Wall, imperial landmarks, and the continuity of Chinese civilisation. Hutong observation, calligraphy, and everyday cultural practice.</span>
+        <span class="ds-tab-mission">A module focused on how history, memory, and identity shape modern China</span>
       </a>
       <a class="ds-tab" data-city="shanghai">
         <span class="ds-city">Shanghai</span>
         <span class="ds-char">沪</span>
-        <span class="ds-sub">Global Interface, Exchange, and Modern Identity</span>
+        <span class="ds-sub">Global Interface, Exchange, and Modern Chinese Identity</span>
+        <span class="ds-tab-desc">The Bund, Pudong, and the story of urban transformation. School exchange, peer dialogue, and neighbourhood discovery.</span>
+        <span class="ds-tab-mission">A module focused on global connection, cultural fusion, and city life in contemporary China</span>
       </a>
       <a class="ds-tab" data-city="shenzhen">
         <span class="ds-city">Shenzhen</span>
         <span class="ds-char">深</span>
-        <span class="ds-sub">Innovation, STEM, and Future City Life</span>
+        <span class="ds-sub">Future Ecosystems, Innovation, and STEM Exploration</span>
+        <span class="ds-tab-desc">Technology ecosystems, robotics, and hands-on innovation exposure. Smart mobility, urban change, and future city systems.</span>
+        <span class="ds-tab-mission">A module focused on how design, making, and innovation shape the world students are growing into</span>
       </a>
       <a class="ds-tab" data-city="hongkong">
         <span class="ds-city">Hong Kong</span>
         <span class="ds-char">港</span>
         <span class="ds-sub">Crossroads, Sustainability, and Global Outlook</span>
+        <span class="ds-tab-desc">Harbour, density, and East–West urban histories. Field-based sustainability learning and local community observation.</span>
+        <span class="ds-tab-mission">A module focused on comparison, reflection, and bringing the wider journey into sharper perspective</span>
       </a>
     </nav>
   </div>
@@ -1464,10 +1478,9 @@ document.querySelectorAll('.ds-tab').forEach(tab => {
     const city = this.dataset.city;
     document.querySelectorAll('.ds-tab').forEach(t => t.classList.remove('ds-tab-active'));
     document.querySelectorAll('.ds-bg').forEach(b => b.classList.remove('ds-bg-active'));
-    document.querySelectorAll('.ds-panel').forEach(p => p.classList.remove('ds-panel-active'));
     this.classList.add('ds-tab-active');
-    document.querySelector('.ds-bg[data-city="'+city+'"]').classList.add('ds-bg-active');
-    document.querySelector('.ds-panel[data-city="'+city+'"]').classList.add('ds-panel-active');
+    var bg = document.querySelector('.ds-bg[data-city="'+city+'"]');
+    if (bg) bg.classList.add('ds-bg-active');
   });
 });
 
