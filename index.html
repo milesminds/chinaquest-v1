@@ -108,7 +108,7 @@ a { color: inherit; text-decoration: none; }
 .icon-navy svg { stroke: var(--navy); }
 
 /* Section spacing */
-.section { padding: 100px 0; position: relative; overflow: hidden; }
+.section { padding: 100px 0; position: relative; overflow: hidden; z-index: 1; background: var(--white); }
 .section-divider { display: flex; justify-content: center; padding: 0; margin: -24px 0; position: relative; z-index: 2; height: 48px; }
 .section-divider span { display: block; width: 1.5px; height: 0; background: var(--gold); transition: height 0.6s ease-out; }
 .section-divider.visible span { height: 48px; }
@@ -254,11 +254,11 @@ br.desktop-only { display: inline; }
    ══════════════════════════════════════ */
 /* Destination Showcase — XDF exact clone */
 .dest-showcase { scroll-margin-top: -20px; }
-.ds-header { text-align: center; padding: 80px 24px 40px; background: var(--cream); }
+.ds-header { text-align: center; padding: 80px 24px 40px; background: var(--cream); position: relative; z-index: 1; }
 .ds-support { font-size: 14px; color: var(--muted); margin-top: 10px; }
 
 /* Full-screen image area */
-.ds-img-area { position: relative; width: 100%; height: 100vh; min-height: 600px; overflow: hidden; }
+.ds-img-area { position: sticky; top: 0; width: 100%; height: 100vh; min-height: 600px; overflow: hidden; z-index: 0; }
 .ds-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease; }
 .ds-bg.ds-bg-active { opacity: 1; }
 
@@ -283,7 +283,7 @@ br.desktop-only { display: inline; }
 .ds-tab:hover .ds-tab-mission, .ds-tab.ds-tab-active .ds-tab-mission { max-height: 80px; opacity: 1; margin-top: 8px; }
 
 /* Bottom area */
-.ds-bottom { text-align: center; padding: 32px 24px 60px; background: var(--cream); }
+.ds-bottom { text-align: center; padding: 32px 24px 60px; background: var(--cream); position: relative; z-index: 1; }
 .ds-more { font-size: 13px; color: var(--muted); }
 
 @media (max-width: 768px) {
