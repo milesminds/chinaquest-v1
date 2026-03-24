@@ -253,12 +253,12 @@ br.desktop-only { display: inline; }
    4. DESTINATIONS
    ══════════════════════════════════════ */
 /* Destination Showcase — XDF exact clone */
-.dest-showcase { scroll-margin-top: -20px; position: relative; }
+.dest-showcase { scroll-margin-top: -20px; position: relative; padding-bottom: 200vh; margin-bottom: -200vh; }
 .ds-header { text-align: center; padding: 80px 24px 40px; background: var(--cream); position: relative; z-index: 1; }
 .ds-support { font-size: 14px; color: var(--muted); margin-top: 10px; }
 
 /* Full-screen image area */
-.ds-img-area { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; overflow: hidden; z-index: 0; opacity: 0; transition: opacity 0.3s ease; }
+.ds-img-area { position: sticky; top: 0; width: 100%; height: 100vh; overflow: hidden; z-index: 0; }
 .ds-nav { pointer-events: auto; }
 .ds-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease; }
 .ds-bg.ds-bg-active { opacity: 1; }
@@ -985,9 +985,7 @@ section[id] { scroll-margin-top: -20px; }
       </a>
     </nav>
   </div>
-  <!-- 3. Bottom area — slides over fixed image -->
-  <div class="ds-bottom" style="margin-top: 100vh;">
-
+  <div class="ds-bottom">
     <div class="section-quote" style="margin-top:0;">
       <div>
         <p class="q-zh">"读万卷书，不如行万里路。"</p>
@@ -1514,23 +1512,6 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-/* ── Cities fixed image visibility ── */
-var dsImgArea = document.querySelector('.ds-img-area');
-var dsSection = document.getElementById('destinations');
-if (dsImgArea && dsSection) {
-  window.addEventListener('scroll', function() {
-    var r = dsSection.getBoundingClientRect();
-    // Show fixed image only when destinations section is in view
-    if (r.top < window.innerHeight && r.bottom > 0) {
-      dsImgArea.style.opacity = '1';
-      dsImgArea.style.pointerEvents = '';
-    } else {
-      dsImgArea.style.opacity = '0';
-      dsImgArea.style.pointerEvents = 'none';
-    }
-  });
-}
 
 /* ── Destination showcase tab switching ── */
 document.querySelectorAll('.ds-tab').forEach(tab => {
