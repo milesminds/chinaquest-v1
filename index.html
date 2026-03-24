@@ -258,7 +258,7 @@ br.desktop-only { display: inline; }
 .ds-support { font-size: 14px; color: var(--muted); margin-top: 10px; }
 
 /* Full-screen image area */
-.ds-img-area { position: relative; width: 100%; height: 75vh; min-height: 500px; overflow: hidden; }
+.ds-img-area { position: relative; width: 100%; height: 100vh; min-height: 600px; overflow: hidden; }
 .ds-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease; }
 .ds-bg.ds-bg-active { opacity: 1; }
 
@@ -942,6 +942,7 @@ section[id] { scroll-margin-top: -20px; }
     <div class="gold-line"></div>
     <h2 class="section-title">Four Core Modules Across Modern China</h2>
     <p class="ds-support">Each city module offers a distinct lens on China · typically 5 days · combinable into longer programmes</p>
+    <p class="ds-more" style="margin-top:12px;">Additional city modules (Hangzhou, Chengdu, Xi'an) available on request.</p>
   </div>
 
   <!-- 2. Image area with tabs overlaid -->
@@ -986,7 +987,6 @@ section[id] { scroll-margin-top: -20px; }
 
   <!-- 3. Bottom area — white background -->
   <div class="ds-bottom">
-    <p class="ds-more">Additional city modules (Hangzhou, Chengdu, Xi'an) available on request.</p>
 
     <div class="section-quote" style="margin-top:20px;">
       <div>
@@ -1442,7 +1442,19 @@ const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   const hero = document.querySelector('.hero');
   const heroH = hero ? hero.offsetHeight : 600;
-  nav.classList.toggle('scrolled', window.scrollY > heroH - 100);
+  // Nav: transparent in hero and cities image area, solid elsewhere
+  var dsImg = document.querySelector('.ds-img-area');
+  var inDsImg = false;
+  if (dsImg) {
+    var dsRect = dsImg.getBoundingClientRect();
+    inDsImg = dsRect.top < 60 && dsRect.bottom > 60;
+  }
+  var inHero = window.scrollY < heroH - 100;
+  if (inHero || inDsImg) {
+    nav.classList.remove('scrolled');
+  } else {
+    nav.classList.add('scrolled');
+  }
   if (hero) {
     const sy = window.scrollY;
     const scrollPct = Math.min(sy / heroH, 1);
