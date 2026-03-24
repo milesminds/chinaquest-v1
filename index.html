@@ -253,7 +253,7 @@ br.desktop-only { display: inline; }
    4. DESTINATIONS
    ══════════════════════════════════════ */
 /* Destination Showcase — XDF exact clone */
-.dest-showcase { scroll-margin-top: -20px; }
+.dest-showcase { scroll-margin-top: -20px; position: relative; }
 .ds-header { text-align: center; padding: 80px 24px 40px; background: var(--cream); position: relative; z-index: 1; }
 .ds-support { font-size: 14px; color: var(--muted); margin-top: 10px; }
 
@@ -985,6 +985,9 @@ section[id] { scroll-margin-top: -20px; }
     </nav>
   </div>
 
+  <!-- Spacer to extend sticky scroll distance -->
+  <div style="height: 100vh; position: relative; z-index: -1;"></div>
+
   <!-- 3. Bottom area — white background -->
   <div class="ds-bottom">
 
@@ -1442,26 +1445,29 @@ const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   const hero = document.querySelector('.hero');
   const heroH = hero ? hero.offsetHeight : 600;
-  // Nav: hide in cities image area (show on scroll up), transparent in hero
+  // Nav: hide on scroll down, show on scroll up
+  // Transparent in hero + cities image area, solid elsewhere
+  var sy = window.scrollY;
+  var scrollingUp = sy < (window._lastSY || 0);
+  window._lastSY = sy;
+  var inHero = sy < heroH - 100;
   var dsImg = document.querySelector('.ds-img-area');
   var inDsImg = false;
   if (dsImg) {
-    var dsRect = dsImg.getBoundingClientRect();
-    inDsImg = dsRect.top < 0 && dsRect.bottom > 60;
+    var r = dsImg.getBoundingClientRect();
+    inDsImg = r.top < 60 && r.bottom > 60;
   }
-  var inHero = window.scrollY < heroH - 100;
-  var scrollingUp = window.scrollY < (window._lastScrollY || 0);
-  window._lastScrollY = window.scrollY;
-
-  if (inHero) {
-    nav.classList.remove('scrolled');
+  // Show/hide based on scroll direction
+  if (scrollingUp || sy < 10) {
     nav.style.transform = '';
-  } else if (inDsImg && !scrollingUp) {
-    nav.style.transform = 'translateY(-100%)';
-    nav.style.transition = 'transform 0.3s ease';
   } else {
-    nav.style.transform = '';
-    nav.style.transition = 'transform 0.3s ease';
+    nav.style.transform = 'translateY(-100%)';
+  }
+  nav.style.transition = 'transform 0.3s ease, background 0.3s ease, padding 0.3s ease';
+  // Transparent or solid
+  if (inHero || inDsImg) {
+    nav.classList.remove('scrolled');
+  } else {
     nav.classList.add('scrolled');
   }
   if (hero) {
