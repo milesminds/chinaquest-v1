@@ -252,45 +252,43 @@ br.desktop-only { display: inline; }
 /* ══════════════════════════════════════
    4. DESTINATIONS
    ══════════════════════════════════════ */
-/* Destination Showcase — XDF-inspired */
-.dest-showcase { position: relative; min-height: 85vh; overflow: hidden; scroll-margin-top: -20px; }
-.ds-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.2s ease; z-index: 0; }
+/* Destination Showcase — XDF style: image top + white bottom */
+.dest-showcase { position: relative; overflow: hidden; scroll-margin-top: -20px; background: var(--white); }
+.ds-img-area { position: relative; height: 50vh; min-height: 360px; overflow: hidden; }
+.ds-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.2s ease; }
 .ds-bg.ds-bg-active { opacity: 1; }
-.ds-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(15,27,51,0.55) 0%, rgba(15,27,51,0.4) 40%, rgba(15,27,51,0.75) 100%); z-index: 1; }
-.ds-content { position: relative; z-index: 2; width: 100%; max-width: 1200px; margin: 0 auto; padding: 80px 24px 50px; color: #fff; }
-.ds-header { text-align: center; margin-bottom: 48px; }
-.ds-support { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 10px; letter-spacing: 0.5px; }
+.ds-overlay { display: none; }
 
-/* Tab row — XDF style: horizontal items, expand on hover */
-.ds-nav { display: flex; justify-content: center; gap: 0; margin-bottom: 0; position: absolute; bottom: 0; left: 0; right: 0; z-index: 2; }
-.ds-tab { flex: 1; text-align: center; padding: 32px 20px 28px; cursor: pointer; transition: all 0.5s ease; position: relative; background: rgba(15,27,51,0.5); backdrop-filter: blur(4px); border-right: 1px solid rgba(255,255,255,0.06); }
+/* Tab row — sits between image and content, overlapping image bottom */
+.ds-nav { display: flex; max-width: 1000px; margin: -48px auto 0; position: relative; z-index: 3; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.12); }
+.ds-tab { flex: 1; text-align: center; padding: 28px 16px 24px; cursor: pointer; transition: all 0.4s ease; position: relative; background: var(--navy); border-right: 1px solid rgba(255,255,255,0.08); }
 .ds-tab:last-child { border-right: none; }
-.ds-tab:hover, .ds-tab.ds-tab-active { background: rgba(15,27,51,0.75); }
-.ds-char { font-family: 'Noto Serif SC', serif; font-size: 42px; color: rgba(255,255,255,0.15); display: block; line-height: 1; margin-bottom: 8px; transition: all 0.4s ease; }
-.ds-tab:hover .ds-char, .ds-tab.ds-tab-active .ds-char { color: var(--gold); font-size: 48px; }
-.ds-city { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: rgba(255,255,255,0.6); display: block; transition: all 0.3s; letter-spacing: 1px; }
+.ds-tab:hover, .ds-tab.ds-tab-active { background: var(--navy-deep, #0F1B33); }
+.ds-char { font-family: 'Noto Serif SC', serif; font-size: 36px; color: rgba(255,255,255,0.15); display: block; line-height: 1; margin-bottom: 6px; transition: all 0.4s ease; }
+.ds-tab:hover .ds-char, .ds-tab.ds-tab-active .ds-char { color: var(--gold); }
+.ds-city { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: rgba(255,255,255,0.6); display: block; transition: all 0.3s; letter-spacing: 1px; }
 .ds-tab:hover .ds-city, .ds-tab.ds-tab-active .ds-city { color: #fff; }
-.ds-sub { display: block; font-size: 12px; color: rgba(255,255,255,0); max-height: 0; overflow: hidden; transition: all 0.5s ease; margin-top: 0; line-height: 1.5; }
-.ds-tab:hover .ds-sub, .ds-tab.ds-tab-active .ds-sub { color: rgba(255,255,255,0.55); max-height: 50px; margin-top: 10px; }
-/* Gold accent line under active tab */
+.ds-sub { display: block; font-size: 11px; color: rgba(255,255,255,0); max-height: 0; overflow: hidden; transition: all 0.4s ease; margin-top: 0; line-height: 1.4; }
+.ds-tab:hover .ds-sub, .ds-tab.ds-tab-active .ds-sub { color: rgba(255,255,255,0.5); max-height: 40px; margin-top: 8px; }
 .ds-tab::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--gold); transition: width 0.4s ease; }
 .ds-tab:hover::after, .ds-tab.ds-tab-active::after { width: 60%; }
 
-/* Detail panel — centered overlay text */
-.ds-panel { display: none; text-align: center; max-width: 640px; margin: 0 auto; padding-bottom: 160px; }
+/* Content area — white background */
+.ds-content { max-width: 1200px; margin: 0 auto; padding: 40px 24px 20px; color: var(--text); }
+.ds-header { text-align: center; margin-bottom: 24px; }
+.ds-support { font-size: 13px; color: var(--muted); margin-top: 8px; }
+.ds-panel { display: none; text-align: center; max-width: 640px; margin: 0 auto; padding: 20px 0; }
 .ds-panel.ds-panel-active { display: block; }
-.ds-desc { font-size: 16px; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 10px; }
-.ds-mission { font-size: 15px; color: var(--gold); font-style: italic; }
-.ds-more { text-align: center; font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 20px; }
+.ds-desc { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 8px; }
+.ds-mission { font-size: 14px; color: var(--gold); font-style: italic; }
+.ds-more { text-align: center; font-size: 12px; color: var(--light); margin-top: 16px; }
 
 @media (max-width: 768px) {
-  .dest-showcase { min-height: 70vh; }
-  .ds-nav { position: relative; flex-wrap: wrap; }
-  .ds-tab { flex: 1 1 50%; padding: 20px 12px; }
-  .ds-char { font-size: 28px; }
-  .ds-tab:hover .ds-char, .ds-tab.ds-tab-active .ds-char { font-size: 32px; }
-  .ds-city { font-size: 16px; }
-  .ds-panel { padding-bottom: 20px; }
+  .ds-img-area { height: 35vh; min-height: 240px; }
+  .ds-nav { flex-wrap: wrap; margin: -32px 12px 0; border-radius: 6px; }
+  .ds-tab { flex: 1 1 50%; padding: 18px 10px; }
+  .ds-char { font-size: 26px; }
+  .ds-city { font-size: 15px; }
 }
 
 .dest-note { padding: 16px 20px; background: var(--gold-bg); border-radius: 10px; margin: 0 auto 32px; display: flex; align-items: center; justify-content: center; gap: 14px; max-width: 700px; }
@@ -1027,20 +1025,16 @@ section[id] { scroll-margin-top: -20px; }
 
 <!-- ══════════ 4. DESTINATIONS ══════════ -->
 <section class="dest-showcase" id="destinations">
-  <!-- Background images — one per city -->
-  <img class="ds-bg ds-bg-active" data-city="beijing" src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80&fm=webp" alt="Beijing">
-  <img class="ds-bg" data-city="shanghai" src="https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=1920&q=80&fm=webp" alt="Shanghai">
-  <img class="ds-bg" data-city="shenzhen" src="https://images.unsplash.com/photo-1626526913691-df6b2c926301?w=1920&q=80&fm=webp" alt="Shenzhen">
-  <img class="ds-bg" data-city="hongkong" src="https://images.unsplash.com/photo-1502099530544-2b61cbaed85c?w=1920&q=80&fm=webp" alt="Hong Kong">
-  <div class="ds-overlay"></div>
+  <!-- Image area -->
+  <div class="ds-img-area">
+    <img class="ds-bg ds-bg-active" data-city="beijing" src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80&fm=webp" alt="Beijing">
+    <img class="ds-bg" data-city="shanghai" src="https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=1920&q=80&fm=webp" alt="Shanghai">
+    <img class="ds-bg" data-city="shenzhen" src="https://images.unsplash.com/photo-1626526913691-df6b2c926301?w=1920&q=80&fm=webp" alt="Shenzhen">
+    <img class="ds-bg" data-city="hongkong" src="https://images.unsplash.com/photo-1502099530544-2b61cbaed85c?w=1920&q=80&fm=webp" alt="Hong Kong">
+  </div>
 
-  <div class="ds-content">
-    <div class="ds-header">
-      <p class="section-label" style="color:var(--gold);">Where Students Go</p>
-      <p class="ds-support">Core city modules · typically 5 days · combinable into longer programmes</p>
-    </div>
-
-    <nav class="ds-nav">
+  <!-- Tab navigation — overlapping image bottom -->
+  <nav class="ds-nav">
       <a class="ds-tab ds-tab-active" data-city="beijing">
         <span class="ds-char">京</span>
         <span class="ds-city">Beijing</span>
@@ -1061,7 +1055,16 @@ section[id] { scroll-margin-top: -20px; }
         <span class="ds-city">Hong Kong</span>
         <span class="ds-sub">Crossroads, Sustainability, and Global Outlook</span>
       </a>
-    </nav>
+  </nav>
+
+  <!-- Content area — white background -->
+  <div class="ds-content">
+    <div class="ds-header">
+      <p class="section-label">Where Students Go</p>
+      <div class="gold-line"></div>
+      <h2 class="section-title">Four Core Modules Across Modern China</h2>
+      <p class="ds-support">Core city modules · typically 5 days · combinable into longer programmes</p>
+    </div>
 
     <!-- City detail panels -->
     <div class="ds-panel ds-panel-active" data-city="beijing">
