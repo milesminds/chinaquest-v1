@@ -1442,17 +1442,26 @@ const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   const hero = document.querySelector('.hero');
   const heroH = hero ? hero.offsetHeight : 600;
-  // Nav: transparent in hero and cities image area, solid elsewhere
+  // Nav: hide in cities image area (show on scroll up), transparent in hero
   var dsImg = document.querySelector('.ds-img-area');
   var inDsImg = false;
   if (dsImg) {
     var dsRect = dsImg.getBoundingClientRect();
-    inDsImg = dsRect.top < 60 && dsRect.bottom > 60;
+    inDsImg = dsRect.top < 0 && dsRect.bottom > 60;
   }
   var inHero = window.scrollY < heroH - 100;
-  if (inHero || inDsImg) {
+  var scrollingUp = window.scrollY < (window._lastScrollY || 0);
+  window._lastScrollY = window.scrollY;
+
+  if (inHero) {
     nav.classList.remove('scrolled');
+    nav.style.transform = '';
+  } else if (inDsImg && !scrollingUp) {
+    nav.style.transform = 'translateY(-100%)';
+    nav.style.transition = 'transform 0.3s ease';
   } else {
+    nav.style.transform = '';
+    nav.style.transition = 'transform 0.3s ease';
     nav.classList.add('scrolled');
   }
   if (hero) {
