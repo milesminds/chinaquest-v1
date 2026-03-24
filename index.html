@@ -828,8 +828,8 @@ section[id] { scroll-margin-top: -20px; }
     <a href="#" class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">China Quest <span class="nav-logo-cn">知行中国</span></a>
     <ul class="nav-links">
       <li><a href="#why">Why</a></li>
-      <li><a href="#how-it-works">How It Works</a></li>
       <li><a href="#destinations">Cities</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
       <li><a href="#outcomes">Outcomes</a></li>
       <li><a href="#safety">Safety</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -846,8 +846,8 @@ section[id] { scroll-margin-top: -20px; }
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobile-menu">
   <a href="#why" onclick="closeMenu()">Why</a>
-  <a href="#how-it-works" onclick="closeMenu()">How It Works</a>
   <a href="#destinations" onclick="closeMenu()">Cities</a>
+  <a href="#how-it-works" onclick="closeMenu()">How It Works</a>
   <a href="#outcomes" onclick="closeMenu()">Outcomes</a>
   <a href="#safety" onclick="closeMenu()">Safety</a>
   <a href="#faq" onclick="closeMenu()">FAQ</a>
@@ -928,6 +928,71 @@ section[id] { scroll-margin-top: -20px; }
         <p class="q-zh">"纸上得来终觉浅，绝知此事要躬行。"</p>
         <p class="q-en">What is learned from books remains shallow. True understanding comes only through experience.</p>
         <p class="q-src">— Lu You, Song Dynasty poet (1125–1210)</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="section-divider"><span></span></div>
+
+<!-- ══════════ 4. DESTINATIONS ══════════ -->
+<section class="dest-showcase" id="destinations">
+  <!-- 1. Title area — white background above image -->
+  <div class="ds-header">
+    <p class="section-label">Where Students Go</p>
+    <div class="gold-line"></div>
+    <h2 class="section-title">Four Core Modules Across Modern China</h2>
+    <p class="ds-support">Each city module offers a distinct lens on China · typically 5 days · combinable into longer programmes</p>
+  </div>
+
+  <!-- 2. Image area with tabs overlaid -->
+  <div class="ds-img-area">
+    <img class="ds-bg ds-bg-active" data-city="beijing" src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80&fm=webp" alt="Beijing">
+    <img class="ds-bg" data-city="shanghai" src="https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=1920&q=80&fm=webp" alt="Shanghai">
+    <img class="ds-bg" data-city="shenzhen" src="https://images.unsplash.com/photo-1626526913691-df6b2c926301?w=1920&q=80&fm=webp" alt="Shenzhen">
+    <img class="ds-bg" data-city="hongkong" src="https://images.unsplash.com/photo-1502099530544-2b61cbaed85c?w=1920&q=80&fm=webp" alt="Hong Kong">
+
+    <!-- Tab columns — full height on image -->
+    <nav class="ds-nav">
+      <a class="ds-tab ds-tab-active" data-city="beijing">
+        <span class="ds-city">Beijing</span>
+        <span class="ds-char">京</span>
+        <span class="ds-sub">Roots, Identity, and Living Heritage</span>
+        <span class="ds-tab-desc">Great Wall, imperial landmarks, and the continuity of Chinese civilisation. Hutong observation, calligraphy, and everyday cultural practice.</span>
+        <span class="ds-tab-mission">A module focused on how history, memory, and identity shape modern China</span>
+      </a>
+      <a class="ds-tab" data-city="shanghai">
+        <span class="ds-city">Shanghai</span>
+        <span class="ds-char">沪</span>
+        <span class="ds-sub">Global Interface, Exchange, and Modern Chinese Identity</span>
+        <span class="ds-tab-desc">The Bund, Pudong, and the story of urban transformation. School exchange, peer dialogue, and neighbourhood discovery.</span>
+        <span class="ds-tab-mission">A module focused on global connection, cultural fusion, and city life in contemporary China</span>
+      </a>
+      <a class="ds-tab" data-city="shenzhen">
+        <span class="ds-city">Shenzhen</span>
+        <span class="ds-char">深</span>
+        <span class="ds-sub">Future Ecosystems, Innovation, and STEM Exploration</span>
+        <span class="ds-tab-desc">Technology ecosystems, robotics, and hands-on innovation exposure. Smart mobility, urban change, and future city systems.</span>
+        <span class="ds-tab-mission">A module focused on how design, making, and innovation shape the world students are growing into</span>
+      </a>
+      <a class="ds-tab" data-city="hongkong">
+        <span class="ds-city">Hong Kong</span>
+        <span class="ds-char">港</span>
+        <span class="ds-sub">Crossroads, Sustainability, and Global Outlook</span>
+        <span class="ds-tab-desc">Harbour, density, and East–West urban histories. Field-based sustainability learning and local community observation.</span>
+        <span class="ds-tab-mission">A module focused on comparison, reflection, and bringing the wider journey into sharper perspective</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- 3. Bottom area — white background -->
+  <div class="ds-bottom">
+    <p class="ds-more">Additional city modules (Hangzhou, Chengdu, Xi'an) available on request.</p>
+
+    <div class="section-quote" style="margin-top:20px;">
+      <div>
+        <p class="q-zh">"读万卷书，不如行万里路。"</p>
+        <p class="q-en">Reading ten thousand books is not as good as travelling ten thousand miles.</p>
+        <p class="q-src">— Dong Qichang, Ming Dynasty scholar (1555–1636)</p>
       </div>
     </div>
   </div>
@@ -1044,72 +1109,6 @@ section[id] { scroll-margin-top: -20px; }
     </div>
   </div>
 </section>
-<div class="section-divider"><span></span></div>
-
-<!-- ══════════ 4. DESTINATIONS ══════════ -->
-<section class="dest-showcase" id="destinations">
-  <!-- 1. Title area — white background above image -->
-  <div class="ds-header">
-    <p class="section-label">Where Students Go</p>
-    <div class="gold-line"></div>
-    <h2 class="section-title">Four Core Modules Across Modern China</h2>
-    <p class="ds-support">Each city module offers a distinct lens on China · typically 5 days · combinable into longer programmes</p>
-  </div>
-
-  <!-- 2. Image area with tabs overlaid -->
-  <div class="ds-img-area">
-    <img class="ds-bg ds-bg-active" data-city="beijing" src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80&fm=webp" alt="Beijing">
-    <img class="ds-bg" data-city="shanghai" src="https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=1920&q=80&fm=webp" alt="Shanghai">
-    <img class="ds-bg" data-city="shenzhen" src="https://images.unsplash.com/photo-1626526913691-df6b2c926301?w=1920&q=80&fm=webp" alt="Shenzhen">
-    <img class="ds-bg" data-city="hongkong" src="https://images.unsplash.com/photo-1502099530544-2b61cbaed85c?w=1920&q=80&fm=webp" alt="Hong Kong">
-
-    <!-- Tab columns — full height on image -->
-    <nav class="ds-nav">
-      <a class="ds-tab ds-tab-active" data-city="beijing">
-        <span class="ds-city">Beijing</span>
-        <span class="ds-char">京</span>
-        <span class="ds-sub">Roots, Identity, and Living Heritage</span>
-        <span class="ds-tab-desc">Great Wall, imperial landmarks, and the continuity of Chinese civilisation. Hutong observation, calligraphy, and everyday cultural practice.</span>
-        <span class="ds-tab-mission">A module focused on how history, memory, and identity shape modern China</span>
-      </a>
-      <a class="ds-tab" data-city="shanghai">
-        <span class="ds-city">Shanghai</span>
-        <span class="ds-char">沪</span>
-        <span class="ds-sub">Global Interface, Exchange, and Modern Chinese Identity</span>
-        <span class="ds-tab-desc">The Bund, Pudong, and the story of urban transformation. School exchange, peer dialogue, and neighbourhood discovery.</span>
-        <span class="ds-tab-mission">A module focused on global connection, cultural fusion, and city life in contemporary China</span>
-      </a>
-      <a class="ds-tab" data-city="shenzhen">
-        <span class="ds-city">Shenzhen</span>
-        <span class="ds-char">深</span>
-        <span class="ds-sub">Future Ecosystems, Innovation, and STEM Exploration</span>
-        <span class="ds-tab-desc">Technology ecosystems, robotics, and hands-on innovation exposure. Smart mobility, urban change, and future city systems.</span>
-        <span class="ds-tab-mission">A module focused on how design, making, and innovation shape the world students are growing into</span>
-      </a>
-      <a class="ds-tab" data-city="hongkong">
-        <span class="ds-city">Hong Kong</span>
-        <span class="ds-char">港</span>
-        <span class="ds-sub">Crossroads, Sustainability, and Global Outlook</span>
-        <span class="ds-tab-desc">Harbour, density, and East–West urban histories. Field-based sustainability learning and local community observation.</span>
-        <span class="ds-tab-mission">A module focused on comparison, reflection, and bringing the wider journey into sharper perspective</span>
-      </a>
-    </nav>
-  </div>
-
-  <!-- 3. Bottom area — white background -->
-  <div class="ds-bottom">
-    <p class="ds-more">Additional city modules (Hangzhou, Chengdu, Xi'an) available on request.</p>
-
-    <div class="section-quote" style="margin-top:20px;">
-      <div>
-        <p class="q-zh">"读万卷书，不如行万里路。"</p>
-        <p class="q-en">Reading ten thousand books is not as good as travelling ten thousand miles.</p>
-        <p class="q-src">— Dong Qichang, Ming Dynasty scholar (1555–1636)</p>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="section-divider"><span></span></div>
 
 <section class="section section-alt" id="outcomes">
   <div class="container">
