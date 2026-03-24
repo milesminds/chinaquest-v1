@@ -252,43 +252,40 @@ br.desktop-only { display: inline; }
 /* ══════════════════════════════════════
    4. DESTINATIONS
    ══════════════════════════════════════ */
-/* Destination Showcase — XDF style: image top + white bottom */
-.dest-showcase { position: relative; overflow: hidden; scroll-margin-top: -20px; background: var(--white); }
-.ds-img-area { position: relative; height: 50vh; min-height: 360px; overflow: hidden; }
+/* Destination Showcase — XDF layout */
+.dest-showcase { scroll-margin-top: -20px; background: var(--white); }
+.ds-header { text-align: center; padding: 80px 24px 40px; }
+.ds-support { font-size: 14px; color: var(--muted); margin-top: 10px; }
+
+/* Image area with tabs on top */
+.ds-img-area { position: relative; height: 55vh; min-height: 400px; overflow: hidden; }
 .ds-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.2s ease; }
 .ds-bg.ds-bg-active { opacity: 1; }
-.ds-overlay { display: none; }
 
-/* Tab row — sits between image and content, overlapping image bottom */
-.ds-nav { display: flex; max-width: 1000px; margin: -48px auto 0; position: relative; z-index: 3; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.12); }
-.ds-tab { flex: 1; text-align: center; padding: 28px 16px 24px; cursor: pointer; transition: all 0.4s ease; position: relative; background: var(--navy); border-right: 1px solid rgba(255,255,255,0.08); }
+/* Tab navigation — on top of image */
+.ds-nav { display: flex; position: absolute; top: 0; left: 0; right: 0; z-index: 2; }
+.ds-tab { flex: 1; text-align: center; padding: 32px 16px 28px; cursor: pointer; transition: all 0.4s ease; position: relative; background: rgba(255,255,255,0.08); backdrop-filter: blur(2px); border-right: 1px solid rgba(255,255,255,0.08); }
 .ds-tab:last-child { border-right: none; }
-.ds-tab:hover, .ds-tab.ds-tab-active { background: var(--navy-deep, #0F1B33); }
-.ds-char { font-family: 'Noto Serif SC', serif; font-size: 36px; color: rgba(255,255,255,0.15); display: block; line-height: 1; margin-bottom: 6px; transition: all 0.4s ease; }
-.ds-tab:hover .ds-char, .ds-tab.ds-tab-active .ds-char { color: var(--gold); }
-.ds-city { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: rgba(255,255,255,0.6); display: block; transition: all 0.3s; letter-spacing: 1px; }
+.ds-tab:hover, .ds-tab.ds-tab-active { background: rgba(15,27,51,0.45); }
+.ds-city { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: rgba(255,255,255,0.7); display: block; transition: all 0.3s; letter-spacing: 1px; }
 .ds-tab:hover .ds-city, .ds-tab.ds-tab-active .ds-city { color: #fff; }
-.ds-sub { display: block; font-size: 11px; color: rgba(255,255,255,0); max-height: 0; overflow: hidden; transition: all 0.4s ease; margin-top: 0; line-height: 1.4; }
-.ds-tab:hover .ds-sub, .ds-tab.ds-tab-active .ds-sub { color: rgba(255,255,255,0.5); max-height: 40px; margin-top: 8px; }
-.ds-tab::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--gold); transition: width 0.4s ease; }
-.ds-tab:hover::after, .ds-tab.ds-tab-active::after { width: 60%; }
+.ds-char { font-family: 'Noto Serif SC', serif; font-size: 14px; color: rgba(255,255,255,0.3); display: block; margin-top: 4px; transition: color 0.3s; }
+.ds-tab:hover .ds-char, .ds-tab.ds-tab-active .ds-char { color: var(--gold); }
+.ds-sub { display: block; font-size: 12px; color: rgba(255,255,255,0); max-height: 0; overflow: hidden; transition: all 0.5s ease; margin-top: 0; line-height: 1.5; }
+.ds-tab:hover .ds-sub, .ds-tab.ds-tab-active .ds-sub { color: rgba(255,255,255,0.65); max-height: 50px; margin-top: 8px; }
+.ds-tab::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--gold); transform: scaleX(0); transition: transform 0.4s ease; }
+.ds-tab:hover::after, .ds-tab.ds-tab-active::after { transform: scaleX(1); }
 
-/* Content area — white background */
-.ds-content { max-width: 1200px; margin: 0 auto; padding: 40px 24px 20px; color: var(--text); }
-.ds-header { text-align: center; margin-bottom: 24px; }
-.ds-support { font-size: 13px; color: var(--muted); margin-top: 8px; }
-.ds-panel { display: none; text-align: center; max-width: 640px; margin: 0 auto; padding: 20px 0; }
-.ds-panel.ds-panel-active { display: block; }
-.ds-desc { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 8px; }
-.ds-mission { font-size: 14px; color: var(--gold); font-style: italic; }
-.ds-more { text-align: center; font-size: 12px; color: var(--light); margin-top: 16px; }
+/* Bottom area */
+.ds-bottom { text-align: center; padding: 32px 24px 60px; }
+.ds-more { font-size: 13px; color: var(--muted); }
 
 @media (max-width: 768px) {
-  .ds-img-area { height: 35vh; min-height: 240px; }
-  .ds-nav { flex-wrap: wrap; margin: -32px 12px 0; border-radius: 6px; }
-  .ds-tab { flex: 1 1 50%; padding: 18px 10px; }
-  .ds-char { font-size: 26px; }
-  .ds-city { font-size: 15px; }
+  .ds-header { padding: 60px 16px 28px; }
+  .ds-img-area { height: 45vh; min-height: 300px; }
+  .ds-nav { flex-wrap: wrap; }
+  .ds-tab { flex: 1 1 50%; padding: 20px 10px; }
+  .ds-city { font-size: 17px; }
 }
 
 .dest-note { padding: 16px 20px; background: var(--gold-bg); border-radius: 10px; margin: 0 auto 32px; display: flex; align-items: center; justify-content: center; gap: 14px; max-width: 700px; }
@@ -1025,72 +1022,55 @@ section[id] { scroll-margin-top: -20px; }
 
 <!-- ══════════ 4. DESTINATIONS ══════════ -->
 <section class="dest-showcase" id="destinations">
-  <!-- Image area -->
+  <!-- 1. Title area — white background above image -->
+  <div class="ds-header">
+    <p class="section-label">Where Students Go</p>
+    <div class="gold-line"></div>
+    <h2 class="section-title">Four Core Modules Across Modern China</h2>
+    <p class="ds-support">Each city module offers a distinct lens on China · typically 5 days · combinable into longer programmes</p>
+  </div>
+
+  <!-- 2. Image area with tabs overlaid -->
   <div class="ds-img-area">
     <img class="ds-bg ds-bg-active" data-city="beijing" src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80&fm=webp" alt="Beijing">
     <img class="ds-bg" data-city="shanghai" src="https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=1920&q=80&fm=webp" alt="Shanghai">
     <img class="ds-bg" data-city="shenzhen" src="https://images.unsplash.com/photo-1626526913691-df6b2c926301?w=1920&q=80&fm=webp" alt="Shenzhen">
     <img class="ds-bg" data-city="hongkong" src="https://images.unsplash.com/photo-1502099530544-2b61cbaed85c?w=1920&q=80&fm=webp" alt="Hong Kong">
-  </div>
 
-  <!-- Tab navigation — overlapping image bottom -->
-  <nav class="ds-nav">
+    <!-- Tab navigation — directly on image -->
+    <nav class="ds-nav">
       <a class="ds-tab ds-tab-active" data-city="beijing">
-        <span class="ds-char">京</span>
         <span class="ds-city">Beijing</span>
+        <span class="ds-char">京</span>
         <span class="ds-sub">Roots, Identity, and Living Heritage</span>
       </a>
       <a class="ds-tab" data-city="shanghai">
-        <span class="ds-char">沪</span>
         <span class="ds-city">Shanghai</span>
-        <span class="ds-sub">Global Interface, Exchange, and Modern Chinese Identity</span>
+        <span class="ds-char">沪</span>
+        <span class="ds-sub">Global Interface, Exchange, and Modern Identity</span>
       </a>
       <a class="ds-tab" data-city="shenzhen">
-        <span class="ds-char">深</span>
         <span class="ds-city">Shenzhen</span>
-        <span class="ds-sub">Future Ecosystems, Innovation, and STEM Exploration</span>
+        <span class="ds-char">深</span>
+        <span class="ds-sub">Innovation, STEM, and Future City Life</span>
       </a>
       <a class="ds-tab" data-city="hongkong">
-        <span class="ds-char">港</span>
         <span class="ds-city">Hong Kong</span>
+        <span class="ds-char">港</span>
         <span class="ds-sub">Crossroads, Sustainability, and Global Outlook</span>
       </a>
-  </nav>
+    </nav>
+  </div>
 
-  <!-- Content area — white background -->
-  <div class="ds-content">
-    <div class="ds-header">
-      <p class="section-label">Where Students Go</p>
-      <div class="gold-line"></div>
-      <h2 class="section-title">Four Core Modules Across Modern China</h2>
-      <p class="ds-support">Core city modules · typically 5 days · combinable into longer programmes</p>
-    </div>
-
-    <!-- City detail panels -->
-    <div class="ds-panel ds-panel-active" data-city="beijing">
-      <p class="ds-desc">Great Wall, imperial landmarks, and the continuity of Chinese civilisation. Hutong observation, calligraphy, and everyday cultural practice.</p>
-      <p class="ds-mission">A module focused on how history, memory, and identity shape modern China</p>
-    </div>
-    <div class="ds-panel" data-city="shanghai">
-      <p class="ds-desc">The Bund, Pudong, and the story of urban transformation. School exchange, peer dialogue, and neighbourhood discovery.</p>
-      <p class="ds-mission">A module focused on global connection, cultural fusion, and city life in contemporary China</p>
-    </div>
-    <div class="ds-panel" data-city="shenzhen">
-      <p class="ds-desc">Technology ecosystems, robotics, and hands-on innovation exposure. Smart mobility, urban change, and future city systems.</p>
-      <p class="ds-mission">A module focused on how design, making, and innovation shape the world students are growing into</p>
-    </div>
-    <div class="ds-panel" data-city="hongkong">
-      <p class="ds-desc">Harbour, density, and East–West urban histories. Field-based sustainability learning and local community observation.</p>
-      <p class="ds-mission">A module focused on comparison, reflection, and bringing the wider journey into sharper perspective</p>
-    </div>
-
+  <!-- 3. Bottom area — white background -->
+  <div class="ds-bottom">
     <p class="ds-more">Additional city modules (Hangzhou, Chengdu, Xi'an) available on request.</p>
 
-    <div class="section-quote" style="border-top-color:rgba(255,255,255,0.1);margin-top:32px;">
+    <div class="section-quote" style="margin-top:20px;">
       <div>
-        <p class="q-zh" style="color:rgba(255,255,255,0.5);">"读万卷书，不如行万里路。"</p>
-        <p class="q-en" style="color:#fff;">Reading ten thousand books is not as good as travelling ten thousand miles.</p>
-        <p class="q-src" style="color:rgba(255,255,255,0.5);">— Dong Qichang, Ming Dynasty scholar (1555–1636)</p>
+        <p class="q-zh">"读万卷书，不如行万里路。"</p>
+        <p class="q-en">Reading ten thousand books is not as good as travelling ten thousand miles.</p>
+        <p class="q-src">— Dong Qichang, Ming Dynasty scholar (1555–1636)</p>
       </div>
     </div>
   </div>
