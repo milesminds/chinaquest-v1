@@ -296,8 +296,8 @@ br.desktop-only { display: inline; }
   .ds-img-area { height: auto; min-height: auto; position: relative !important; }
   /* Stack tabs vertically — each city full-screen card */
   .ds-nav { position: relative; flex-direction: column; }
-  .ds-tab { flex: none; width: 100%; min-height: 75vh; justify-content: flex-end; align-items: flex-start; text-align: left; border-right: none; border-bottom: none; padding: 0 24px 40px; background-size: cover; background-position: center; position: relative; }
-  .ds-tab::before { opacity: 1; background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.55) 100%); }
+  .ds-tab { flex: none; width: 100%; min-height: 75vh; justify-content: flex-start; align-items: flex-start; text-align: left; border-right: none; border-bottom: none; padding: 48px 24px 40px; background-size: cover; background-position: center; position: relative; }
+  .ds-tab::before { opacity: 1; background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.05) 100%); }
   /* Each tab gets its own background image */
   .ds-tab[data-city="beijing"] { background-image: url('images/beijing-temple.jpg'); }
   .ds-tab[data-city="shanghai"] { background-image: url('images/shanghai-bund.jpg'); }
@@ -314,7 +314,6 @@ br.desktop-only { display: inline; }
   .ds-tab-mission { font-size: 13px; text-align: left; }
   /* Gold accent line at bottom of each card */
   .ds-tab::after { display: none; }
-  .ds-tab + .ds-tab { border-top: 3px solid var(--gold); }
   /* Mobile floating CTA — circle with icon only */
   .floating-cta { width: 52px; height: 52px; padding: 0; border-radius: 50%; justify-content: center; bottom: 24px; right: 20px; font-size: 0; gap: 0; }
   .floating-cta svg { width: 22px; height: 22px; }
@@ -1529,10 +1528,11 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 /* ── Cities image fix/unfix on scroll ── */
 (function() {
+  // Skip on mobile
+  if (window.innerWidth <= 768) return;
   var imgArea = document.querySelector('.ds-img-area');
   var section = document.getElementById('destinations');
   if (!imgArea || !section) return;
-  // Create placeholder to hold space when image goes fixed
   var placeholder = document.createElement('div');
   placeholder.style.height = 'calc(100vh + 500px)';
   placeholder.style.display = 'none';
@@ -1541,7 +1541,6 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   window.addEventListener('scroll', function() {
     var sy = window.scrollY;
     var imgTop = placeholder.style.display === 'block' ? placeholder.getBoundingClientRect().top + sy : imgArea.getBoundingClientRect().top + sy;
-    // Fix when image top reaches viewport top
     if (sy >= imgTop) {
       if (!imgArea.classList.contains('ds-fixed')) {
         imgArea.classList.add('ds-fixed');
