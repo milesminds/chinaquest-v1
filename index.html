@@ -1528,7 +1528,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   if (!imgArea || !section) return;
   // Create placeholder to hold space when image goes fixed
   var placeholder = document.createElement('div');
-  placeholder.style.height = 'calc(100vh + 300px)';
+  placeholder.style.height = 'calc(100vh + 500px)';
   placeholder.style.display = 'none';
   imgArea.parentNode.insertBefore(placeholder, imgArea.nextSibling);
 
@@ -1541,7 +1541,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         imgArea.classList.add('ds-fixed');
         placeholder.style.display = 'block';
       }
-    } else if (sy < imgTop - 300) {
+    } else if (sy < imgTop - 500) {
       if (imgArea.classList.contains('ds-fixed')) {
         imgArea.classList.remove('ds-fixed');
         placeholder.style.display = 'none';
