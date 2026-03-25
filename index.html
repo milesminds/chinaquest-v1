@@ -315,7 +315,8 @@ br.desktop-only { display: inline; }
   /* Gold accent line at bottom of each card */
   .ds-tab::after { display: none; }
   /* Mobile floating CTA — circle with icon only */
-  .floating-cta { width: 52px; height: 52px; padding: 0; border-radius: 50%; justify-content: center; bottom: 24px; right: 20px; font-size: 0; gap: 0; }
+  .floating-cta { width: 52px; height: 52px; padding: 0; border-radius: 50%; justify-content: center; bottom: 24px; right: 20px; gap: 0; overflow: hidden; }
+  .floating-cta span { display: none; }
   .floating-cta svg { width: 22px; height: 22px; }
 }
 
@@ -1413,7 +1414,7 @@ section[id] { scroll-margin-top: -20px; }
 <!-- Floating Enquire CTA -->
 <a href="#get-started" class="floating-cta" id="floating-cta">
   <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-  Enquire
+  <span>Enquire</span>
 </a>
 
 <!-- Back to top button -->
