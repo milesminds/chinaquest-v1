@@ -1528,7 +1528,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   if (!imgArea || !section) return;
   // Create placeholder to hold space when image goes fixed
   var placeholder = document.createElement('div');
-  placeholder.style.height = '100vh';
+  placeholder.style.height = 'calc(100vh + 300px)';
   placeholder.style.display = 'none';
   imgArea.parentNode.insertBefore(placeholder, imgArea.nextSibling);
 
