@@ -1449,11 +1449,15 @@ window.addEventListener('scroll', () => {
   var scrollingUp = sy < (window._lastSY || 0);
   window._lastSY = sy;
   var inHero = sy < heroH - 100;
-  var dsImg = document.querySelector('.ds-img-area');
   var inDsImg = false;
-  if (dsImg) {
-    var r = dsImg.getBoundingClientRect();
-    inDsImg = r.top < 60 && r.bottom > 60;
+  var dsImgEl = document.querySelector('.ds-img-area');
+  if (dsImgEl && dsImgEl.classList.contains('ds-fixed')) {
+    // Only treat as "in image area" if placeholder is visible in viewport
+    var ph = dsImgEl.nextElementSibling;
+    if (ph && ph.style.display === 'block') {
+      var phRect = ph.getBoundingClientRect();
+      inDsImg = phRect.top < 60 && phRect.bottom > 0;
+    }
   }
   // Show/hide based on scroll direction
   if (scrollingUp || sy < 10) {
