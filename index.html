@@ -1458,14 +1458,14 @@ window.addEventListener('scroll', () => {
   // Show/hide based on scroll direction
   if (scrollingUp || sy < 10) {
     nav.style.transform = '';
-  } else {
+  } else if (sy < imgTop - 100) {
     nav.style.transform = 'translateY(-100%)';
   }
   nav.style.transition = 'transform 0.3s ease, background 0.3s ease, padding 0.3s ease';
   // Transparent or solid
   if (inHero || inDsImg) {
     nav.classList.remove('scrolled');
-  } else {
+  } else if (sy < imgTop - 100) {
     nav.classList.add('scrolled');
   }
   if (hero) {
@@ -1537,7 +1537,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         imgArea.classList.add('ds-fixed');
         placeholder.style.display = 'block';
       }
-    } else {
+    } else if (sy < imgTop - 100) {
       if (imgArea.classList.contains('ds-fixed')) {
         imgArea.classList.remove('ds-fixed');
         placeholder.style.display = 'none';
@@ -1588,7 +1588,7 @@ const countObserver = new IntersectionObserver((entries) => {
         if (target > 999) {
           /* Large numbers (e.g. years) — just display, no count-up */
           el.textContent = target + suffix;
-        } else {
+        } else if (sy < imgTop - 100) {
           let current = 0;
           const step = Math.max(1, Math.floor(target / 40));
           const timer = setInterval(() => {
