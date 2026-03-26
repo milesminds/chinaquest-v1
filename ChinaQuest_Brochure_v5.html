@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <title>China Quest — Programme Brochure</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Zhi+Mang+Xing&display=swap');
-:root { --navy: #1B2A4A; --gold: #C9A94E; --gold-light: #F5F0E8; --white: #fff; --text: #1F2937; --muted: #6B7280; --light: #9CA3AF; --border: #E8E2D8; --bg: #FAFAF8; }
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Zhi+Mang+Xing&family=Noto+Serif+SC:wght@400;700&display=swap');
+:root { --navy: #1B2A4A; --gold: #C9A94E; --gold-light: #F5F0E8; --white: #fff; --text: #1F2937; --muted: #374151; --light: #4B5563; --border: #E8E2D8; --bg: #FAFAF8; }
 * { margin:0; padding:0; box-sizing:border-box; }
 @page { size: A4; margin: 0; }
 body { font-family: 'Inter', -apple-system, sans-serif; color: var(--text); line-height: 1.6; background: #ddd; margin: 0; }
@@ -38,16 +38,17 @@ body { font-family: 'Inter', -apple-system, sans-serif; color: var(--text); line
 .pl { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 2.5mm; }
 .pln { width: 25mm; height: 1.5px; background: var(--gold); margin-bottom: 5mm; }
 .pt { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--navy); font-weight: 700; margin-bottom: 2.5mm; line-height: 1.2; }
-.ps { font-size: 11px; color: #1F2937; margin-bottom: 5mm; line-height: 1.6; }
+.ps { font-size: 12px; color: #1F2937; margin-bottom: 5mm; line-height: 1.6; }
 h3 { font-size: 13px; color: var(--navy); font-weight: 700; margin-top: 5mm; margin-bottom: 2.5mm; }
-p { font-size: 10.5px; margin-bottom: 2mm; }
-.sm { font-size: 9.5px; color: #1F2937; }
+p { font-size: 11.5px; color: #1F2937; margin-bottom: 2mm; line-height: 1.5; }
+.sm { font-size: 10.5px; color: #1F2937; }
 
 /* 3-col cards */
 .c3 { display: flex; gap: 3.5mm; margin: 3mm 0; }
 .c3 > div { flex: 1; padding: 4mm; background: var(--bg); border: 1px solid var(--border); border-radius: 2.5mm; }
 .c3 h4 { font-size: 11px; color: var(--navy); font-weight: 700; margin-bottom: 2mm; }
-.c3 p { font-size: 9.5px; color: #1F2937; margin: 0; line-height: 1.5; }
+.c3 p { font-size: 10.5px; color: #1F2937; margin: 0; line-height: 1.5; }
+.c3 .desc2 { margin-top: 1.5mm; font-size: 10px; color: var(--muted); line-height: 1.45; }
 .tags { display: flex; flex-wrap: wrap; gap: 1.5mm; margin-top: 2mm; }
 .tag { font-size: 8px; padding: 1mm 2.5mm; background: var(--gold-light); color: #8B7A55; border-radius: 1.5mm; font-weight: 600; }
 
@@ -56,46 +57,47 @@ p { font-size: 10.5px; margin-bottom: 2mm; }
 .s4 > div { flex: 1; text-align: center; padding: 3mm 2mm; background: var(--bg); border: 1px solid var(--border); border-radius: 2.5mm; }
 .s4 .n { font-size: 16px; font-weight: 800; color: var(--navy); opacity: 0.35; }
 .s4 h4 { font-size: 10px; color: var(--navy); font-weight: 700; margin: 1mm 0; }
-.s4 p { font-size: 8.5px; color: #1F2937; margin: 0; line-height: 1.35; }
+.s4 p { font-size: 9px; color: #1F2937; margin: 0; line-height: 1.4; }
 
 /* Learning pillars - compact */
 .lp { display: flex; gap: 2.5mm; margin: 2.5mm 0; }
 .lp > div { flex: 1; text-align: center; padding: 2.5mm; background: var(--bg); border: 1px solid var(--border); border-radius: 2mm; }
 .lp h4 { font-size: 9.5px; color: var(--navy); font-weight: 700; margin-bottom: 1mm; }
-.lp p { font-size: 8px; color: #1F2937; margin: 0; }
+.lp p { font-size: 8.5px; color: #1F2937; margin: 0; }
 
 /* Gold note */
-.gn { padding: 3.5mm 4mm; border-left: 2.5px solid var(--gold); background: var(--gold-light); border-radius: 0 2.5mm 2.5mm 0; margin: 3mm 0; font-size: 10px; line-height: 1.55; }
+.gn { padding: 3.5mm 4mm; border-left: 2.5px solid var(--gold); background: var(--gold-light); border-radius: 0 2.5mm 2.5mm 0; margin: 3mm 0; font-size: 10.5px; line-height: 1.55; }
 
 /* Module cards */
 .mod { border: 1px solid var(--border); border-radius: 2.5mm; padding: 4mm; margin-bottom: 3mm; }
 .mod h4 { font-size: 12px; color: var(--navy); font-weight: 700; margin-bottom: 1mm; }
-.mod .th { font-size: 9.5px; color: var(--gold); font-weight: 600; margin-bottom: 1.5mm; }
-.mod p { font-size: 9.5px; margin-bottom: 1mm; }
-.mod .mi { font-style: italic; color: #1F2937; font-size: 9.5px; margin-top: 1.5mm; }
+.mod .th { font-size: 10px; color: var(--gold); font-weight: 600; margin-bottom: 1.5mm; }
+.mod p { font-size: 10.5px; margin-bottom: 1mm; line-height: 1.5; }
+.mod .mi { font-style: italic; color: #1F2937; font-size: 10px; margin-top: 1.5mm; }
 
 /* Safety grid */
 .sg { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; margin: 3mm 0; }
 .si { padding: 3mm 4mm; border-left: 2px solid var(--gold); background: var(--bg); border-radius: 0 2.5mm 2.5mm 0; }
-.si h4 { font-size: 10px; color: var(--navy); margin-bottom: 1mm; }
-.si p { font-size: 9px; color: #1F2937; margin: 0; line-height: 1.45; }
+.si h4 { font-size: 10.5px; color: var(--navy); margin-bottom: 1mm; }
+.si p { font-size: 9.5px; color: #1F2937; margin: 0; line-height: 1.5; }
 
 /* FAQ */
-.fq { padding: 2.5mm 0; border-bottom: 1px solid var(--border); }
+.fq { padding: 2mm 0; border-bottom: 1px solid var(--border); }
 .fq:last-child { border-bottom: none; }
 .fq-q { font-size: 10.5px; font-weight: 700; color: var(--navy); margin-bottom: 1mm; }
-.fq-a { font-size: 9.5px; color: #1F2937; line-height: 1.45; }
+.fq-a { font-size: 10px; color: #1F2937; line-height: 1.5; }
 
 /* Contact */
 .cta { background: var(--navy); color: #fff; padding: 6mm; border-radius: 3mm; text-align: center; margin-top: auto; }
 .cta h3 { color: var(--gold); font-size: 15px; margin-bottom: 2mm; }
-.cta p { color: #fff; font-size: 10px; }
+.cta p { color: #fff; font-size: 10.5px; }
 .cta a { color: var(--gold); text-decoration: none; font-weight: 600; }
 
 /* Quote */
 .quote { text-align: center; padding: 4mm; margin: 4mm 0; }
-.quote .zh { font-size: 11px; font-style: italic; color: var(--navy); opacity: 0.8; }
-.quote .en { font-size: 9px; color: #1F2937; margin-top: 1mm; }
+.quote .zh { font-family: 'Noto Serif SC', serif; font-size: 11px; color: var(--navy); opacity: 0.8; }
+.quote .en { font-size: 9.5px; color: #1F2937; margin-top: 1mm; font-style: italic; }
+.quote .src { font-size: 8px; color: var(--muted); margin-top: 0.5mm; }
 
 /* Page number */
 .pn { position: absolute; bottom: 5mm; left: 18mm; right: 18mm; font-size: 8px; color: #4B5563; display: flex; justify-content: space-between; }
@@ -112,7 +114,7 @@ p { font-size: 10.5px; margin-bottom: 2mm; }
     <h1><span>China Quest</span></h1>
     <p style="font-family: 'Zhi Mang Xing', cursive; font-size: 28px; color: #fff; margin-bottom: 8mm; letter-spacing: 2px;">知行中国</p>
     <h1 style="font-size:32px;color:rgba(255,255,255,0.85);">Structured International<br>Learning Programme</h1>
-    <p class="sub">A structured educational journey through China for schools seeking cultural depth, real-world learning, and meaningful student outcomes.</p>
+    <p class="sub">A structured educational journey through China's culture, technology, and future, designed to deliver real-world learning and meaningful student outcomes.</p>
     <div class="cover-badges">
       <span class="cover-badge">Ages 14–18</span>
       <span class="cover-badge">Transition Year Compatible</span>
@@ -134,35 +136,44 @@ p { font-size: 10.5px; margin-bottom: 2mm; }
   <p class="pl">Why China Quest</p>
   <div class="pln"></div>
   <div class="pt">A Structured Learning Journey,<br>Not Just a Study Trip</div>
-  <p class="ps">China Quest helps students explore China through culture, technology, and real-world experience — with reflection, discussion, and meaningful outcomes built in.</p>
+  <p class="ps">China Quest helps students explore China through culture, technology, and real-world experience, with reflection, discussion, and meaningful outcomes built in.</p>
 
   <div class="c3">
     <div>
       <h4>Evidence-Based Learning</h4>
-      <p>Students investigate real places through guided observation, discussion, and reflection. Outputs support TY portfolio work.</p>
-      <div class="tags"><span class="tag">Critical Thinking</span><span class="tag">Research</span><span class="tag">Reflection</span></div>
+      <p>Students investigate real places and social dynamics through guided observation, discussion, and reflection.</p>
+      <p class="desc2">Their insights can be documented through journals and portfolio-style outputs that support TY learning.</p>
+      <div class="tags"><span class="tag">Critical Thinking</span><span class="tag">Independent Research</span><span class="tag">Reflection</span></div>
     </div>
     <div>
-      <h4>Cultural Immersion</h4>
-      <p>Students encounter China through neighbourhoods, daily life, and meaningful interaction — beyond the tourist gaze.</p>
-      <div class="tags"><span class="tag">Cultural Intelligence</span><span class="tag">Empathy</span><span class="tag">Awareness</span></div>
+      <h4>Authentic Cultural Immersion</h4>
+      <p>Students encounter China not only through landmarks, but through neighbourhoods, daily life, and meaningful human interaction.</p>
+      <p class="desc2">The aim is to develop cultural understanding, empathy, and learning beyond the tourist gaze.</p>
+      <div class="tags"><span class="tag">Cultural Intelligence</span><span class="tag">Interpersonal Skills</span><span class="tag">Global Awareness</span></div>
     </div>
     <div>
       <h4>Next-Gen Innovation</h4>
-      <p>First-hand exposure to robotics, AI, mobility, and innovation ecosystems connecting interests with future pathways.</p>
-      <div class="tags"><span class="tag">STEM</span><span class="tag">Career Exploration</span><span class="tag">Sustainability</span></div>
+      <p>Students explore the technologies shaping modern China through first-hand exposure to robotics, AI, mobility, and innovation ecosystems.</p>
+      <p class="desc2">These experiences connect academic interests with future pathways and real-world change.</p>
+      <div class="tags"><span class="tag">STEM Readiness</span><span class="tag">Career Exploration</span><span class="tag">Sustainable Thinking</span></div>
     </div>
   </div>
 
-  <div style="height:3mm;"></div>
-  <p class="pl" style="margin-top:3mm;">How It Works</p>
+  <!-- Quote 1: Lu You -->
+  <div class="quote" style="margin-top:2mm; margin-bottom:2mm;">
+    <div class="zh">"纸上得来终觉浅，绝知此事要躬行。"</div>
+    <div class="en">What is learned from books remains shallow. True understanding comes only through experience.</div>
+    <div class="src">— Lu You, Song Dynasty poet (1125–1210)</div>
+  </div>
+
+  <p class="pl" style="margin-top:2mm;">How It Works</p>
   <div class="pln"></div>
   <div class="pt" style="font-size:19px;">How the Learning Journey Works</div>
-  <p class="ps" style="font-size:10px;">Each day follows a structured cycle — so students learn through places, not just visit them.</p>
+  <p class="ps" style="font-size:11px;">Each day combines exploration, reflection, challenge, and discussion. Students do more than visit places — they learn through them.</p>
 
   <h3 style="font-size:11px;">Daily Learning Cycle <span class="sm">— Repeated daily, deepened over time</span></h3>
   <div class="s4">
-    <div><div class="n">1</div><h4>Exploration</h4><p>Site visits, encounters, observation</p></div>
+    <div><div class="n">1</div><h4>Exploration</h4><p>Real places and expert-led observation</p></div>
     <div><div class="n">2</div><h4>Reflection</h4><p>Journaling and discussion</p></div>
     <div><div class="n">3</div><h4>Challenge</h4><p>Inquiry, documentation, creative response</p></div>
     <div><div class="n">4</div><h4>Circle</h4><p>Shared debrief and exchange</p></div>
@@ -170,14 +181,21 @@ p { font-size: 10.5px; margin-bottom: 2mm; }
 
   <h3 style="font-size:11px;">Learning Pillars</h3>
   <div class="lp">
-    <div><h4>Technology &amp; Innovation</h4><p>AI, robotics, digital change</p></div>
-    <div><h4>Arts &amp; Culture</h4><p>Craft, calligraphy, creativity</p></div>
-    <div><h4>History &amp; Heritage</h4><p>Landmarks, memory, identity</p></div>
-    <div><h4>Social &amp; Urban</h4><p>Neighbourhoods, markets, youth</p></div>
+    <div><h4>Technology &amp; Innovation</h4><p>AI, robotics, mobility, digital change</p></div>
+    <div><h4>Arts &amp; Culture</h4><p>Craft, calligraphy, performance, creativity</p></div>
+    <div><h4>History &amp; Heritage</h4><p>Landmarks, museums, memory, identity</p></div>
+    <div><h4>Social &amp; Urban Life</h4><p>Neighbourhoods, transit, markets, youth culture</p></div>
   </div>
 
   <div class="gn">
-    <strong>Designed with TY and school-led learning in mind.</strong> Structured tasks support reflection journals, creative outputs, and portfolio-style evidence. Schools can nominate a teacher to accompany the group.
+    <strong>Designed with TY and school-led learning in mind.</strong> Structured tasks can support reflection journals, creative outputs, and portfolio-style evidence. Schools are welcome to nominate a teacher to accompany the group, strengthening continuity, shared reflection, and alignment with school values.
+  </div>
+
+  <!-- Quote 3: Wang Yangming -->
+  <div class="quote" style="margin-top:1mm; margin-bottom:0;">
+    <div class="zh">"知是行之始，行是知之成。"</div>
+    <div class="en">To know and not to act is not yet to know.</div>
+    <div class="src">— Wang Yangming, Ming Dynasty philosopher (1472–1529)</div>
   </div>
 
   <div class="pn"><span>China Quest · Programme Brochure</span><span>2</span></div>
@@ -188,7 +206,7 @@ p { font-size: 10.5px; margin-bottom: 2mm; }
   <p class="pl">Where Students Go</p>
   <div class="pln"></div>
   <div class="pt">Four Core Modules Across Modern China</div>
-  <p class="ps">Each city module offers a distinct lens on China. Core modules are typically 5 days and can be combined into longer programmes.</p>
+  <p class="ps">Each city module offers a distinct lens on China · typically 5 days · combinable into longer programmes</p>
 
   <div class="mod">
     <h4>Beijing</h4>
@@ -199,27 +217,29 @@ p { font-size: 10.5px; margin-bottom: 2mm; }
   <div class="mod">
     <h4>Shanghai</h4>
     <div class="th">Global Interface, Exchange, and Modern Chinese Identity</div>
-    <p>The Bund, Pudong, and urban transformation. School exchange, peer dialogue, and neighbourhood discovery.</p>
+    <p>The Bund, Pudong, and the story of urban transformation. School exchange, peer dialogue, and neighbourhood discovery.</p>
     <div class="mi">A module focused on global connection, cultural fusion, and city life in contemporary China</div>
   </div>
   <div class="mod">
     <h4>Shenzhen</h4>
     <div class="th">Future Ecosystems, Innovation, and STEM Exploration</div>
-    <p>Technology ecosystems, robotics, and hands-on innovation. Smart mobility, urban change, and future city systems.</p>
+    <p>Technology ecosystems, robotics, and hands-on innovation exposure. Smart mobility, urban change, and future city systems.</p>
     <div class="mi">A module focused on how design, making, and innovation shape the world students are growing into</div>
   </div>
   <div class="mod">
     <h4>Hong Kong</h4>
-    <div class="th">Capstone Perspective, Sustainability, and Global Outlook</div>
-    <p>Harbour, density, and East–West urban histories. Field-based sustainability learning and community observation.</p>
+    <div class="th">Crossroads, Sustainability, and Global Outlook</div>
+    <p>Harbour, density, and East–West urban histories. Field-based sustainability learning and local community observation.</p>
     <div class="mi">A module focused on comparison, reflection, and bringing the wider journey into sharper perspective</div>
   </div>
 
   <p class="sm" style="text-align:center;margin-top:3mm;">Additional city modules (Hangzhou, Chengdu, Xi'an) available on request.</p>
 
+  <!-- Quote 2: Dong Qichang -->
   <div class="quote">
     <div class="zh">"读万卷书，不如行万里路。"</div>
     <div class="en">Reading ten thousand books is not as good as travelling ten thousand miles.</div>
+    <div class="src">— Dong Qichang, Ming Dynasty scholar (1555–1636)</div>
   </div>
 
   <div class="pn"><span>China Quest · Programme Brochure</span><span>3</span></div>
@@ -235,15 +255,18 @@ p { font-size: 10.5px; margin-bottom: 2mm; }
   <div class="c3">
     <div>
       <h4>Tangible Learning Evidence</h4>
-      <p>Journals, creative outputs, and a certificate of completion. TY portfolio-ready.</p>
+      <p>Students return with documented observations, reflective journals, creative outputs, and a certificate of completion that can support TY portfolio work.</p>
+      <p class="desc2">Depending on the module, students may also produce interview notes, short research tasks, visual documentation, or digital storytelling work.</p>
     </div>
     <div>
-      <h4>Global Fluency</h4>
-      <p>Adaptability, communication, and critical thinking through cross-cultural engagement.</p>
+      <h4>Global Fluency &amp; Core Competencies</h4>
+      <p>Through teamwork, reflection, and cross-cultural engagement, students strengthen adaptability, communication, collaboration, and critical thinking.</p>
+      <p class="desc2">The programme helps students move beyond passive observation and develop confidence to interpret, question, and respond to unfamiliar environments.</p>
     </div>
     <div>
       <h4>Career &amp; Future Pathways</h4>
-      <p>First-hand insight into innovation, culture, and university settings.</p>
+      <p>Exposure to innovation, urban change, and professional environments helps students connect academic interests with future possibilities.</p>
+      <p class="desc2">From technology ecosystems to cultural institutions and university settings, students gain first-hand insight into worlds they may one day study in, work in, or help shape.</p>
     </div>
   </div>
 
@@ -254,38 +277,45 @@ p { font-size: 10.5px; margin-bottom: 2mm; }
   <p class="pl">Safety &amp; School Support</p>
   <div class="pln"></div>
   <div class="pt" style="font-size:19px;">Supporting Student Wellbeing at Every Stage</div>
+  <p class="ps" style="font-size:11px;">China Quest is designed to support student wellbeing, clear supervision, and practical collaboration with schools throughout the journey.</p>
 
   <div class="sg">
-    <div class="si"><h4>Clear Supervision</h4><p>Experienced bilingual leaders, 1:8 ratio, structured daily coordination.</p></div>
-    <div class="si"><h4>Risk-Aware Planning</h4><p>Route planning, activity review, emergency procedures, communication protocols.</p></div>
-    <div class="si"><h4>School-Facing Support</h4><p>Teacher accompaniment welcomed. Pre-trip briefing and ongoing updates.</p></div>
-    <div class="si"><h4>Student Wellbeing</h4><p>Accommodation, meals, transport, insurance, and medical access included.</p></div>
+    <div class="si"><h4>Clear Supervision</h4><p>Students are supported by experienced bilingual leaders, with clear group supervision and structured daily coordination throughout the programme.</p></div>
+    <div class="si"><h4>Risk-Aware Planning</h4><p>Programmes are delivered with risk awareness built in, including route planning, activity review, emergency response procedures, and clear communication protocols.</p></div>
+    <div class="si"><h4>School-Facing Support</h4><p>Schools are welcome to nominate a teacher to accompany the group, helping strengthen continuity, pastoral support, and alignment with school expectations.</p></div>
+    <div class="si"><h4>Student Wellbeing</h4><p>Accommodation, transport, meals, and day-to-day logistics are planned to support student comfort and safety. Insurance cover, medical access, and clear communication procedures are built in.</p></div>
   </div>
 
   <div class="pn"><span>China Quest · Programme Brochure</span><span>4</span></div>
 </div>
 
-<!-- ═══ PAGE 5: FAQ + CONTACT ═══ -->
+<!-- ═══ PAGE 5: FAQ (Part 1) ═══ -->
 <div class="page content">
   <p class="pl">Frequently Asked Questions</p>
   <div class="pln"></div>
 
-  <div class="fq"><div class="fq-q">What ages is China Quest suitable for?</div><div class="fq-a">Designed for students aged 14–18, with content and supervision tailored to this age group.</div></div>
-  <div class="fq"><div class="fq-q">How long are the programmes?</div><div class="fq-a">Core city modules are typically 5 days and can be combined into longer programmes.</div></div>
-  <div class="fq"><div class="fq-q">Is China safe for student groups?</div><div class="fq-a">Yes. Programmes include bilingual leaders, 1:8 ratio, emergency procedures, and international insurance.</div></div>
-  <div class="fq"><div class="fq-q">Can schools customise the itinerary?</div><div class="fq-a">Yes. Schools select modules, adjust length, and discuss themes. Each programme is co-designed.</div></div>
-  <div class="fq"><div class="fq-q">Is the programme TY compatible?</div><div class="fq-a">Yes. Includes reflection tasks, portfolio outputs, and opportunities for collaboration and critical thinking.</div></div>
-  <div class="fq"><div class="fq-q">Do students need to speak Chinese?</div><div class="fq-a">No. All leaders are bilingual and activities are delivered in English.</div></div>
-  <div class="fq"><div class="fq-q">What is included in the fee?</div><div class="fq-a">Accommodation, meals, domestic transport, entry fees, activities, insurance, learning materials, and 24/7 support. Flights, visa fees, and personal spending not included.</div></div>
+  <div class="fq"><div class="fq-q">What ages is China Quest suitable for?</div><div class="fq-a">China Quest is designed for students aged 14–18. Programme content, supervision, and activities are tailored to this age group, with a balance of challenge, support, and structured learning.</div></div>
+  <div class="fq"><div class="fq-q">What is a city module?</div><div class="fq-a">A city module is a structured part of the programme built around a specific learning lens, such as history, globalisation, innovation, or sustainability. Each module has its own theme, duration, and set of core experiences, and modules can be combined to create a broader journey.</div></div>
+  <div class="fq"><div class="fq-q">How long are the programmes?</div><div class="fq-a">Programmes are built from city-based learning modules. Core city modules are typically 5 days and can be combined into longer programmes depending on your school's goals, student group, and schedule.</div></div>
+  <div class="fq"><div class="fq-q">Can schools customise the itinerary?</div><div class="fq-a">Yes. Schools can select and combine modules, adjust the overall programme length, and discuss specific themes or priorities. We work with each school to shape a programme that fits its students, goals, and schedule.</div></div>
+  <div class="fq"><div class="fq-q">Can a teacher accompany the group?</div><div class="fq-a">Yes. Schools are welcome to nominate a teacher to accompany the group. A travelling teacher can help support continuity, pastoral care, reflection, and alignment with school expectations throughout the programme.</div></div>
+  <div class="fq"><div class="fq-q">Who runs China Quest?</div><div class="fq-a">China Quest is run by Miles Minds Limited, an Ireland-based education company with a team across China. It is delivered with local support, bilingual leadership, and a strong focus on school-facing programme design.</div></div>
+  <div class="fq"><div class="fq-q">Do students need to speak Chinese?</div><div class="fq-a">No. All programme leaders are bilingual, and activities are delivered in English. Students may naturally pick up a few basic phrases along the way, but no prior Chinese language knowledge is required.</div></div>
+  <div class="fq"><div class="fq-q">Is China safe for student groups?</div><div class="fq-a">Yes. China Quest is designed with student wellbeing, clear supervision, and risk-aware planning in mind. Programmes include experienced bilingual leaders, a maximum 1:8 leader-to-student ratio, defined emergency procedures, and international travel and health insurance.</div></div>
+  <div class="fq"><div class="fq-q">What happens in an emergency?</div><div class="fq-a">Each programme includes clearly defined emergency procedures, including immediate medical access, direct communication channels, and practical travel adjustments where needed. Detailed emergency and supervision information is available in the School Pack.</div></div>
+  <div class="fq"><div class="fq-q">What is included in the programme fee?</div><div class="fq-a">Programme fees typically include accommodation, meals, domestic transport, entry fees, core activities, insurance, learning materials, and 24/7 bilingual support. International flights, visa fees, and personal spending are not included. Full details are available in the School Pack.</div></div>
+  <div class="fq"><div class="fq-q">Is the programme Transition Year compatible?</div><div class="fq-a">Yes. China Quest is designed with Transition Year learning in mind, including reflection tasks, portfolio-style outputs, and opportunities for collaboration, autonomy, and critical thinking.</div></div>
+  <div class="fq"><div class="fq-q">Can China Quest support Gaisce?</div><div class="fq-a">Some elements of the programme may support TY portfolio work and may also align with aspects of Gaisce, depending on each student's goals and school or PAL guidance. We recommend discussing this with your school in advance.</div></div>
+  <div class="fq"><div class="fq-q">How do we get started?</div><div class="fq-a">Simply get in touch via email at info@milesminds.com or call +353 87 775 8146. We can share the School Pack, answer questions, and arrange an introductory call or presentation.</div></div>
 
-  <div style="height:5mm;"></div>
+  <div style="height:4mm;"></div>
 
   <div class="cta">
     <h3>Ready to Explore?</h3>
     <p>Get in touch to receive the full School Information Pack</p>
     <p style="margin-top:3mm;"><a href="mailto:info@milesminds.com">info@milesminds.com</a></p>
     <p><a href="https://chinaquest.milesminds.com">chinaquest.milesminds.com</a></p>
-    <p style="color:rgba(255,255,255,0.35);margin-top:2mm;">+353 87 775 8146</p>
+    <p style="color:rgba(255,255,255,0.5);margin-top:2mm;">+353 87 775 8146</p>
     <p style="font-size:8px;color:rgba(255,255,255,0.2);margin-top:3mm;">Miles Minds Limited · Ireland</p>
   </div>
 
