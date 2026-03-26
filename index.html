@@ -1465,8 +1465,8 @@ window.addEventListener('scroll', () => {
       inDsImg = phRect.top < 60 && phRect.bottom > 0;
     }
   }
-  // Show/hide based on scroll direction
-  if (scrollingUp || sy < 10) {
+  // Show/hide based on scroll direction (always visible in hero)
+  if (scrollingUp || sy < 10 || inHero) {
     nav.style.transform = '';
   } else {
     nav.style.transform = 'translateY(-100%)';
