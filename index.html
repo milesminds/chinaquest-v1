@@ -889,6 +889,7 @@ section[id] { scroll-margin-top: -20px; }
 <div class="section-divider visible"><span></span></div>
 
 <!-- ══════════ WHY CHINA QUEST ══════════ -->
+<div id="why-anchor" style="position:relative;top:0;"></div>
 <section class="section" id="why">
   <div class="container">
     <span class="deco-char" style="top: -20px; right: 20px;">为</span>
@@ -941,6 +942,7 @@ section[id] { scroll-margin-top: -20px; }
 <div class="section-divider"><span></span></div>
 
 <!-- ══════════ 4. DESTINATIONS ══════════ -->
+<div id="destinations-anchor" style="position:relative;top:0;"></div>
 <section class="dest-showcase" id="destinations">
   <!-- 1. Title area — white background above image -->
   <div class="ds-header">
@@ -1005,6 +1007,7 @@ section[id] { scroll-margin-top: -20px; }
 <div class="section-divider"><span></span></div>
 
 <!-- ══════════ 5. HOW IT WORKS ══════════ -->
+<div id="how-it-works-anchor" style="position:relative;top:0;"></div>
 <section class="section" id="how-it-works">
   <div class="container">
     <span class="deco-char" style="top: -20px; right: 20px;">学</span>
@@ -1116,6 +1119,7 @@ section[id] { scroll-margin-top: -20px; }
 </section>
 <div class="section-divider"><span></span></div>
 
+<div id="outcomes-anchor" style="position:relative;top:0;"></div>
 <section class="section section-alt" id="outcomes">
   <div class="container">
     <span class="deco-char" style="top: -20px; right: 20px;">成</span>
@@ -1166,6 +1170,7 @@ section[id] { scroll-margin-top: -20px; }
 <div class="section-divider"><span></span></div>
 
 <!-- ══════════ 7. SAFETY & SCHOOL SUPPORT ══════════ -->
+<div id="safety-anchor" style="position:relative;top:0;"></div>
 <section class="section" id="safety">
   <div class="container">
     <span class="deco-char" style="top: -20px; right: 20px;">安</span>
@@ -1219,6 +1224,7 @@ section[id] { scroll-margin-top: -20px; }
 <div class="section-divider"><span></span></div>
 
 <!-- ══════════ 7b. FAQ ══════════ -->
+<div id="faq-anchor" style="position:relative;top:0;"></div>
 <section class="section section-alt" id="faq">
   <div class="container">
     <span class="deco-char" style="top: -20px; right: 20px;">问</span>
@@ -1646,33 +1652,45 @@ updateNavActive();
    under-estimates #get-started's offset.  We do a two-pass scroll:
    1) instant-jump to rough position (triggers Cities layout shift)
    2) after layout settles, smooth-scroll to exact position.        */
-/* Two-pass scroll targeting #get-started-anchor (just above section).
-   Pass 1 forces Cities layout shift; pass 2 lands precisely. */
-function scrollToGetStarted(event) {
-  event.preventDefault();
-  var anchor = document.getElementById('get-started-anchor');
-  if (!anchor) return;
+/* ── Unified two-pass anchor scroll for all nav sections ── */
+/* Each section has a sibling anchor div (id + "-anchor") placed
+   right at the visual top. Two-pass handles Cities layout shift. */
+(function() {
+  var defined = ['why','destinations','how-it-works','outcomes','safety','faq','get-started'];
 
-  function getY() {
-    return anchor.getBoundingClientRect().top + window.pageYOffset;
+  function scrollToAnchor(sectionId) {
+    var anchor = document.getElementById(sectionId + '-anchor');
+    if (!anchor) { /* fallback to section itself */
+      anchor = document.getElementById(sectionId);
+    }
+    if (!anchor) return;
+
+    function getY() {
+      return anchor.getBoundingClientRect().top + window.pageYOffset;
+    }
+
+    // Pass 1: instant jump (triggers any layout shifts)
+    window.scrollTo({ top: getY(), behavior: 'instant' });
+
+    // Pass 2: layout settled, smooth to exact position
+    requestAnimationFrame(function() {
+      setTimeout(function() {
+        window.scrollTo({ top: getY(), behavior: 'smooth' });
+      }, 60);
+    });
   }
 
-  // Pass 1: instant jump (triggers Cities placeholder)
-  window.scrollTo({ top: getY(), behavior: 'instant' });
-
-  // Pass 2: layout has settled, smooth to exact top
-  requestAnimationFrame(function() {
-    setTimeout(function() {
-      window.scrollTo({ top: getY(), behavior: 'smooth' });
-    }, 60);
-  });
-}
-
-document.addEventListener('click', function(e) {
-  var link = e.target.closest('a[href="#get-started"]');
-  if (!link) return;
-  scrollToGetStarted(e);
-}, true);
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    var hash = link.getAttribute('href');
+    if (!hash || hash.length < 2) return;
+    var id = hash.substring(1);
+    if (defined.indexOf(id) === -1) return;
+    e.preventDefault();
+    scrollToAnchor(id);
+  }, true);
+})();
 
 /* ── Lazy load background images ── */
 const bgObserver = new IntersectionObserver((entries) => {
