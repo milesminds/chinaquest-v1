@@ -163,12 +163,12 @@ a { color: inherit; text-decoration: none; }
 .hero-circle-1 { position: absolute; top: 10%; right: 10%; width: 200px; height: 200px; border: 1px solid rgba(201,169,78,0.1); border-radius: 50%; }
 .hero-circle-2 { position: absolute; top: 13%; right: 13%; width: 130px; height: 130px; border: 1px solid rgba(201,169,78,0.06); border-radius: 50%; }
 .hero-circle-3 { position: absolute; bottom: 20%; left: 8%; width: 100px; height: 100px; border: 1px solid rgba(201,169,78,0.05); border-radius: 50%; }
-.hero-gold-line { position: absolute; bottom: 30%; left: 5%; width: 200px; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); opacity: 0.15; }
-.hero-gold-line-2 { position: absolute; top: 40%; right: 3%; width: 150px; height: 1px; background: linear-gradient(270deg, var(--gold), transparent); opacity: 0.1; }
+.hero-gold-line { position: absolute; pointer-events: none; bottom: 30%; left: 5%; width: 200px; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); opacity: 0.15; }
+.hero-gold-line-2 { position: absolute; pointer-events: none; top: 40%; right: 3%; width: 150px; height: 1px; background: linear-gradient(270deg, var(--gold), transparent); opacity: 0.1; }
 .hero-char { position: absolute; bottom: 8%; right: 6%; font-family: 'Noto Serif SC', serif; font-size: 180px; color: rgba(201,169,78,0.03); font-weight: 700; line-height: 1; pointer-events: none; }
 
 /* Mountain silhouette */
-.hero-mountain { position: absolute; bottom: 0; left: 0; right: 0; height: 160px; opacity: 0.03; }
+.hero-mountain { position: absolute; bottom: 0; left: 0; right: 0; height: 160px; opacity: 0.03; pointer-events: none; }
 .hero-mountain svg { width: 100%; height: 100%; }
 
 
@@ -841,7 +841,7 @@ section[id] { scroll-margin-top: -20px; }
       <li><a href="#safety">Safety</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
-    <a href="#get-started" class="nav-cta">Get Started</a>
+    <a href="#get-started" class="nav-cta">Get In Touch</a>
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
@@ -875,13 +875,12 @@ section[id] { scroll-margin-top: -20px; }
       <path d="M0 160 L150 80 L270 120 L420 40 L570 90 L680 25 L780 70 L900 20 L1020 65 L1120 35 L1200 60 L1200 160Z" fill="white"/>
     </svg>
   </div>
-  <div style="position: relative; z-index: 1;">
+  <div style="position: relative; z-index: 3;">
     <h1>China Quest</h1>
     <p class="hero-tagline">Culture. Technology. Future. One Journey.</p>
     <p class="hero-desc">A structured educational journey through China's culture, technology, and future, designed to deliver real-world learning and meaningful student outcomes.</p>
     <p class="hero-detail">Summer Programmes, Transition Year &amp; School Groups · Ages 14–18</p>
     <div class="hero-cta-group">
-      <a href="#why" class="hero-cta">Explore the Programme</a>
       <a href="#get-started" class="hero-cta hero-cta-secondary">Request School Pack</a>
     </div>
   </div>
