@@ -1639,32 +1639,38 @@ function updateNavActive() {
 window.addEventListener('scroll', updateNavActive, { passive: true });
 updateNavActive();
 
-/* ── Precise JS scroll for #get-started (fix first-click anchor offset) ── */
+/* ── Precise JS scroll for #get-started ── */
+/* The Cities section uses position:fixed + a hidden placeholder.
+   On first click the placeholder is display:none so the browser
+   under-estimates #get-started's offset.  We do a two-pass scroll:
+   1) instant-jump to rough position (triggers Cities layout shift)
+   2) after layout settles, smooth-scroll to exact position.        */
 function scrollToGetStarted(event) {
   event.preventDefault();
-  const target = document.getElementById('get-started');
+  var target = document.getElementById('get-started');
   if (!target) return;
 
-  // Wait one frame so any sticky/fixed layout updates settle first
-  requestAnimationFrame(() => {
-    const navEl = document.querySelector('.nav');
-    const navHeight = navEl ? navEl.getBoundingClientRect().height : 0;
-    const targetTop = target.getBoundingClientRect().top + window.pageYOffset;
-    const top = Math.max(0, targetTop - navHeight - 8);
-    window.scrollTo({ top, behavior: 'smooth' });
+  function getTargetY() {
+    var navEl = document.querySelector('.nav');
+    var navH = navEl ? navEl.getBoundingClientRect().height : 0;
+    return target.getBoundingClientRect().top + window.pageYOffset - navH - 8;
+  }
+
+  // Pass 1: instant jump to approximate position (forces layout recalc)
+  window.scrollTo({ top: getTargetY(), behavior: 'instant' });
+
+  // Pass 2: after layout settles, smooth-scroll to corrected position
+  requestAnimationFrame(function() {
+    setTimeout(function() {
+      window.scrollTo({ top: getTargetY(), behavior: 'smooth' });
+    }, 50);
   });
 }
 
-// Bind direct listeners
-document.querySelectorAll('a[href="#get-started"]').forEach(link => {
-  link.addEventListener('click', scrollToGetStarted);
-});
-
-// Also delegate at document level to catch any future dynamic links
-document.addEventListener('click', (event) => {
-  const link = event.target.closest('a[href="#get-started"]');
+document.addEventListener('click', function(e) {
+  var link = e.target.closest('a[href="#get-started"]');
   if (!link) return;
-  scrollToGetStarted(event);
+  scrollToGetStarted(e);
 }, true);
 
 /* ── Lazy load background images ── */
