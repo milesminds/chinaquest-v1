@@ -1639,6 +1639,24 @@ function updateNavActive() {
 window.addEventListener('scroll', updateNavActive, { passive: true });
 updateNavActive();
 
+/* ── Precise JS scroll for #get-started (fix first-click anchor offset) ── */
+function scrollToGetStarted(event) {
+  event.preventDefault();
+  const target = document.getElementById('get-started');
+  if (!target) return;
+
+  const navEl = document.querySelector('.nav');
+  const navHeight = navEl ? navEl.getBoundingClientRect().height : 0;
+  const targetTop = target.getBoundingClientRect().top + window.pageYOffset;
+  const top = Math.max(0, targetTop - navHeight - 8);
+
+  window.scrollTo({ top, behavior: 'smooth' });
+}
+
+document.querySelectorAll('a[href="#get-started"]').forEach(link => {
+  link.addEventListener('click', scrollToGetStarted);
+});
+
 /* ── Lazy load background images ── */
 const bgObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
