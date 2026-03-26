@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <title>China Quest — Programme Brochure</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Zhi+Mang+Xing&family=Noto+Serif+SC:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Zhi+Mang+Xing&family=Noto+Serif+SC:wght@400;700&display=swap');
 :root { --navy: #1B2A4A; --gold: #C9A94E; --gold-light: #F5F0E8; --white: #fff; --text: #1F2937; --muted: #374151; --light: #4B5563; --border: #E8E2D8; --bg: #FAFAF8; }
 * { margin:0; padding:0; box-sizing:border-box; }
 @page { size: A4; margin: 0; }
-body { font-family: 'Inter', -apple-system, sans-serif; color: var(--text); line-height: 1.6; background: #ddd; margin: 0; }
+body { font-family: 'Source Sans 3', 'Inter', -apple-system, sans-serif; color: var(--text); line-height: 1.6; background: #ddd; margin: 0; }
 
 /* A4 page — strict sizing */
 .page { width: 210mm; height: 297mm; margin: 5mm auto; background: var(--white); position: relative; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.12); page-break-after: always; page-break-inside: avoid; }
@@ -29,9 +29,9 @@ body { font-family: 'Inter', -apple-system, sans-serif; color: var(--text); line
 .cover .sub { font-size: 13px; color: #fff; line-height: 1.7; max-width: 135mm; margin-bottom: 10mm; }
 .cover-badges { display: flex; gap: 3mm; flex-wrap: wrap; }
 .cover-badge { font-size: 10px; padding: 2.5mm 5mm; border: 1px solid rgba(201,169,78,0.5); border-radius: 3mm; color: var(--gold); letter-spacing: 0.5px; font-weight: 500; }
-.cover-bottom { padding: 8mm 20mm; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; font-size: 9px; color: rgba(255,255,255,0.3); position: relative; z-index: 1; }
+.cover-bottom { padding: 8mm 20mm; border-top: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; font-size: 9px; color: #ffffff; position: relative; z-index: 1; }
 .cover-brand { position: absolute; bottom: 50mm; left: 20mm; z-index: 1; }
-.cover-brand-line { font-size: 12px; color: rgba(255,255,255,0.7); letter-spacing: 1px; }
+.cover-brand-line { font-size: 12px; color: #ffffff; letter-spacing: 1px; }
 
 /* ═══ Content pages ═══ */
 .content { width: 210mm; height: 297mm; padding: 18mm 20mm 15mm; display: flex; flex-direction: column; position: relative; }
@@ -69,11 +69,11 @@ p { font-size: 11.5px; color: #1F2937; margin-bottom: 2.5mm; line-height: 1.55; 
 .gn { padding: 4mm 5mm; border-left: 2.5px solid var(--gold); background: var(--gold-light); border-radius: 0 2.5mm 2.5mm 0; margin: 5mm 0; font-size: 10.5px; line-height: 1.6; }
 
 /* Module cards */
-.mod { border: 1px solid var(--border); border-radius: 3mm; padding: 5mm 6mm; margin-bottom: 5mm; }
-.mod h4 { font-size: 14px; color: var(--navy); font-weight: 700; margin-bottom: 2mm; }
-.mod .th { font-size: 11px; color: var(--gold); font-weight: 600; margin-bottom: 2.5mm; }
-.mod p { font-size: 11px; margin-bottom: 2mm; line-height: 1.55; }
-.mod .mi { font-style: italic; color: #1F2937; font-size: 10.5px; margin-top: 2mm; }
+.mod { border: 1px solid var(--border); border-radius: 3mm; padding: 4mm 5mm; margin-bottom: 3mm; }
+.mod h4 { font-size: 13px; color: var(--navy); font-weight: 700; margin-bottom: 1.5mm; }
+.mod .th { font-size: 10.5px; color: var(--gold); font-weight: 600; margin-bottom: 2mm; }
+.mod p { font-size: 10.5px; margin-bottom: 1.5mm; line-height: 1.5; }
+.mod .mi { font-style: italic; color: #1F2937; font-size: 10px; margin-top: 1.5mm; }
 
 /* Safety grid */
 .sg { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin: 5mm 0; }
@@ -102,9 +102,9 @@ p { font-size: 11.5px; color: #1F2937; margin-bottom: 2.5mm; line-height: 1.55; 
 
 /* Quote */
 .quote { text-align: center; padding: 5mm; margin: 5mm 0; }
-.quote .zh { font-family: 'Noto Serif SC', serif; font-size: 12px; color: var(--navy); opacity: 0.8; }
-.quote .en { font-size: 10px; color: #1F2937; margin-top: 1.5mm; font-style: italic; line-height: 1.5; }
-.quote .src { font-size: 8.5px; color: var(--muted); margin-top: 1mm; }
+.quote .zh { font-family: 'Noto Serif SC', serif; font-size: 11px; color: var(--navy); opacity: 0.7; }
+.quote .en { font-family: 'Playfair Display', serif; font-size: 14px; color: var(--navy); margin-top: 2mm; font-style: italic; line-height: 1.5; font-weight: 500; }
+.quote .src { font-size: 9px; color: var(--muted); margin-top: 1.5mm; }
 
 /* Page number */
 .pn { position: absolute; bottom: 6mm; left: 20mm; right: 20mm; font-size: 8px; color: #4B5563; display: flex; justify-content: space-between; }
@@ -126,7 +126,7 @@ p { font-size: 11.5px; color: #1F2937; margin-bottom: 2.5mm; line-height: 1.55; 
       <span class="cover-badge">Ages 14–18</span>
       <span class="cover-badge">Transition Year Compatible</span>
       <span class="cover-badge">Modular City Design</span>
-      <span class="cover-badge">From €2,990</span>
+      <!-- price removed from cover per boss request -->
     </div>
   </div>
   <div class="cover-brand">
@@ -236,6 +236,22 @@ p { font-size: 11.5px; color: #1F2937; margin-bottom: 2.5mm; line-height: 1.55; 
     <div class="mi">A module focused on global connection, cultural fusion, and city life in contemporary China</div>
   </div>
 
+  <div class="mod" style="margin-top:4mm;">
+    <h4>Shenzhen</h4>
+    <div class="th">Future Ecosystems, Innovation, and STEM Exploration</div>
+    <p>Technology ecosystems, robotics, and hands-on innovation exposure. Smart mobility, urban change, and future city systems.</p>
+    <div class="mi">A module focused on how design, making, and innovation shape the world students are growing into</div>
+  </div>
+
+  <div class="mod" style="margin-top:4mm;">
+    <h4>Hong Kong</h4>
+    <div class="th">Crossroads, Sustainability, and Global Outlook</div>
+    <p>Harbour, density, and East–West urban histories. Field-based sustainability learning and local community observation.</p>
+    <div class="mi">A module focused on comparison, reflection, and bringing the wider journey into sharper perspective</div>
+  </div>
+
+  <p class="sm" style="text-align:center;margin-top:3mm;">Additional city modules (Hangzhou, Chengdu, Xi'an) available on request.</p>
+
   <!-- Quote 2: Dong Qichang — anchored to bottom -->
   <div style="flex:1;"></div>
   <div class="quote" style="margin-bottom:8mm;">
@@ -245,33 +261,6 @@ p { font-size: 11.5px; color: #1F2937; margin-bottom: 2.5mm; line-height: 1.55; 
   </div>
 
   <div class="pn"><span>China Quest · Programme Brochure</span><span>4</span></div>
-</div>
-
-<!-- ═══ PAGE 5: CITY MODULES — Shenzhen + Hong Kong ═══ -->
-<div class="page content">
-  <p class="pl">Where Students Go</p>
-  <div class="pln"></div>
-  <div class="pt" style="font-size:21px;">City Modules — continued</div>
-  <p class="ps">Shenzhen and Hong Kong complete the four-city learning journey, offering innovation and global outlook.</p>
-
-  <div class="mod" style="margin-top:4mm;">
-    <h4>Shenzhen</h4>
-    <div class="th">Future Ecosystems, Innovation, and STEM Exploration</div>
-    <p>Technology ecosystems, robotics, and hands-on innovation exposure. Smart mobility, urban change, and future city systems.</p>
-    <div class="mi">A module focused on how design, making, and innovation shape the world students are growing into</div>
-  </div>
-
-  <div class="mod" style="margin-top:6mm;">
-    <h4>Hong Kong</h4>
-    <div class="th">Crossroads, Sustainability, and Global Outlook</div>
-    <p>Harbour, density, and East–West urban histories. Field-based sustainability learning and local community observation.</p>
-    <div class="mi">A module focused on comparison, reflection, and bringing the wider journey into sharper perspective</div>
-  </div>
-
-  <div style="flex:1;"></div>
-  <p class="sm" style="text-align:center;margin-bottom:10mm;">Additional city modules (Hangzhou, Chengdu, Xi'an) available on request.</p>
-
-  <div class="pn"><span>China Quest · Programme Brochure</span><span>5</span></div>
 </div>
 
 <!-- ═══ PAGE 6: STUDENT OUTCOMES ═══ -->
@@ -302,7 +291,7 @@ p { font-size: 11.5px; color: #1F2937; margin-bottom: 2.5mm; line-height: 1.55; 
   <div style="flex:1;"></div>
   <p class="sm" style="text-align:center; padding:4mm 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); margin-bottom:10mm;">Reflection Journals · Creative Outputs · TY Portfolio Evidence · Certificate of Completion</p>
 
-  <div class="pn"><span>China Quest · Programme Brochure</span><span>6</span></div>
+  <div class="pn"><span>China Quest · Programme Brochure</span><span>5</span></div>
 </div>
 
 <!-- ═══ PAGE 7: SAFETY & SCHOOL SUPPORT ═══ -->
@@ -344,7 +333,7 @@ p { font-size: 11.5px; color: #1F2937; margin-bottom: 2.5mm; line-height: 1.55; 
   </div>
 
   <div style="flex:1;"></div>
-  <div class="pn"><span>China Quest · Programme Brochure</span><span>7</span></div>
+  <div class="pn"><span>China Quest · Programme Brochure</span><span>6</span></div>
 </div>
 
 <!-- ═══ PAGE 8: FAQ ═══ -->
@@ -364,9 +353,9 @@ p { font-size: 11.5px; color: #1F2937; margin-bottom: 2.5mm; line-height: 1.55; 
   <div class="fq"><div class="fq-q">What is included in the programme fee?</div><div class="fq-a">Programme fees typically include accommodation, meals, domestic transport, entry fees, core activities, insurance, learning materials, and 24/7 bilingual support. International flights, visa fees, and personal spending are not included. Full details are available in the School Pack.</div></div>
   <div class="fq"><div class="fq-q">Is the programme Transition Year compatible?</div><div class="fq-a">Yes. China Quest is designed with Transition Year learning in mind, including reflection tasks, portfolio-style outputs, and opportunities for collaboration, autonomy, and critical thinking.</div></div>
   <div class="fq"><div class="fq-q">Can China Quest support Gaisce?</div><div class="fq-a">Some elements of the programme may support TY portfolio work and may also align with aspects of Gaisce, depending on each student's goals and school or PAL guidance. We recommend discussing this with your school in advance.</div></div>
-  <div class="fq"><div class="fq-q">How do we get started?</div><div class="fq-a">Simply get in touch via email at info@milesminds.com or call +353 87 775 8146. We can share the School Pack, answer questions, and arrange an introductory call or presentation.</div></div>
 
-  <div class="pn"><span>China Quest · Programme Brochure</span><span>8</span></div>
+
+  <div class="pn"><span>China Quest · Programme Brochure</span><span>7</span></div>
 </div>
 
 <!-- ═══ PAGE 9: CONTACT / GET IN TOUCH ═══ -->
@@ -381,8 +370,8 @@ p { font-size: 11.5px; color: #1F2937; margin-bottom: 2.5mm; line-height: 1.55; 
     <p>Get in touch to receive the full School Information Pack</p>
     <p style="margin-top:5mm; font-size:13px;"><a href="mailto:info@milesminds.com">info@milesminds.com</a></p>
     <p style="margin-top:2mm;"><a href="https://chinaquest.milesminds.com">chinaquest.milesminds.com</a></p>
-    <p style="color:rgba(255,255,255,0.6);margin-top:3mm; font-size:12px;">+353 87 775 8146</p>
-    <p style="font-size:9px;color:rgba(255,255,255,0.3);margin-top:4mm;">Miles Minds Limited · Ireland</p>
+    <p style="color:#ffffff;margin-top:3mm; font-size:12px;">+353 87 775 8146</p>
+    <p style="font-size:9px;color:rgba(255,255,255,0.7);margin-top:4mm;">Miles Minds Limited · Ireland</p>
   </div>
 
   <div style="flex:1;"></div>
@@ -393,7 +382,7 @@ p { font-size: 11.5px; color: #1F2937; margin-bottom: 2.5mm; line-height: 1.55; 
     <div class="src">— Lu You, Song Dynasty poet (1125–1210)</div>
   </div>
 
-  <div class="pn"><span>China Quest · Programme Brochure</span><span>9</span></div>
+  <div class="pn"><span>China Quest · Programme Brochure</span><span>8</span></div>
 </div>
 
 </body>
