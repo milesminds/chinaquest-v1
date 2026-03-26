@@ -709,7 +709,7 @@ br.desktop-only { display: inline; }
    ══════════════════════════════════════ */
 section[id] { scroll-margin-top: -20px; }
 .hero { scroll-margin-top: 0; }
-#get-started { scroll-margin-top: 0; }
+#get-started { scroll-margin-top: 96px; }
 
 /* ══════════════════════════════════════
    v1.9: PAGE LOADER
@@ -1645,17 +1645,27 @@ function scrollToGetStarted(event) {
   const target = document.getElementById('get-started');
   if (!target) return;
 
-  const navEl = document.querySelector('.nav');
-  const navHeight = navEl ? navEl.getBoundingClientRect().height : 0;
-  const targetTop = target.getBoundingClientRect().top + window.pageYOffset;
-  const top = Math.max(0, targetTop - navHeight - 8);
-
-  window.scrollTo({ top, behavior: 'smooth' });
+  // Wait one frame so any sticky/fixed layout updates settle first
+  requestAnimationFrame(() => {
+    const navEl = document.querySelector('.nav');
+    const navHeight = navEl ? navEl.getBoundingClientRect().height : 0;
+    const targetTop = target.getBoundingClientRect().top + window.pageYOffset;
+    const top = Math.max(0, targetTop - navHeight - 8);
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
 }
 
+// Bind direct listeners
 document.querySelectorAll('a[href="#get-started"]').forEach(link => {
   link.addEventListener('click', scrollToGetStarted);
 });
+
+// Also delegate at document level to catch any future dynamic links
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a[href="#get-started"]');
+  if (!link) return;
+  scrollToGetStarted(event);
+}, true);
 
 /* ── Lazy load background images ── */
 const bgObserver = new IntersectionObserver((entries) => {
