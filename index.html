@@ -1653,7 +1653,8 @@ function scrollToGetStarted(event) {
   function getTargetY() {
     var navEl = document.querySelector('.nav');
     var navH = navEl ? navEl.getBoundingClientRect().height : 0;
-    return target.getBoundingClientRect().top + window.pageYOffset - navH - 8;
+    // Extra offset to push past the padding/divider above the section
+    return target.getBoundingClientRect().top + window.pageYOffset - navH + 40;
   }
 
   // Pass 1: instant jump to approximate position (forces layout recalc)
