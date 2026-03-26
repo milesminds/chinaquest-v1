@@ -258,7 +258,8 @@ br.desktop-only { display: inline; }
 .ds-support { font-size: 14px; color: var(--muted); margin-top: 10px; }
 
 /* Full-screen image area */
-.ds-img-area { position: sticky; top: 0; width: 100%; height: 100vh; overflow: hidden; z-index: 0; transition: none; }
+.ds-img-area { position: relative; width: 100%; height: 100vh; overflow: hidden; z-index: 0; transition: none; }
+.ds-img-area.ds-fixed { position: fixed; top: 0; left: 0; }
 .ds-nav { pointer-events: auto; }
 .ds-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease; }
 .ds-bg.ds-bg-active { opacity: 1; }
@@ -1456,9 +1457,13 @@ window.addEventListener('scroll', () => {
   var inHero = sy < heroH - 100;
   var inDsImg = false;
   var dsImgEl = document.querySelector('.ds-img-area');
-  if (dsImgEl) {
-    var dsRect = dsImgEl.getBoundingClientRect();
-    inDsImg = dsRect.top < 60 && dsRect.bottom > 0;
+  if (dsImgEl && dsImgEl.classList.contains('ds-fixed')) {
+    // Only treat as "in image area" if placeholder is visible in viewport
+    var ph = dsImgEl.nextElementSibling;
+    if (ph && ph.style.display === 'block') {
+      var phRect = ph.getBoundingClientRect();
+      inDsImg = phRect.top < 60 && phRect.bottom > 0;
+    }
   }
   // Show/hide based on scroll direction (always visible in hero)
   if (scrollingUp || sy < 10 || inHero) {
@@ -1522,7 +1527,34 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-/* ── Destinations image uses CSS sticky (no layout-hack placeholder) ── */
+/* ── Cities image fix/unfix on scroll ── */
+(function() {
+  // Skip on mobile
+  if (window.innerWidth <= 768) return;
+  var imgArea = document.querySelector('.ds-img-area');
+  var section = document.getElementById('destinations');
+  if (!imgArea || !section) return;
+  var placeholder = document.createElement('div');
+  placeholder.style.height = 'calc(100vh + 500px)';
+  placeholder.style.display = 'none';
+  imgArea.parentNode.insertBefore(placeholder, imgArea.nextSibling);
+
+  window.addEventListener('scroll', function() {
+    var sy = window.scrollY;
+    var imgTop = placeholder.style.display === 'block' ? placeholder.getBoundingClientRect().top + sy : imgArea.getBoundingClientRect().top + sy;
+    if (sy >= imgTop) {
+      if (!imgArea.classList.contains('ds-fixed')) {
+        imgArea.classList.add('ds-fixed');
+        placeholder.style.display = 'block';
+      }
+    } else if (sy < imgTop - 500) {
+      if (imgArea.classList.contains('ds-fixed')) {
+        imgArea.classList.remove('ds-fixed');
+        placeholder.style.display = 'none';
+      }
+    }
+  });
+})();
 
 /* ── Destination showcase tab switching ── */
 document.querySelectorAll('.ds-tab').forEach(tab => {
