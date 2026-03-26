@@ -1301,6 +1301,7 @@ section[id] { scroll-margin-top: -20px; }
 <div class="section-divider"><span></span></div>
 
 <!-- ══════════ 9. GET STARTED ══════════ -->
+<div id="get-started-anchor" style="position:relative;top:0;"></div>
 <section class="section get-started" id="get-started">
   <div class="container">
     <div class="section-header reveal">
@@ -1645,26 +1646,25 @@ updateNavActive();
    under-estimates #get-started's offset.  We do a two-pass scroll:
    1) instant-jump to rough position (triggers Cities layout shift)
    2) after layout settles, smooth-scroll to exact position.        */
+/* Two-pass scroll targeting #get-started-anchor (just above section).
+   Pass 1 forces Cities layout shift; pass 2 lands precisely. */
 function scrollToGetStarted(event) {
   event.preventDefault();
-  var target = document.getElementById('get-started');
-  if (!target) return;
+  var anchor = document.getElementById('get-started-anchor');
+  if (!anchor) return;
 
-  function getTargetY() {
-    var navEl = document.querySelector('.nav');
-    var navH = navEl ? navEl.getBoundingClientRect().height : 0;
-    // Extra offset to push past the padding/divider above the section
-    return target.getBoundingClientRect().top + window.pageYOffset - navH + 40;
+  function getY() {
+    return anchor.getBoundingClientRect().top + window.pageYOffset;
   }
 
-  // Pass 1: instant jump to approximate position (forces layout recalc)
-  window.scrollTo({ top: getTargetY(), behavior: 'instant' });
+  // Pass 1: instant jump (triggers Cities placeholder)
+  window.scrollTo({ top: getY(), behavior: 'instant' });
 
-  // Pass 2: after layout settles, smooth-scroll to corrected position
+  // Pass 2: layout has settled, smooth to exact top
   requestAnimationFrame(function() {
     setTimeout(function() {
-      window.scrollTo({ top: getTargetY(), behavior: 'smooth' });
-    }, 50);
+      window.scrollTo({ top: getY(), behavior: 'smooth' });
+    }, 60);
   });
 }
 
